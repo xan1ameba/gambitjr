@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ArchaeoKZ — открытая энциклопедия по археологии Центральной Азии. Артефакты, культуры и история для исследователей, студентов и всех любопытных.">
+  <meta name="keywords" content="археология, Казахстан, бронзовый век, андроновская культура, артефакты, керамика, украшения">
+  <meta property="og:title"       content="ArchaeoKZ — Открытая Энциклопедия Археологии">
+  <meta property="og:description" content="Исследуйте артефакты бронзового века Центральной Азии в открытом доступе.">
+  <title>ArchaeoKZ — Открытая Энциклопедия Археологии</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ─── BACKGROUND ─────────────────────────────── -->
+<canvas id="bg-canvas"></canvas>
+<div class="bg-blobs"></div>
+
+<!-- ─── NAVBAR ────────────────────────────────── -->
+<nav class="navbar" role="navigation" aria-label="Главная навигация">
+
+  <div class="nav-logo" data-action="home" aria-label="На главную">
+    <span class="nav-logo-icon">🏺</span>
+    <span class="nav-logo-text">ArchaeoKZ</span>
+  </div>
+
+  <div class="nav-divider"></div>
+  <p class="nav-tagline">Открытая энциклопедия<br>археологии Казахстана</p>
+
+  <div class="nav-search">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+         viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+    </svg>
+    <input id="search-input" type="search"
+           placeholder="Поиск артефактов, культур, материалов…"
+           aria-label="Поиск по энциклопедии"
+           autocomplete="off">
+  </div>
+
+  <div class="nav-stats" aria-label="Статистика энциклопедии">
+    <div class="nav-stat">
+      <div class="nav-stat-val">7</div>
+      <div class="nav-stat-label">Артефактов</div>
+    </div>
+    <div class="nav-stat">
+      <div class="nav-stat-val">4</div>
+      <div class="nav-stat-label">Категории</div>
+    </div>
+    <div class="nav-stat">
+      <div class="nav-stat-val">КЗ</div>
+      <div class="nav-stat-label">Регион</div>
+    </div>
+  </div>
+</nav>
+
+<!-- ─── APP LAYOUT ─────────────────────────────── -->
+<div class="app-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" role="navigation" aria-label="Разделы энциклопедии">
+
+    <div class="sb-section">
+      <div class="sb-title">Разделы</div>
+      <ul style="list-style:none">
+        <li class="sidebar-item active" data-cat="all">
+          <span class="sb-icon">🏛️</span>
+          <span>Все артефакты</span>
+          <span class="sb-count">7</span>
+        </li>
+        <li class="sidebar-item" data-cat="ceramics">
+          <span class="sb-icon">🏺</span>
+          <span>Керамика</span>
+          <span class="sb-count">3</span>
+        </li>
+        <li class="sidebar-item" data-cat="jewelry">
+          <span class="sb-icon">💍</span>
+          <span>Украшения</span>
+          <span class="sb-count">1</span>
+        </li>
+        <li class="sidebar-item" data-cat="stone">
+          <span class="sb-icon">🪨</span>
+          <span>Каменные изделия</span>
+          <span class="sb-count">2</span>
+        </li>
+        <li class="sidebar-item" data-cat="bone">
+          <span class="sb-icon">🦴</span>
+          <span>Костяные изделия</span>
+          <span class="sb-count">1</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sb-section">
+      <div class="sb-title">Период</div>
+      <ul style="list-style:none">
+        <li class="sidebar-item active" data-cat="all">
+          <span class="sb-icon">⏳</span>
+          <span>Бронзовый век</span>
+          <span class="sb-count">7</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sb-section">
+      <div class="sb-title">Регион</div>
+      <ul style="list-style:none">
+        <li class="sidebar-item active" data-cat="all">
+          <span class="sb-icon">📍</span>
+          <span>Казахстан</span>
+          <span class="sb-count">7</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sb-section">
+      <div class="sb-title">О проекте</div>
+      <div style="padding:0 8px;font-size:12px;color:var(--text3);line-height:1.7">
+        Энциклопедия создана командой<br>
+        <strong style="color:var(--gold-l)">Gambit Jr.</strong><br>
+        в рамках Innovation Project<br>
+        сезона FLL 2024–2025.<br><br>
+        Открытый доступ для всех:<br>
+        исследователей, студентов<br>
+        и всех любопытных.
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content" role="main">
+
+    <!-- ─── BROWSE VIEW ──────────────────────── -->
+    <div id="browse-view">
+
+      <!-- Hero -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-eyebrow">🏺 Открытая Энциклопедия</div>
+        <h1 class="hero-title" id="hero-title">
+          Археология<br>Центральной Азии
+        </h1>
+        <p class="hero-text">
+          Исследуйте артефакты бронзового века Казахстана в открытом доступе.
+          Для учёных, студентов и всех, кому интересна история.
+        </p>
+        <div class="hero-stats" aria-label="Статистика коллекции">
+          <div>
+            <div class="hs-val">7</div>
+            <div class="hs-label">Артефактов</div>
+          </div>
+          <div>
+            <div class="hs-val">~3500</div>
+            <div class="hs-label">Лет истории</div>
+          </div>
+          <div>
+            <div class="hs-val">4</div>
+            <div class="hs-label">Категории</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Category pills -->
+      <div class="cat-pills" role="tablist" aria-label="Фильтр по категориям">
+        <button class="cat-pill active" data-cat="all" role="tab">🏛️ Все</button>
+        <button class="cat-pill" data-cat="ceramics" role="tab">🏺 Керамика</button>
+        <button class="cat-pill" data-cat="jewelry"  role="tab">💍 Украшения</button>
+        <button class="cat-pill" data-cat="stone"    role="tab">🪨 Каменные</button>
+        <button class="cat-pill" data-cat="bone"     role="tab">🦴 Костяные</button>
+      </div>
+
+      <!-- Toolbar -->
+      <div class="toolbar" role="toolbar">
+        <div class="toolbar-left">
+          Найдено: <strong><span id="result-count">7</span></strong> артефактов
+        </div>
+        <div class="toolbar-right">
+          <select id="sort-select" class="sort-select" aria-label="Сортировка">
+            <option value="default">По умолчанию</option>
+            <option value="name-asc">По названию (А–Я)</option>
+            <option value="name-desc">По названию (Я–А)</option>
+            <option value="category">По категории</option>
+          </select>
+          <div class="view-toggle" role="group" aria-label="Вид отображения">
+            <button class="view-btn active" data-view="grid"
+                    title="Сетка" aria-label="Сетка">⊞</button>
+            <button class="view-btn" data-view="list"
+                    title="Список" aria-label="Список">☰</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cards -->
+      <div id="artifacts-container" class="artifacts-grid" role="list"
+           aria-label="Артефакты">
+        <!-- Rendered by encyclopedia.js -->
+      </div>
+
+    </div><!-- /#browse-view -->
+
+    <!-- ─── ARTICLE VIEW ─────────────────────── -->
+    <div id="article-view" style="display:none" role="article">
+      <!-- Rendered by encyclopedia.js -->
+    </div>
+
+  </main>
+</div><!-- /.app-layout -->
+
+<script src="js/encyclopedia.js"></script>
+</body>
+</html>
