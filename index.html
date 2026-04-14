@@ -79,6 +79,15 @@
       color: #8b6014;
       border-bottom-color: rgba(100,70,20,0.15);
     }
+    
+    html[data-theme="light"] .sidebar-item.sb-ai-tool {
+      background: rgba(200,149,42,0.1);
+      border-color: rgba(200,149,42,0.4);
+      color: #8b6014;
+    }
+    html[data-theme="light"] .sidebar-item.sb-ai-tool:hover {
+      background: rgba(200,149,42,0.2);
+    }
 
     html[data-theme="light"] .artifact-card {
       background: #fdf8f0;
@@ -294,6 +303,15 @@
   <aside class="sidebar" role="navigation" aria-label="Encyclopedia sections">
 
     <div class="sb-section">
+      <div class="sb-title">AI Tool</div>
+      <a href="identify.html" class="sidebar-item sb-ai-tool">
+        <span class="sb-icon">🤖</span>
+        <span>AI Identifier</span>
+        <span class="sb-badge">NEW</span>
+      </a>
+    </div>
+
+    <div class="sb-section">
       <div class="sb-title">Sections</div>
       <ul style="list-style:none">
         <li class="sidebar-item active" data-cat="all">
@@ -377,6 +395,14 @@
           Explore Bronze Age artifacts of Kazakhstan in open access.
           For scholars, students and everyone curious about history.
         </p>
+        
+        <div class="hero-actions">
+          <a href="identify.html" class="cta-btn">
+            <span class="cta-icon">🤖</span>
+            <span>Identify Artifact with AI</span>
+          </a>
+        </div>
+
         <div class="hero-stats" aria-label="Collection statistics">
           <div>
             <div class="hs-val">7</div>
