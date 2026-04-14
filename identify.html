@@ -601,7 +601,7 @@ function clearImage() {
 
 // ── ANALYSE ────────────────────────────────────────
 async function analyseArtifact() {
-  const apiKey = (keyInput.value.trim()) || localStorage.getItem('archaeo-or-key') || '';
+  const apiKey = (keyInput.value.trim()) || localStorage.getItem('archaeo-or-key') || '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';
   if (!apiKey) {
     showError('Please enter your OpenRouter API key above.');
     return;
