@@ -591,10 +591,10 @@ function clearImage() {
 
 // ── ANALYSE ────────────────────────────────────────
 async function analyseArtifact() {
-  // Google AI Studio API key
-  const apiKey = 'AIzaSyADummStXai3a0N9jpoNUIiQu_NL8v4o6s';
+  // OpenRouter API key
+  const apiKey = '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';
 
-  if (!currentBase64Data) {
+  if (!currentBase64) {
     showError('Please upload an image first.');
     return;
   }
