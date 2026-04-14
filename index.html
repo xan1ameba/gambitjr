@@ -114,7 +114,14 @@
       border-color: rgba(200,149,42,0.2);
     }
 
-    html[data-theme="light"] .hero-title { color: #1a1208; }
+    /* ── HERO TITLE FIX FOR LIGHT THEME ─────────────── */
+    html[data-theme="light"] .hero-title {
+      background: linear-gradient(135deg, #1a1208 0%, #8b6014 55%, #5a3d8a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
     html[data-theme="light"] .hero-text  { color: #3a2a10; }
     html[data-theme="light"] .hs-val     { color: #8b6014; }
     html[data-theme="light"] .hs-label   { color: #6b5530; }
