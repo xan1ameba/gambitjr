@@ -572,8 +572,7 @@ function loadFile(file) {
   const reader = new FileReader();
   reader.onload = ev => {
     const dataUrl = ev.target.result;
-    // strip "data:image/jpeg;base64," prefix
-    currentBase64 = dataUrl.split(',')[1];
+    currentBase64 = dataUrl; // keep full data uri
 
     previewImg.src = dataUrl;
     previewWrap.style.display = 'block';
@@ -601,7 +600,7 @@ function clearImage() {
 
 // ── ANALYSE ────────────────────────────────────────
 async function analyseArtifact() {
-  const apiKey = (keyInput.value.trim()) || localStorage.getItem('archaeo-or-key') || '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';
+  const apiKey = (keyInput.value.trim()) || localStorage.getItem('archaeo-or-key') || 'sk-or-v1-ad645bcec1e943c8db211f243c524c6a5cb87995c5bb38c88eea57ea2b0ff40es';
   if (!apiKey) {
     showError('Please enter your OpenRouter API key above.');
     return;
@@ -664,7 +663,7 @@ If this is not an archaeological artifact, still fill all fields with your best 
         'X-Title': 'ArchaeoKZ Identifier'
       },
       body: JSON.stringify({
-        model: 'google/gemini-2.0-flash-001',
+        model: 'google/gemini-2.0-flash-lite-preview-02-05:free',
         max_tokens: 900,
         messages: [
           {
@@ -673,7 +672,7 @@ If this is not an archaeological artifact, still fill all fields with your best 
               {
                 type: 'image_url',
                 image_url: {
-                  url: `data:image/jpeg;base64,${currentBase64}`
+                  url: currentBase64
                 }
               },
               {
