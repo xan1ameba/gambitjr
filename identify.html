@@ -422,14 +422,6 @@
     </p>
   </div>
 
-  <!-- API KEY -->
-  <div class="api-bar" style="display: none;">
-    <label>OPENROUTER KEY</label>
-    <input type="password" id="api-key-input" placeholder="sk-or-v1-…" autocomplete="off">
-    <button class="api-save-btn" onclick="saveKey()">Save</button>
-    <span class="api-saved" id="api-saved">✓ Saved</span>
-  </div>
-
   <!-- UPLOAD -->
   <div class="upload-zone" id="upload-zone">
     <input type="file" id="file-input" accept="image/*">
@@ -530,21 +522,6 @@ function applyTheme(t) {
   tLbl.textContent  = t === 'dark' ? 'Light' : 'Dark';
 }
 
-// ── API KEY ────────────────────────────────────────
-const keyInput = document.getElementById('api-key-input');
-const savedKey = localStorage.getItem('archaeo-or-key') || '';
-if (savedKey) { keyInput.value = savedKey; showSaved(); }
-
-function saveKey() {
-  localStorage.setItem('archaeo-or-key', keyInput.value.trim());
-  showSaved();
-}
-function showSaved() {
-  const el = document.getElementById('api-saved');
-  el.style.display = 'inline';
-  setTimeout(() => el.style.display = 'none', 2000);
-}
-
 // ── IMAGE UPLOAD ───────────────────────────────────
 const fileInput   = document.getElementById('file-input');
 const uploadZone  = document.getElementById('upload-zone');
@@ -600,11 +577,9 @@ function clearImage() {
 
 // ── ANALYSE ────────────────────────────────────────
 async function analyseArtifact() {
-  const apiKey = (keyInput.value.trim()) || localStorage.getItem('archaeo-or-key') || 'sk-or-v1-ad645bcec1e943c8db211f243c524c6a5cb87995c5bb38c88eea57ea2b0ff40es';
-  if (!apiKey) {
-    showError('Please enter your OpenRouter API key above.');
-    return;
-  }
+  // Hardcoded API key for seamless user experience
+  const apiKey = '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';
+
   if (!currentBase64) {
     showError('Please upload an image first.');
     return;
