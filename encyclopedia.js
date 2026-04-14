@@ -1,252 +1,252 @@
 // =====================================================
-// ARCHAEO KZ — Открытая Энциклопедия Археологии
+// ARCHAEO KZ — Open Encyclopedia of Archaeology
 // Gambit Jr. FLL Team | Data & Application Logic
 // =====================================================
 
 const ARTIFACTS = [
   {
     id: 'vessel-dark',
-    name: 'Горшок лепной тёмно-серый',
+    name: 'Dark Grey Handmade Ceramic Vessel',
     nameEn: 'Dark Grey Handmade Ceramic Vessel',
-    subtitle: 'Лепной сосуд яйцевидной формы, восстановительный обжиг',
+    subtitle: 'Egg-shaped handmade vessel fired in a reduction atmosphere',
     category: 'ceramics',
-    period: 'Бронзовый век',
-    periodYears: 'XVIII–XII вв. до н.э.',
-    culture: 'Андроновская культурно-историческая общность',
-    material: 'Глина (ручная лепка)',
-    technique: 'Лепка от руки, заглаживание, восстановительный обжиг',
-    dimensions: 'Высота: ~22–26 см, Диаметр тулова: ~18–22 см',
-    location: 'Казахстан',
+    period: 'Bronze Age',
+    periodYears: '18th–12th century BCE',
+    culture: 'Andronovo Cultural-Historical Community',
+    material: 'Clay (hand-built)',
+    technique: 'Hand modelling, surface smoothing, reduction firing',
+    dimensions: 'Height: ~22–26 cm, Body diameter: ~18–22 cm',
+    location: 'Kazakhstan',
     catalogNumber: null,
     images: [
       'vessel-dark-01.jpg',
       'vessel-dark-02.jpg'
     ],
-    abstract: 'Лепной сосуд тёмно-серого цвета — один из наиболее характерных типов керамики эпохи бронзы Центрального Казахстана, принадлежащий к андроновской культурно-исторической общности.',
+    abstract: 'A dark grey hand-built vessel — one of the most characteristic ceramic types of the Bronze Age in Central Kazakhstan, belonging to the Andronovo cultural-historical community.',
     fullText: `
-      <h3>Описание</h3>
-      <p>Горшок изготовлен из обожжённой глины тёмно-серого цвета. Форма сосуда — яйцевидная, с плоским дном и слегка отогнутым наружу краем венчика. Стенки равномерной толщины, тщательно заглажены. Поверхность без орнамента, с незначительными следами заглаживания. Рядом с сосудом расположена масштабная линейка с делением 5 см, что позволяет точно определить его размеры.</p>
+      <h3>Description</h3>
+      <p>The vessel is made of fired dark grey clay. Its shape is egg-like, with a flat base and a slightly outward-flared rim. The walls are of uniform thickness and carefully smoothed. The surface bears no decoration, with faint smoothing marks visible. A scale bar with 5 cm divisions is placed beside the vessel to allow precise size measurements.</p>
 
-      <h3>Технология изготовления</h3>
-      <p>Сосуд изготовлен методом ручной лепки без применения гончарного круга — характерная черта керамических традиций эпохи бронзы евразийских степей. Тёмно-серый цвет стенок является результатом восстановительного (бескислородного) обжига при температуре 600–800°C. В условиях восстановительной среды углерод не догорает и откладывается в черепке, придавая ему характерный тёмный цвет.</p>
+      <h3>Manufacturing Technology</h3>
+      <p>The vessel was produced by hand modelling without a potter's wheel — a defining feature of ceramic traditions of the Bronze Age Eurasian steppes. The dark grey colour of the walls results from reduction (oxygen-deprived) firing at temperatures of 600–800 °C. In a reducing atmosphere, carbon does not fully combust and is deposited in the ceramic body, giving it a characteristic dark hue.</p>
 
-      <h3>Культурный и хронологический контекст</h3>
-      <p>Сосуды данного типа характерны для андроновской культурно-исторической общности (XVIII–IX вв. до н.э.) — одного из наиболее масштабных культурных явлений бронзового века Евразии. Андроновские племена занимали обширную территорию от Урала до Енисея и от лесостепи Западной Сибири до горных систем Средней Азии.</p>
-      <p>Подобные горшки выступали универсальными сосудами для хранения продуктов, приготовления пищи и использовались в погребальном обряде как часть заупокойного инвентаря — в них помещали пищу для умершего.</p>
+      <h3>Cultural and Chronological Context</h3>
+      <p>Vessels of this type are characteristic of the Andronovo cultural-historical community (18th–9th century BCE) — one of the most expansive cultural phenomena of the Bronze Age Eurasia. Andronovo tribes occupied a vast territory stretching from the Urals to the Yenisei and from the West Siberian forest-steppe to the mountain systems of Central Asia.</p>
+      <p>Such pots served as multipurpose vessels for food storage and cooking, and were also used in funerary rites as part of burial inventories — placed in graves filled with food for the deceased.</p>
 
-      <h3>Значение в археологии</h3>
-      <p>Керамика является важнейшим хронологическим и культурно-диагностическим материалом в археологии. Форма, орнаментация и технология производства посуды позволяют точно определить культурную принадлежность памятника и его место в системе межрегиональных связей.</p>
+      <h3>Archaeological Significance</h3>
+      <p>Ceramics are the most important chronological and culture-diagnostic material in archaeology. The shape, decoration, and production technology of pottery allow precise identification of a site's cultural affiliation and its place within systems of inter-regional exchange.</p>
     `,
-    tags: ['андроновская культура', 'бронзовый век', 'керамика', 'погребальный инвентарь', 'ручная лепка', 'восстановительный обжиг', 'Казахстан']
+    tags: ['Andronovo culture', 'Bronze Age', 'ceramics', 'burial goods', 'hand-built', 'reduction firing', 'Kazakhstan']
   },
 
   {
     id: 'vessel-brown',
-    name: 'Горшок лепной красно-коричневый',
+    name: 'Reddish-Brown Handmade Ceramic Vessel',
     nameEn: 'Reddish-Brown Handmade Ceramic Vessel',
-    subtitle: 'Лепной сосуд с выраженной закопчённостью стенок',
+    subtitle: 'Hand-built vessel with pronounced fire-blackening on the walls',
     category: 'ceramics',
-    period: 'Бронзовый век',
-    periodYears: 'XVIII–XII вв. до н.э.',
-    culture: 'Андроновская культурно-историческая общность',
-    material: 'Глина (ручная лепка)',
-    technique: 'Лепка от руки, заглаживание, окислительный обжиг',
-    dimensions: 'Высота: ~20–24 см, Диаметр тулова: ~16–20 см',
-    location: 'Казахстан',
+    period: 'Bronze Age',
+    periodYears: '18th–12th century BCE',
+    culture: 'Andronovo Cultural-Historical Community',
+    material: 'Clay (hand-built)',
+    technique: 'Hand modelling, surface smoothing, oxidation firing',
+    dimensions: 'Height: ~20–24 cm, Body diameter: ~16–20 cm',
+    location: 'Kazakhstan',
     catalogNumber: null,
     images: [
       'vessel-brown-01.jpg',
       'vessel-brown-02.jpg'
     ],
-    abstract: 'Лепной керамический сосуд красно-коричневого цвета с выраженными следами вторичного обжига — свидетельство его активного использования в хозяйственной жизни до помещения в погребение.',
+    abstract: 'A reddish-brown hand-built ceramic vessel with pronounced secondary firing marks — evidence of its active use in daily life before being placed in a burial.',
     fullText: `
-      <h3>Описание</h3>
-      <p>Горшок округлой формы с выпуклым туловом, слегка суживающейся шейкой и прямым краем венчика. Поверхность сосуда красно-коричневого цвета с выраженными тёмными пятнами — следами вторичного обжига и задымления. Стенки имеют трещины, возникшие в результате термического воздействия и механических нагрузок при длительном использовании.</p>
+      <h3>Description</h3>
+      <p>A round-bodied pot with a bulging body, slightly tapering neck, and straight rim. The surface is reddish-brown with prominent dark patches — traces of secondary firing and smoke exposure. The walls show cracks resulting from thermal stress and mechanical strain during prolonged everyday use.</p>
 
-      <h3>Технология изготовления</h3>
-      <p>Сосуд изготовлен методом ручной лепки. Красно-коричневый цвет черепка — результат окислительного обжига, при котором железосодержащие соединения в глине оксидируются, придавая изделию тёплые красно-коричневые тона. Тёмные пятна и полосы на поверхности — следы открытого огня при повседневном использовании.</p>
+      <h3>Manufacturing Technology</h3>
+      <p>The vessel was produced by hand modelling. The reddish-brown colour of the body results from oxidation firing, during which iron compounds in the clay are oxidised, giving the vessel warm reddish-brown tones. The dark patches and streaks on the surface are traces of open-flame use during daily cooking.</p>
 
-      <h3>Бытовое и погребальное использование</h3>
-      <p>Наличие следов горения указывает на то, что данный горшок активно использовался в повседневной жизни: для приготовления пищи или хранения продуктов. Впоследствии он был помещён в погребение как часть заупокойного инвентаря. Подобная «вторичная» функция посуды широко засвидетельствована в погребальных комплексах эпохи бронзы Казахстана.</p>
+      <h3>Domestic and Funerary Use</h3>
+      <p>The presence of fire marks indicates that this pot was actively used in everyday life — for cooking or food storage. It was later placed in a burial as part of the grave inventory. Such "secondary" use of domestic vessels is widely attested in Bronze Age burial complexes of Kazakhstan.</p>
 
-      <h3>Сравнительный анализ</h3>
-      <p>Данный тип посуды широко представлен на территории Центрального Казахстана в контексте могильников срубно-андроновского времени. Сосуды близкой формы встречаются на памятниках алакульской и фёдоровской субкультур андроновской общности.</p>
+      <h3>Comparative Analysis</h3>
+      <p>This vessel type is widely represented across Central Kazakhstan in the context of Srubnaya-Andronovo burial mounds. Vessels of a closely related form appear at sites associated with the Alakul and Fyodorovo subcultures of the Andronovo community.</p>
     `,
-    tags: ['андроновская культура', 'бронзовый век', 'керамика', 'бытовая посуда', 'ручная лепка', 'следы использования', 'Казахстан']
+    tags: ['Andronovo culture', 'Bronze Age', 'ceramics', 'domestic ware', 'hand-built', 'use-wear traces', 'Kazakhstan']
   },
 
   {
     id: 'bracelets-bronze',
-    name: 'Браслеты бронзовые разомкнутые',
+    name: 'Open Bronze Bracelets',
     nameEn: 'Open Bronze Bracelets',
-    subtitle: 'Пара разомкнутых браслетов округлого сечения с патиной',
+    subtitle: 'Pair of open-ended round-section bracelets with patina',
     category: 'jewelry',
-    period: 'Бронзовый век',
-    periodYears: 'XVIII–XII вв. до н.э.',
-    culture: 'Андроновская культурно-историческая общность',
-    material: 'Бронза (сплав меди и олова)',
-    technique: 'Литьё в открытой форме, ковка, полировка',
-    dimensions: 'Диаметр: ~6–7 см, Диаметр сечения: ~4–5 мм',
-    location: 'Казахстан',
+    period: 'Bronze Age',
+    periodYears: '18th–12th century BCE',
+    culture: 'Andronovo Cultural-Historical Community',
+    material: 'Bronze (copper-tin alloy)',
+    technique: 'Open-mould casting, forging, polishing',
+    dimensions: 'Diameter: ~6–7 cm, Wire diameter: ~4–5 mm',
+    location: 'Kazakhstan',
     catalogNumber: null,
     images: [
       'bracelets-01.jpg',
       'bracelets-02.jpg',
       'bracelets-03.jpg'
     ],
-    abstract: 'Пара разомкнутых бронзовых браслетов с круглым сечением — традиционное украшение женского погребального убора эпохи бронзы. Покрыты характерной сине-зелёной патиной, образовавшейся за тысячелетия хранения в земле.',
+    abstract: 'A pair of open-ended bronze bracelets with circular cross-section — a traditional ornament of the female funerary dress of the Bronze Age. Covered with characteristic blue-green patina formed over millennia of burial in the earth.',
     fullText: `
-      <h3>Описание</h3>
-      <p>Пара разомкнутых браслетов, изготовленных из бронзы. Сечение проволоки — круглое, равномерное по всей длине. Концы браслетов слегка заострены. Поверхность покрыта сине-зелёной и коричневато-красной патиной — продуктом длительного окисления меди в почве. Один из браслетов имеет более интенсивную зелёную патину (малахитовую), другой — преимущественно коричневую (куприт).</p>
+      <h3>Description</h3>
+      <p>A pair of open-ended bracelets made of bronze. The wire cross-section is circular and uniform along the full length. The bracelet terminals are slightly tapered. The surface is covered with blue-green and brownish-red patina — the product of prolonged copper oxidation in the soil. One bracelet displays more intense green patina (malachite), the other predominantly brown (cuprite).</p>
 
-      <h3>Технология изготовления</h3>
-      <p>Браслеты изготовлены методом литья бронзы в открытую форму с последующей ковкой, сгибанием и полировкой. Бронзовый сплав (медь + олово, ~90:10) обладает более низкой температурой плавления, чем чистая медь, и лучшими литейными свойствами. Это делало бронзу идеальным материалом для украшений и орудий труда.</p>
+      <h3>Manufacturing Technology</h3>
+      <p>The bracelets were produced by casting bronze in an open mould, followed by forging, bending, and polishing. Bronze alloy (copper + tin, approximately 90:10) has a lower melting point than pure copper and superior casting properties. This made bronze the ideal material for ornaments and tools.</p>
 
-      <h3>Символика и использование</h3>
-      <p>Разомкнутые браслеты — один из наиболее распространённых типов украшений эпохи бронзы в евразийских степях. Они составляли часть женского праздничного и погребального убора. По традиции, браслеты носили попарно — на обоих запястьях одновременно. Разомкнутая форма позволяла легко надевать и снимать украшение.</p>
+      <h3>Symbolism and Use</h3>
+      <p>Open-ended bracelets are among the most widespread ornament types of the Bronze Age Eurasian steppes. They formed part of the female festive and funerary dress. By tradition, bracelets were worn in pairs — on both wrists simultaneously. The open form allowed the jewellery to be put on and taken off easily.</p>
 
-      <h3>Металлургия Бронзового века в Казахстане</h3>
-      <p>Казахстан богат медными рудами, и именно он стал одним из главных центров металлургии Евразии в эпоху бронзы. Медные рудники Жезказгана, Сарыарки и Алтая обеспечивали сырьём обширные регионы. Технологии бронзового литья передавались из поколения в поколение и отличались высоким уровнем мастерства.</p>
+      <h3>Bronze Age Metallurgy in Kazakhstan</h3>
+      <p>Kazakhstan is rich in copper ores and became one of the principal metallurgical centres of Eurasia during the Bronze Age. Copper mines at Zhezkazgan, the Saryarka highlands, and the Altai supplied raw materials to vast regions. Bronze-casting technologies were passed down through generations and achieved a remarkably high level of skill.</p>
     `,
-    tags: ['бронзовый век', 'украшения', 'бронза', 'браслеты', 'женский убор', 'металлургия', 'погребальный инвентарь', 'патина', 'Казахстан']
+    tags: ['Bronze Age', 'jewelry', 'bronze', 'bracelets', 'female dress', 'metallurgy', 'burial goods', 'patina', 'Kazakhstan']
   },
 
   {
     id: 'bone-pendant',
-    name: 'Подвеска из зуба животного',
+    name: 'Animal Tooth Pendant',
     nameEn: 'Animal Tooth Pendant',
-    subtitle: 'Амулет-подвеска с просверленным отверстием',
+    subtitle: 'Amulet-pendant with a drilled suspension hole',
     category: 'bone',
-    period: 'Бронзовый век',
-    periodYears: 'XVIII–XII вв. до н.э.',
-    culture: 'Степные культуры Центральной Азии',
-    material: 'Зуб животного (лошадь или крупный рогатый скот)',
-    technique: 'Сверление каменным сверлом, шлифовка',
-    dimensions: 'Длина: ~9–12 см, Ширина: ~3–4 см',
-    location: 'Казахстан',
+    period: 'Bronze Age',
+    periodYears: '18th–12th century BCE',
+    culture: 'Steppe Cultures of Central Asia',
+    material: 'Animal tooth (horse or large cattle)',
+    technique: 'Drilling with stone bit, grinding',
+    dimensions: 'Length: ~9–12 cm, Width: ~3–4 cm',
+    location: 'Kazakhstan',
     catalogNumber: 'Тк 171/2019/К12/04/3',
     images: [
       'bone-pendant-01.jpg',
       'bone-pendant-02.jpg'
     ],
-    abstract: 'Подвеска-амулет из зуба крупного животного с просверленным отверстием. Инвентарный номер Тк 171/2019/К12/04/3 указывает на происхождение из профессиональных раскопок 2019 года.',
+    abstract: 'An amulet-pendant made from the tooth of a large animal, with a drilled suspension hole. Catalogue number Тк 171/2019/К12/04/3 indicates its origin from professional excavations conducted in 2019.',
     fullText: `
-      <h3>Описание</h3>
-      <p>Подвеска изготовлена из крупного зуба животного — предположительно, резца лошади или зуба крупного рогатого скота. В более широкой части зуба просверлено круглое отверстие диаметром около 6–8 мм для нанизывания на шнурок или нить. Поверхность предмета отполирована в результате длительного ношения. Цвет — кремово-бежевый с тёмными дентинными жилками. На обороте нанесён штрих-кодовый каталожный номер музея: <strong>Тк 171/2019/К12/04/3</strong>.</p>
+      <h3>Description</h3>
+      <p>The pendant is made from a large animal tooth — presumably an incisor of a horse or a tooth of large cattle. A circular hole approximately 6–8 mm in diameter has been drilled through the wider end of the tooth for threading onto a cord or string. The surface is polished from prolonged wear. Colour: creamy beige with dark dentinal veins. The museum barcode catalogue number <strong>Тк 171/2019/К12/04/3</strong> is inscribed on the reverse.</p>
 
-      <h3>Технология изготовления</h3>
-      <p>Отверстие было просверлено с помощью каменного или костяного сверла методом попеременного вращения. Следы сверления видны в виде тонких концентрических царапин вокруг отверстия. Поверхность дополнительно зашлифована, вероятно, с применением речного песка в качестве абразива.</p>
+      <h3>Manufacturing Technology</h3>
+      <p>The hole was drilled using a stone or bone bit by means of alternating rotation. Drilling traces are visible as thin concentric scratches around the opening. The surface was additionally ground, probably using river sand as an abrasive.</p>
 
-      <h3>Символическое значение</h3>
-      <p>Украшения из зубов животных в древности несли не только декоративную, но и апотропаическую (защитную, магическую) функцию. Зубы крупных животных — символ силы, плодородия и богатства стад, главного источника благосостояния кочевых и скотоводческих племён эпохи бронзы.</p>
+      <h3>Symbolic Significance</h3>
+      <p>In antiquity, ornaments made from animal teeth served not only a decorative but also an apotropaic (protective, magical) function. Teeth of large animals symbolised strength, fertility, and the wealth of herds — the main source of prosperity for the nomadic and pastoral tribes of the Bronze Age.</p>
 
-      <h3>Расшифровка каталожного номера</h3>
-      <p>Обозначение <strong>Тк 171/2019/К12/04/3</strong> позволяет установить точное происхождение предмета: «Тк» — сокращённое название памятника (возможно, Тоқанас или иное), «2019» — год полевых раскопок, «К12» — шифр раскопочного квадрата, «04» — горизонт (слой), «3» — порядковый номер находки в полевой документации.</p>
+      <h3>Catalogue Number Explained</h3>
+      <p>The designation <strong>Тк 171/2019/К12/04/3</strong> identifies the precise provenance of the object: "Тк" is the abbreviated site name (possibly Tokanas or another site), "2019" is the year of field excavation, "К12" is the excavation grid square, "04" is the stratigraphic horizon (layer), and "3" is the sequential find number in the field documentation.</p>
     `,
-    tags: ['бронзовый век', 'украшения', 'кость', 'зуб', 'амулет', 'подвеска', 'магия', 'Казахстан', '2019']
+    tags: ['Bronze Age', 'jewelry', 'bone', 'tooth', 'amulet', 'pendant', 'magic', 'Kazakhstan', '2019']
   },
 
   {
     id: 'stone-pendant-red',
-    name: 'Каменная подвеска (красный сланец)',
+    name: 'Red Shale Whetstone Pendant',
     nameEn: 'Red Shale Whetstone Pendant',
-    subtitle: 'Удлинённая подвеска-оселок с просверленным отверстием',
+    subtitle: 'Elongated pendant-whetstone with a drilled suspension hole',
     category: 'stone',
-    period: 'Бронзовый век',
-    periodYears: 'XVIII–XII вв. до н.э.',
-    culture: 'Степные культуры Центральной Азии',
-    material: 'Красный / тёмно-пурпурный сланец',
-    technique: 'Пикетаж, шлифовка, сверление',
-    dimensions: 'Длина: ~14–18 см, Ширина: ~2–3 см',
-    location: 'Казахстан',
+    period: 'Bronze Age',
+    periodYears: '18th–12th century BCE',
+    culture: 'Steppe Cultures of Central Asia',
+    material: 'Red / dark purple shale',
+    technique: 'Pecking, grinding, drilling',
+    dimensions: 'Length: ~14–18 cm, Width: ~2–3 cm',
+    location: 'Kazakhstan',
     catalogNumber: null,
     images: [
       'stone-red-01.jpg'
     ],
-    abstract: 'Удлинённая подвеска-оселок из красного сланца с просверленным отверстием у одного конца. Совмещает функции украшения и практического инструмента — точила для металлических изделий.',
+    abstract: 'An elongated whetstone-pendant made of red shale with a drilled hole at one end. Combines the functions of an ornament and a practical tool — a sharpening stone for metal objects.',
     fullText: `
-      <h3>Описание</h3>
-      <p>Удлинённый предмет из плотного красного (тёмно-пурпурного) сланца. Форма — вытянутая, к одному концу сужается и закругляется, с другого — более широкая, с просверленным отверстием. Поверхность тщательно отшлифована, боковые грани скруглены. Красновато-пурпурный цвет обусловлен высоким содержанием оксидов железа (гематита) в породе.</p>
+      <h3>Description</h3>
+      <p>An elongated object made of dense red (dark purple) shale. The shape is tapered — narrowing and rounding at one end, wider at the other — with a drilled hole at the wider end. The surface is carefully ground and the lateral edges are rounded. The reddish-purple colour is due to a high content of iron oxides (haematite) in the rock.</p>
 
-      <h3>Двойная функция: оселок и украшение</h3>
-      <p>Данный тип предметов в научной литературе обозначают как «подвески-оселки» (англ. whetstone pendants). Они выполняли двойную функцию: использовались для правки и полировки металлических лезвий — следы стирания поверхности подтверждают это — и одновременно подвешивались на ремне, образуя предмет украшения или статусный маркер.</p>
+      <h3>Dual Function: Whetstone and Ornament</h3>
+      <p>Objects of this type are described in scholarly literature as "whetstone pendants." They served a dual function: they were used to hone and polish metal blades — surface abrasion marks confirm this — and were simultaneously worn on a strap, serving as an ornament or status marker.</p>
 
-      <h3>Распространение в бронзовом веке</h3>
-      <p>Подвески-оселки из различных пород камня (сланец, кварцит, песчаник) широко известны в погребальных комплексах эпохи бронзы Европы, Кавказа и Центральной Азии. Их находят как в мужских, так и в женских погребениях. Особую распространённость они получили в культурах, где металлообработка занимала ключевое место в хозяйстве.</p>
+      <h3>Distribution in the Bronze Age</h3>
+      <p>Whetstone pendants made from various rock types (shale, quartzite, sandstone) are widely known in Bronze Age burial complexes of Europe, the Caucasus, and Central Asia. They are found in both male and female burials. They became particularly widespread in cultures where metalworking held a central place in the economy.</p>
 
-      <h3>Горные породы Казахстана</h3>
-      <p>Красный сланец с высоким содержанием железа добывался из местных выходов горных пород. Разнообразие геологических формаций Казахстана обеспечивало древних мастеров широким набором сырья для изготовления орудий и украшений.</p>
+      <h3>Geological Resources of Kazakhstan</h3>
+      <p>Red iron-rich shale was extracted from local rock outcrops. The geological diversity of Kazakhstan provided ancient craftspeople with a wide range of raw materials for making tools and ornaments.</p>
     `,
-    tags: ['бронзовый век', 'камень', 'сланец', 'подвеска', 'оселок', 'украшения', 'орудия труда', 'Казахстан']
+    tags: ['Bronze Age', 'stone', 'shale', 'pendant', 'whetstone', 'jewelry', 'tools', 'Kazakhstan']
   },
 
   {
     id: 'stone-bar-grey',
-    name: 'Каменная подвеска-брусок',
+    name: 'Grey Stone Bar Pendant',
     nameEn: 'Grey Stone Bar Pendant / Whetstone',
-    subtitle: 'Крупная прямоугольная подвеска из серого галечника',
+    subtitle: 'Large rectangular pendant made from grey pebble rock',
     category: 'stone',
-    period: 'Бронзовый век',
-    periodYears: 'XVIII–XII вв. до н.э.',
-    culture: 'Степные культуры Центральной Азии',
-    material: 'Серый галечник (метаморфическая порода)',
-    technique: 'Шлифовка, сверление',
-    dimensions: 'Длина: ~13–16 см, Ширина: ~2,5–3 см, Толщина: ~1,5–2 см',
-    location: 'Казахстан',
+    period: 'Bronze Age',
+    periodYears: '18th–12th century BCE',
+    culture: 'Steppe Cultures of Central Asia',
+    material: 'Grey pebble rock (metamorphic)',
+    technique: 'Grinding, drilling',
+    dimensions: 'Length: ~13–16 cm, Width: ~2.5–3 cm, Thickness: ~1.5–2 cm',
+    location: 'Kazakhstan',
     catalogNumber: null,
     images: [
       'stone-grey-01.jpg'
     ],
-    abstract: 'Крупная прямоугольная подвеска-брусок из серо-зелёного галечника с отверстием для нанизывания. Характерный элемент воинского и погребального убора эпохи бронзы.',
+    abstract: 'A large rectangular bar-pendant made from grey-green pebble rock, with a drilled suspension hole. A characteristic element of the warrior and funerary dress of the Bronze Age.',
     fullText: `
-      <h3>Описание</h3>
-      <p>Крупный прямоугольный брусок из плотного серо-зелёного галечника. Форма — вытянутая прямоугольная, с притуплёнными гранями и слегка скруглёнными краями. У одного из торцов просверлено круглое отверстие. Поверхность равномерно отполирована до гладкости. Серо-зелёный цвет обусловлен наличием хлорита или близких минералов в породе.</p>
+      <h3>Description</h3>
+      <p>A large rectangular bar made of dense grey-green pebble rock. The shape is elongated and rectangular, with blunted edges and slightly rounded corners. A circular hole is drilled near one end. The surface is evenly polished to a smooth finish. The grey-green colour is due to the presence of chlorite or related minerals in the rock.</p>
 
-      <h3>Функциональное назначение</h3>
-      <p>Предмет сочетал несколько функций. В качестве оселка-точила он использовался для правки режущих кромок бронзовых ножей, наконечников стрел и других металлических изделий. Однако наличие отверстия и контекст находки (погребение) указывают на то, что предмет носили при себе — подвешивая к поясу.</p>
+      <h3>Functional Purpose</h3>
+      <p>The object combined several functions. As a whetstone it was used to hone the cutting edges of bronze knives, arrowheads, and other metal implements. However, the presence of a hole and the burial context indicate that the object was carried on the person — suspended from a belt.</p>
 
-      <h3>Воинский контекст</h3>
-      <p>Подвески-оселки нередко обнаруживаются в богатых мужских погребениях вместе с оружием (бронзовыми кинжалами, наконечниками копий). Вероятно, они входили в состав воинской амуниции и символизировали мастерство владения оружием. Иметь при себе хорошо заточенное оружие было жизненно важно для воина-всадника.</p>
+      <h3>Warrior Context</h3>
+      <p>Whetstone pendants are frequently found in wealthy male burials alongside weapons such as bronze daggers and spearheads. They were likely part of the warrior's equipment and symbolised mastery in the use of arms. Keeping a well-sharpened weapon was vital for a mounted warrior.</p>
 
-      <h3>Петрографический анализ</h3>
-      <p>Серо-зелёный цвет камня и его плотная мелкозернистая структура позволяют предположить, что это метаморфическая порода — возможно, хлоритовый сланец или аргиллит. Такие породы характерны для горных районов Центрального Казахстана и широко использовались в эпоху бронзы.</p>
+      <h3>Petrographic Analysis</h3>
+      <p>The grey-green colour and dense fine-grained structure of the rock suggest it is a metamorphic stone — possibly chlorite schist or argillite. Such rocks are typical of the mountain regions of Central Kazakhstan and were widely used during the Bronze Age.</p>
     `,
-    tags: ['бронзовый век', 'камень', 'галечник', 'подвеска', 'оселок', 'воинский убор', 'орудия труда', 'Казахстан']
+    tags: ['Bronze Age', 'stone', 'pebble rock', 'pendant', 'whetstone', 'warrior dress', 'tools', 'Kazakhstan']
   },
 
   {
     id: 'spindle-whorl',
-    name: 'Пряслице глиняное',
+    name: 'Clay Spindle Whorl',
     nameEn: 'Clay Spindle Whorl',
-    subtitle: 'Грузик для веретена биконической формы',
+    subtitle: 'Biconical spindle flywheel weight',
     category: 'ceramics',
-    period: 'Бронзовый век',
-    periodYears: 'XVIII–XII вв. до н.э.',
-    culture: 'Андроновская культурно-историческая общность',
-    material: 'Глина (ручная лепка, обжиг)',
-    technique: 'Лепка от руки, обжиг',
-    dimensions: 'Диаметр: ~4–5 см, Высота: ~3–4 см',
-    location: 'Казахстан',
+    period: 'Bronze Age',
+    periodYears: '18th–12th century BCE',
+    culture: 'Andronovo Cultural-Historical Community',
+    material: 'Clay (hand-built, fired)',
+    technique: 'Hand modelling, firing',
+    dimensions: 'Diameter: ~4–5 cm, Height: ~3–4 cm',
+    location: 'Kazakhstan',
     catalogNumber: null,
     images: [
       'spindle-whorl-01.jpg',
       'spindle-whorl-02.jpg'
     ],
-    abstract: 'Глиняное пряслице — грузик-маховик для веретена, использовавшийся при прядении шерсти. Свидетельствует о развитом текстильном производстве в общинах эпохи бронзы Центрального Казахстана.',
+    abstract: 'A clay spindle whorl — a flywheel weight for a spindle, used in spinning wool. Evidence of advanced textile production in Bronze Age communities of Central Kazakhstan.',
     fullText: `
-      <h3>Описание</h3>
-      <p>Пряслице изготовлено из обожжённой глины бежево-серого цвета. Форма — биконическая (двуконусная), с центральным сквозным отверстием диаметром около 8–10 мм для вертикального стержня веретена. Поверхность неровная, без орнамента; в нескольких местах видны небольшие сколы и трещины — следы активного использования.</p>
+      <h3>Description</h3>
+      <p>The spindle whorl is made of fired beige-grey clay. The shape is biconical (double-cone), with a central through-hole approximately 8–10 mm in diameter for the vertical spindle shaft. The surface is uneven and undecorated; several small chips and cracks are visible — signs of active use.</p>
 
-      <h3>Что такое пряслице и как оно работает?</h3>
-      <p>Пряслице — утяжелитель-маховик, надевавшийся на нижний конец стержня веретена из дерева или кости. Его масса и форма обеспечивали равномерное и длительное вращение веретена при прядении. Прядильщица вращала веретено, одновременно вытягивая волокна шерсти или льна в тонкую нить. Без пряслица веретено быстро теряло инерцию — грузик обеспечивал устойчивость вращения.</p>
+      <h3>What Is a Spindle Whorl and How Does It Work?</h3>
+      <p>A spindle whorl is a flywheel weight placed on the lower end of a wooden or bone spindle shaft. Its mass and shape ensured steady and prolonged rotation of the spindle during spinning. The spinner would rotate the spindle while simultaneously drawing wool or linen fibres into a fine thread. Without the whorl, the spindle would quickly lose momentum — the weight ensured stable rotation.</p>
 
-      <h3>Свидетельство текстильного производства</h3>
-      <p>Наличие пряслиц в материальной культуре чётко указывает на занятие данной группы населения текстильным производством: прядением шерсти или растительных волокон и ткачеством. В эпоху бронзы животноводство — прежде всего разведение овец — обеспечивало сообщества шерстью для производства одежды и покрывал.</p>
+      <h3>Evidence of Textile Production</h3>
+      <p>The presence of spindle whorls in the material culture clearly indicates that a population group was engaged in textile production: spinning wool or plant fibres and weaving. In the Bronze Age, animal husbandry — above all sheep-rearing — supplied communities with wool for the manufacture of clothing and blankets.</p>
 
-      <h3>Значение для реконструкции хозяйства</h3>
-      <p>Пряслица — один из наиболее массовых типов находок на поселениях и в погребениях эпохи бронзы Евразии. Их многочисленность свидетельствует о том, что прядение и ткачество были важнейшими отраслями домашнего хозяйства, которыми традиционно занимались женщины. Комплексы пряслиц в женских погребениях — свидетельство высокого социального статуса мастерицы.</p>
+      <h3>Significance for Economic Reconstruction</h3>
+      <p>Spindle whorls are among the most common find types at Bronze Age settlements and in burials across Eurasia. Their abundance indicates that spinning and weaving were key branches of the domestic economy, traditionally carried out by women. Assemblages of spindle whorls in female burials attest to the high social status of the skilled craftswoman.</p>
     `,
-    tags: ['бронзовый век', 'керамика', 'пряслице', 'прядение', 'ткачество', 'быт', 'домашнее хозяйство', 'женский убор', 'андроновская культура', 'Казахстан']
+    tags: ['Bronze Age', 'ceramics', 'spindle whorl', 'spinning', 'weaving', 'daily life', 'domestic economy', 'female dress', 'Andronovo culture', 'Kazakhstan']
   }
 ];
 
@@ -254,15 +254,16 @@ const ARTIFACTS = [
 // CATEGORY CONFIG
 // ======================
 const CATEGORIES = {
-  all:      { name: 'Все артефакты',     icon: '🏛️', color: '#7c3aed' },
-  ceramics: { name: 'Керамика',          icon: '🏺', color: '#c8952a' },
-  jewelry:  { name: 'Украшения',         icon: '💍', color: '#34d399' },
-  stone:    { name: 'Каменные изделия',  icon: '🪨', color: '#818cf8' },
-  bone:     { name: 'Костяные изделия',  icon: '🦴', color: '#fbbf24' }
+  all:      { name: 'All Artifacts',  icon: '🏛️', color: '#7c3aed' },
+  ceramics: { name: 'Ceramics',       icon: '🏺', color: '#c8952a' },
+  jewelry:  { name: 'Jewelry',        icon: '💍', color: '#34d399' },
+  stone:    { name: 'Stone Objects',  icon: '🪨', color: '#818cf8' },
+  bone:     { name: 'Bone Objects',   icon: '🦴', color: '#fbbf24' }
 };
 
-// Count per category
-Object.keys(CATEGORIES).forEach(k => { CATEGORIES[k].count = k === 'all' ? ARTIFACTS.length : ARTIFACTS.filter(a => a.category === k).length; });
+Object.keys(CATEGORIES).forEach(k => {
+  CATEGORIES[k].count = k === 'all' ? ARTIFACTS.length : ARTIFACTS.filter(a => a.category === k).length;
+});
 
 // ======================
 // STATE
@@ -301,8 +302,8 @@ function filterAndSort() {
   }
 
   switch (state.sortBy) {
-    case 'name-asc':  results.sort((a,b) => a.name.localeCompare(b.name, 'ru')); break;
-    case 'name-desc': results.sort((a,b) => b.name.localeCompare(a.name, 'ru')); break;
+    case 'name-asc':  results.sort((a,b) => a.name.localeCompare(b.name, 'en')); break;
+    case 'name-desc': results.sort((a,b) => b.name.localeCompare(a.name, 'en')); break;
     case 'category':  results.sort((a,b) => a.category.localeCompare(b.category)); break;
   }
 
@@ -324,7 +325,7 @@ function makePlaceholder(artifact) {
   const bg  = GRADIENTS[artifact.category] || GRADIENTS.ceramics;
   return `<div class="img-placeholder" style="background:${bg}">
     <span class="ph-icon">${cat?.icon || '🏛️'}</span>
-    <span class="ph-label">${cat?.name || 'Артефакт'}</span>
+    <span class="ph-label">${cat?.name || 'Artifact'}</span>
   </div>`;
 }
 
@@ -332,8 +333,7 @@ function makeImg(src, alt, artifact) {
   const cat   = CATEGORIES[artifact.category];
   const bg    = GRADIENTS[artifact.category] || GRADIENTS.ceramics;
   const icon  = cat?.icon  || '🏛️';
-  const label = cat?.name  || 'Артефакт';
-  // Use sibling show/hide instead of outerHTML to avoid quote-escaping issues
+  const label = cat?.name  || 'Artifact';
   return `<img src="${src}" alt="${alt}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class='img-placeholder' style='display:none;background:${bg}'><span class='ph-icon'>${icon}</span><span class='ph-label'>${label}</span></div>`;
 }
 
@@ -358,13 +358,13 @@ function renderGridCard(artifact, delay = 0) {
       <div class="card-meta">
         <span class="meta-tag">${artifact.period}</span>
         <span class="meta-tag">${artifact.material.split('(')[0].trim()}</span>
-        ${artifact.catalogNumber ? `<span class="meta-tag">📋 Инв. №</span>` : ''}
+        ${artifact.catalogNumber ? `<span class="meta-tag">📋 Cat. No.</span>` : ''}
       </div>
       <p class="card-abstract">${artifact.abstract}</p>
     </div>
     <div class="card-footer">
       <span class="footer-period">⏳ ${artifact.periodYears}</span>
-      <span class="footer-link">Читать →</span>
+      <span class="footer-link">Read more →</span>
     </div>
   </article>`;
 }
@@ -408,9 +408,9 @@ function renderBrowse() {
     container.innerHTML = `
     <div class="empty-state">
       <div class="empty-icon">🔍</div>
-      <div class="empty-title">Артефакты не найдены</div>
-      <div class="empty-text">Попробуйте другой запрос или сбросьте фильтры</div>
-      <button class="btn-ghost" onclick="resetFilters()">Сбросить фильтры</button>
+      <div class="empty-title">No artifacts found</div>
+      <div class="empty-text">Try a different query or reset the filters</div>
+      <button class="btn-ghost" onclick="resetFilters()">Reset filters</button>
     </div>`;
     return;
   }
@@ -430,33 +430,30 @@ function renderBrowse() {
 function renderArticle(artifact) {
   const cat = CATEGORIES[artifact.category];
 
-  // Infobox image
   const infoImg = artifact.images.length
     ? `<div class="infobox-img">${makeImg(artifact.images[0], artifact.name, artifact)}</div>` : '';
 
-  // Gallery
   const gallery = artifact.images.length > 1 ? `
-    <h3>Фотогалерея</h3>
+    <h3>Photo Gallery</h3>
     <div class="article-gallery">
       ${artifact.images.map((src, i) => `
         <div class="gallery-item" onclick="openLightbox('${src}')">
-          ${makeImg(src, artifact.name + ' — фото ' + (i+1), artifact)}
+          ${makeImg(src, artifact.name + ' — photo ' + (i+1), artifact)}
         </div>`).join('')}
     </div>` : '';
 
-  // Related
   const related = ARTIFACTS
     .filter(a => a.id !== artifact.id && (a.category === artifact.category || a.period === artifact.period))
     .slice(0, 3);
   const relatedHTML = related.length ? `
     <div class="related-section">
-      <h2 class="related-title">Смотрите также</h2>
+      <h2 class="related-title">See Also</h2>
       <div class="artifacts-grid">${related.map(a => renderGridCard(a)).join('')}</div>
     </div>` : '';
 
   return `
   <div class="article-breadcrumb">
-    <span class="bc-link" onclick="goToBrowse()">🏛️ Энциклопедия</span>
+    <span class="bc-link" onclick="goToBrowse()">🏛️ Encyclopedia</span>
     <span class="bc-sep">›</span>
     <span class="bc-link" onclick="setCategory('${artifact.category}');goToBrowse()">${cat?.icon} ${cat?.name}</span>
     <span class="bc-sep">›</span>
@@ -475,7 +472,7 @@ function renderArticle(artifact) {
       ${artifact.fullText}
       ${gallery}
       <div class="article-tags">
-        <span class="tags-label">🏷️ Теги:</span>
+        <span class="tags-label">🏷️ Tags:</span>
         ${artifact.tags.map(t => `<span class="article-tag" onclick="searchTag('${t}')">${t}</span>`).join('')}
       </div>
     </div>
@@ -484,15 +481,15 @@ function renderArticle(artifact) {
       ${infoImg}
       <div class="infobox-data">
         ${[
-          ['Категория',  cat?.name],
-          ['Период',     artifact.period],
-          ['Датировка',  artifact.periodYears],
-          ['Культура',   artifact.culture],
-          ['Материал',   artifact.material],
-          ['Техника',    artifact.technique],
-          ['Размеры',    artifact.dimensions],
-          ['Место',      artifact.location],
-          ...(artifact.catalogNumber ? [['Инв. №', artifact.catalogNumber]] : [])
+          ['Category',    cat?.name],
+          ['Period',      artifact.period],
+          ['Dating',      artifact.periodYears],
+          ['Culture',     artifact.culture],
+          ['Material',    artifact.material],
+          ['Technique',   artifact.technique],
+          ['Dimensions',  artifact.dimensions],
+          ['Location',    artifact.location],
+          ...(artifact.catalogNumber ? [['Cat. No.', artifact.catalogNumber]] : [])
         ].map(([l, v]) => `
         <div class="infobox-row">
           <span class="info-label">${l}</span>
@@ -520,7 +517,7 @@ function openArticle(id) {
 }
 
 function goToBrowse() {
-  state.view = 'article';
+  state.view = 'browse';
   state.activeArtifact = null;
   document.getElementById('browse-view').style.display  = 'block';
   document.getElementById('article-view').style.display = 'none';
@@ -576,7 +573,7 @@ function openLightbox(src) {
   const lb = Object.assign(document.createElement('div'), {
     id: 'lightbox',
     innerHTML: `
-      <img src="${src}" alt="Увеличенное фото">
+      <img src="${src}" alt="Enlarged photo">
       <button onclick="document.getElementById('lightbox').remove()">✕</button>`
   });
   lb.onclick = e => { if (e.target === lb) lb.remove(); };
@@ -627,7 +624,6 @@ function initParticles() {
 document.addEventListener('DOMContentLoaded', () => {
   initParticles();
 
-  // Sidebar clicks
   document.querySelectorAll('.sidebar-item[data-cat]').forEach(el => {
     el.addEventListener('click', () => {
       setCategory(el.dataset.cat);
@@ -636,7 +632,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Pill clicks
   document.querySelectorAll('.cat-pill[data-cat]').forEach(el => {
     el.addEventListener('click', () => {
       setCategory(el.dataset.cat);
@@ -644,20 +639,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Search
   document.getElementById('search-input')?.addEventListener('input', e => {
     state.searchQuery = e.target.value;
     if (state.view === 'article') goToBrowse();
     else renderBrowse();
   });
 
-  // Sort
   document.getElementById('sort-select')?.addEventListener('change', e => {
     state.sortBy = e.target.value;
     renderBrowse();
   });
 
-  // View toggle
   document.querySelectorAll('.view-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
@@ -667,11 +659,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Logo / home
   document.querySelectorAll('[data-action="home"]').forEach(el => {
     el.addEventListener('click', () => { resetFilters(); goToBrowse(); });
   });
 
-  // Initial render
   renderBrowse();
 });
