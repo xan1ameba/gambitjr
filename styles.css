@@ -181,6 +181,23 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   border-color: var(--border-a);
   color: var(--purple-l); font-weight: 600;
 }
+.sidebar-item.sb-ai-tool {
+  color: var(--gold-l);
+  background: rgba(200, 149, 42, 0.08);
+  border: 1px solid rgba(200, 149, 42, 0.3);
+  margin-bottom: 12px;
+}
+.sidebar-item.sb-ai-tool:hover {
+  background: rgba(200, 149, 42, 0.15);
+  box-shadow: 0 4px 15px rgba(200, 149, 42, 0.1);
+  transform: translateY(-1px);
+}
+.sb-badge {
+  margin-left: auto; font-size: 9px; font-weight: 800;
+  padding: 2px 5px; border-radius: 4px;
+  background: var(--gold); color: #000;
+  letter-spacing: 0.5px;
+}
 .sb-icon { font-size: 17px; flex-shrink: 0; }
 .sb-count {
   margin-left: auto; font-size: 11px;
@@ -218,9 +235,38 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 }
 .hero-text {
   font-size: 16px; color: var(--text2);
-  max-width: 520px; margin: 0 auto 36px;
+  max-width: 520px; margin: 0 auto 24px;
   line-height: 1.75;
 }
+.hero-actions {
+  display: flex; justify-content: center;
+  margin-bottom: 40px;
+}
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 28px; border-radius: 100px;
+  background: linear-gradient(135deg, var(--gold), #e8b94f);
+  color: #07070f !important; font-size: 16px; font-weight: 700;
+  box-shadow: 0 4px 15px rgba(200,149,42,0.3);
+  transition: var(--tr); overflow: hidden; position: relative;
+  text-decoration: none;
+}
+.cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(200,149,42,0.4);
+}
+.cta-btn:active { transform: translateY(0); }
+.cta-icon { font-size: 20px; }
+
+/* Light Theme overrides for CTA are in index.html, but we can also set fallback here */
+html[data-theme="light"] .cta-btn {
+  color: #1a1208 !important;
+  box-shadow: 0 4px 15px rgba(100,70,20,0.25);
+}
+html[data-theme="light"] .cta-btn:hover {
+  box-shadow: 0 8px 25px rgba(100,70,20,0.35);
+}
+
 .hero-stats {
   display: flex; justify-content: center; gap: 48px;
   flex-wrap: wrap;
