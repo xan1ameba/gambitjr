@@ -164,6 +164,17 @@ html[data-theme="light"] .theme-btn {
   background: rgba(100,70,20,0.08);
   color: #8b6014;
 }
+html[data-theme="light"] .navbar {
+  background: rgba(232,220,200,0.97);
+  border-bottom-color: rgba(100,70,20,0.18);
+}
+html[data-theme="light"] .nav-tagline { color: #6b5530; }
+html[data-theme="light"] .nav-search {
+  background: rgba(255,252,245,0.9);
+  border-color: rgba(100,70,20,0.2);
+}
+html[data-theme="light"] .nav-search input { color: #1a1208; }
+html[data-theme="light"] .nav-search input::placeholder { color: #9a7a4a; }
 
 /* ─── LAYOUT ─────────────────────────────────────── */
 .app-layout {
