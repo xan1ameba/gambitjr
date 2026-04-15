@@ -584,7 +584,7 @@ function openArticle(id) {
 }
 
 // ── Mobile Menu Toggle ──────────────────────
-document.addEventListener('DOMContentLoaded', () => {
+(function() {
   const burger = document.getElementById('mobile-menu-btn');
   const navLinksNode = document.querySelector('.nav-links');
   if (burger && navLinksNode) {
@@ -592,7 +592,7 @@ document.addEventListener('DOMContentLoaded', () => {
       navLinksNode.classList.toggle('mobile-active');
     });
   }
-});
+})();
 
 function goToBrowse() {
   state.view = 'browse';
