@@ -8,152 +8,275 @@
   <meta property="og:title"       content="Artifacts Catalog — ArchaeoKZ">
   <meta property="og:description" content="Complete catalog of Bronze Age artifacts of Central Asia in open access.">
   <title>Artifacts Catalog — ArchaeoKZ</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 
   <style>
-    /* ── PAGE-SPECIFIC OVERRIDES ─────────────────── */
+    /* ── RESET ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-    /* ── THEME TOGGLE BUTTON ───────────────────────── */
+    /* ── VARIABLES ──────────────────────────────── */
+    :root {
+      --bg:        #07070f;
+      --bg2:       #0d0d1a;
+      --bg3:       #13132a;
+      --card:      rgba(255,255,255,0.03);
+      --card-h:    rgba(255,255,255,0.07);
+      --border:    rgba(255,255,255,0.07);
+      --border-a:  rgba(124,58,237,0.35);
+      --purple:    #7c3aed;
+      --purple-l:  #a78bfa;
+      --purple-gl: rgba(124,58,237,0.18);
+      --gold:      #c8952a;
+      --gold-l:    #dba83a;
+      --gold-gl:   rgba(200,149,42,0.18);
+      --text:      #f1f5f9;
+      --text2:     #94a3b8;
+      --text3:     #475569;
+      --nav-h:     64px;
+      --side-w:    260px;
+      --r-sm:      8px;
+      --r-md:      14px;
+      --r-lg:      20px;
+      --tr:        all 0.22s cubic-bezier(.4,0,.2,1);
+      --shadow:    0 4px 32px rgba(0,0,0,0.6);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; font-family: inherit; }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+    /* ── SCROLLBAR ──────────────────────────────── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 3px; }
+
+    /* ── BACKGROUND ─────────────────────────────── */
+    #bg-canvas { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+    .bg-blobs {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 80% 50% at 15% 35%, rgba(124,58,237,.07) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 45% at 80% 70%, rgba(200,149,42,.05) 0%, transparent 60%);
+    }
+
+    /* ═══════════════════════════════════════════════
+       NAVBAR  — identical to index.html
+    ═══════════════════════════════════════════════ */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--nav-h); z-index: 200;
+      display: flex; align-items: center;
+      padding: 0 32px; gap: 0;
+      background: rgba(7,7,15,.85);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand {
+      display: flex; align-items: center; gap: 10px;
+      flex-shrink: 0; margin-right: 32px;
+      text-decoration: none;
+    }
+    .nav-logo-icon { font-size: 24px; }
+    .nav-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px; font-weight: 700;
+      background: linear-gradient(135deg, var(--gold-l), var(--purple-l));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex; align-items: center; gap: 4px;
+      flex: 1;
+    }
+    .nav-link {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 8px 16px; border-radius: var(--r-sm);
+      font-size: 14px; font-weight: 500;
+      color: var(--text2); border: 1px solid transparent;
+      transition: var(--tr); white-space: nowrap;
+      text-decoration: none;
+    }
+    .nav-link:hover { color: var(--text); background: rgba(255,255,255,.05); }
+    .nav-link.active { color: var(--text); background: rgba(255,255,255,.06); }
+    .nav-link-icon { font-size: 16px; }
+
+    .nav-right {
+      display: flex; align-items: center; gap: 10px;
+      margin-left: auto;
+    }
+    .nav-sep { width: 1px; height: 22px; background: var(--border); flex-shrink: 0; margin: 0 6px; }
+
+    .nav-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 20px; border-radius: 100px;
+      font-size: 14px; font-weight: 600;
+      transition: var(--tr); white-space: nowrap;
+      cursor: pointer; text-decoration: none; border: 1px solid transparent;
+    }
+    .nav-btn-primary {
+      background: linear-gradient(135deg, var(--purple) 0%, #6025c5 100%);
+      color: #fff;
+      box-shadow: 0 3px 12px rgba(124,58,237,.35);
+    }
+    .nav-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(124,58,237,.45); }
+
     .theme-btn {
       display: flex; align-items: center; gap: 6px;
       padding: 6px 14px; border-radius: 20px;
-      border: 1px solid rgba(200,149,42,0.35);
-      background: rgba(200,149,42,0.08);
-      color: var(--gold-l, #e8b94f);
-      font-size: 13px; font-weight: 600;
-      cursor: pointer; transition: all 0.25s ease;
-      white-space: nowrap; flex-shrink: 0;
+      border: 1px solid rgba(200,149,42,0.3);
+      background: rgba(200,149,42,0.07);
+      color: var(--gold-l); font-size: 13px; font-weight: 600;
+      cursor: pointer; transition: var(--tr); white-space: nowrap;
     }
-    .theme-btn:hover {
-      background: rgba(200,149,42,0.18);
-      border-color: rgba(200,149,42,0.6);
-    }
-    .theme-btn .tb-icon { font-size: 15px; }
+    .theme-btn:hover { background: rgba(200,149,42,.16); }
 
-    /* ── PAGE HERO ─────────────────────────────────── */
-    .page-hero {
-      padding: 52px 0 40px;
-      text-align: center;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 36px;
-      position: relative;
+    /* ── LAYOUT ─────────────────────────────────── */
+    .app-layout {
+      display: flex; min-height: 100vh;
+      padding-top: var(--nav-h);
+      position: relative; z-index: 1;
     }
-    .page-hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(200,149,42,.06) 0%, transparent 70%);
-      pointer-events: none;
+
+    /* ── SIDEBAR ─────────────────────────────────── */
+    .sidebar {
+      width: var(--side-w); flex-shrink: 0;
+      position: sticky; top: var(--nav-h);
+      height: calc(100vh - var(--nav-h));
+      overflow-y: auto; padding: 28px 14px;
+      border-right: 1px solid var(--border);
+      background: rgba(13,13,26,.6);
+    }
+    .sidebar::-webkit-scrollbar { width: 3px; }
+    .sb-section { margin-bottom: 32px; }
+    .sb-title {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 1.8px; text-transform: uppercase;
+      color: var(--text3); margin-bottom: 10px; padding: 0 8px;
+    }
+    .sidebar-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 10px; border-radius: var(--r-sm);
+      cursor: pointer; transition: var(--tr);
+      font-size: 14px; color: var(--text2);
+      border: 1px solid transparent;
+      list-style: none; user-select: none;
+      text-decoration: none;
+    }
+    .sidebar-item:hover { background: var(--card-h); color: var(--text); }
+    .sidebar-item.active {
+      background: var(--purple-gl);
+      border-color: var(--border-a);
+      color: var(--purple-l); font-weight: 600;
+    }
+    .sidebar-item.sb-ai-tool {
+      color: var(--gold-l);
+      background: rgba(200,149,42,.08);
+      border: 1px solid rgba(200,149,42,.3);
+      margin-bottom: 4px;
+    }
+    .sidebar-item.sb-ai-tool:hover { background: rgba(200,149,42,.15); }
+    .sb-badge {
+      margin-left: auto; font-size: 9px; font-weight: 800;
+      padding: 2px 5px; border-radius: 4px;
+      background: var(--gold); color: #000; letter-spacing: .5px;
+    }
+    .sb-icon { font-size: 17px; flex-shrink: 0; }
+    .sb-count {
+      margin-left: auto; font-size: 11px;
+      padding: 1px 7px; border-radius: 10px;
+      background: rgba(255,255,255,.06); color: var(--text3);
+    }
+
+    /* ── MAIN CONTENT ────────────────────────────── */
+    .main-content { flex: 1; min-width: 0; padding: 36px 40px; }
+
+    /* ── PAGE HEADER ─────────────────────────────── */
+    .page-header {
+      margin-bottom: 32px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
     }
     .page-eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
       font-size: 11px; letter-spacing: 2.5px;
       text-transform: uppercase; color: var(--gold);
-      font-weight: 700; margin-bottom: 18px;
-      padding: 6px 18px;
+      font-weight: 700; margin-bottom: 14px;
+      padding: 5px 16px;
       border: 1px solid rgba(200,149,42,.28);
       border-radius: 100px;
       background: rgba(200,149,42,.05);
     }
     .page-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(32px, 5vw, 54px);
-      font-weight: 700; line-height: 1.1;
-      margin-bottom: 14px;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700; line-height: 1.1; margin-bottom: 10px;
       background: linear-gradient(135deg, #f1f5f9 20%, var(--gold-l) 55%, var(--purple-l) 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
     }
     .page-subtitle {
-      font-size: 16px; color: var(--text2);
-      max-width: 480px; margin: 0 auto 28px;
-      line-height: 1.7;
+      font-size: 15px; color: var(--text2); max-width: 520px; line-height: 1.7;
     }
 
-    /* ── STATS ROW ─────────────────────────────────── */
-    .stats-row {
-      display: flex; justify-content: center; gap: 0;
-      flex-wrap: wrap;
-      max-width: 540px; margin: 0 auto;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--r-lg);
-      overflow: hidden;
-    }
-    .stat-item {
-      flex: 1; min-width: 100px;
-      padding: 18px 16px; text-align: center;
-      border-right: 1px solid var(--border);
-    }
-    .stat-item:last-child { border-right: none; }
-    .stat-val {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px; font-weight: 700;
-      color: var(--gold-l); line-height: 1;
-      margin-bottom: 4px;
-    }
-    .stat-lbl { font-size: 11px; color: var(--text3); letter-spacing: .5px; }
-
-    /* ── FILTER BAR ───────────────────────────────── */
+    /* ── FILTER BAR ──────────────────────────────── */
     .filter-bar {
-      display: flex; align-items: center; gap: 14px;
-      flex-wrap: wrap;
-      padding: 14px 20px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--r-md);
-      margin-bottom: 24px;
+      display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+      padding: 12px 18px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--r-md); margin-bottom: 20px;
     }
     .filter-label {
-      font-size: 12px; font-weight: 700;
-      letter-spacing: 1.2px; text-transform: uppercase;
-      color: var(--text3); white-space: nowrap; flex-shrink: 0;
+      font-size: 11px; font-weight: 700; letter-spacing: 1.2px;
+      text-transform: uppercase; color: var(--text3);
+      white-space: nowrap; flex-shrink: 0;
     }
-    .filter-pills {
-      display: flex; gap: 7px; flex-wrap: wrap; flex: 1;
-    }
+    .filter-pills { display: flex; gap: 7px; flex-wrap: wrap; flex: 1; }
     .filter-pill {
       display: inline-flex; align-items: center; gap: 5px;
       padding: 6px 14px; border-radius: 100px;
       font-size: 12px; font-weight: 500;
       border: 1px solid var(--border);
       color: var(--text2); cursor: pointer; transition: var(--tr);
-      background: transparent;
+      background: transparent; font-family: inherit;
     }
     .filter-pill:hover { border-color: var(--gold); color: var(--gold-l); }
     .filter-pill.active {
-      border-color: var(--gold);
-      color: var(--gold-l);
+      border-color: var(--gold); color: var(--gold-l);
       background: rgba(200,149,42,.1);
     }
-    .filter-sep { width: 1px; height: 28px; background: var(--border); flex-shrink: 0; }
 
-    /* ── SEARCH & SORT ROW ────────────────────────── */
+    /* ── CONTROLS ROW ────────────────────────────── */
     .controls-row {
-      display: flex; align-items: center; gap: 12px;
-      margin-bottom: 28px; flex-wrap: wrap;
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 14px; flex-wrap: wrap;
     }
-    .search-wrap {
-      flex: 1; min-width: 200px; position: relative;
-    }
+    .search-wrap { flex: 1; min-width: 200px; position: relative; }
     .search-wrap svg {
       position: absolute; left: 13px; top: 50%;
-      transform: translateY(-50%); color: var(--text3);
-      pointer-events: none;
+      transform: translateY(-50%); color: var(--text3); pointer-events: none;
     }
     .search-wrap input {
-      width: 100%;
-      padding: 10px 16px 10px 40px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--r-md);
-      color: var(--text); font-size: 14px;
-      outline: none; transition: var(--tr);
-      font-family: inherit;
+      width: 100%; padding: 9px 16px 9px 40px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--r-md); color: var(--text);
+      font-size: 14px; outline: none; transition: var(--tr); font-family: inherit;
     }
     .search-wrap input:focus {
-      border-color: var(--gold);
-      background: rgba(200,149,42,.05);
+      border-color: var(--gold); background: rgba(200,149,42,.05);
       box-shadow: 0 0 0 3px rgba(200,149,42,.12);
     }
     .search-wrap input::placeholder { color: var(--text3); }
@@ -161,8 +284,8 @@
     .sort-select {
       background: var(--card); border: 1px solid var(--border);
       color: var(--text2); font-size: 13px;
-      padding: 10px 12px; border-radius: var(--r-md); outline: none;
-      font-family: inherit; cursor: pointer;
+      padding: 9px 12px; border-radius: var(--r-md);
+      outline: none; font-family: inherit; cursor: pointer;
     }
     .sort-select:focus { border-color: var(--gold); }
     .sort-select option { background: var(--bg2); }
@@ -170,60 +293,154 @@
     .view-toggle {
       display: flex; gap: 3px;
       background: var(--card); border: 1px solid var(--border);
-      border-radius: var(--r-md); padding: 4px;
+      border-radius: var(--r-md); padding: 3px;
     }
     .view-btn {
-      width: 36px; height: 36px;
+      width: 34px; height: 34px;
       display: flex; align-items: center; justify-content: center;
       background: transparent; border: none;
       border-radius: 8px; color: var(--text3);
-      font-size: 17px; transition: var(--tr); cursor: pointer;
+      font-size: 16px; transition: var(--tr); cursor: pointer;
     }
-    .view-btn.active, .view-btn:hover {
-      background: rgba(200,149,42,.15); color: var(--gold-l);
-    }
+    .view-btn.active, .view-btn:hover { background: rgba(200,149,42,.14); color: var(--gold-l); }
 
-    /* ── RESULT META ──────────────────────────────── */
-    .result-meta {
-      font-size: 13px; color: var(--text3);
-      margin-bottom: 16px;
-    }
+    /* ── RESULT META ─────────────────────────────── */
+    .result-meta { font-size: 13px; color: var(--text3); margin-bottom: 18px; }
     .result-meta strong { color: var(--gold-l); }
 
-    /* ── EQUAL-HEIGHT GRID (overrides artifacts-grid row alignment) ── */
+    /* ── ARTIFACT GRID (equal height rows) ──────── */
     .artifacts-grid {
-      align-items: stretch !important;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+      gap: 20px; align-items: stretch;
     }
+    .artifacts-list { display: flex; flex-direction: column; gap: 12px; }
 
-    /* ── BACK LINK ─────────────────────────────────── */
-    .back-nav {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 13px; color: var(--text3);
-      margin-bottom: 32px; cursor: pointer;
-      transition: var(--tr);
-      text-decoration: none;
+    /* ── GRID CARD ───────────────────────────────── */
+    .artifact-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--r-lg); overflow: hidden;
+      cursor: pointer; transition: var(--tr);
+      animation: fadeUp .4s ease both;
+      display: flex; flex-direction: column;
     }
-    .back-nav:hover { color: var(--gold-l); }
-    .back-nav svg { flex-shrink: 0; }
+    .artifact-card:hover {
+      border-color: var(--border-a); background: var(--card-h);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow), 0 0 45px rgba(124,58,237,.12);
+    }
+    .card-img-wrap {
+      position: relative; aspect-ratio: 4/3; overflow: hidden;
+      background: var(--bg2); flex-shrink: 0;
+    }
+    .card-img-wrap img { transition: transform .5s ease; }
+    .artifact-card:hover .card-img-wrap img { transform: scale(1.06); }
+    .img-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 8px;
+    }
+    .ph-icon { font-size: 44px; opacity: .45; }
+    .ph-label { font-size: 11px; color: var(--text3); letter-spacing: .5px; }
+    .card-badge {
+      position: absolute; top: 12px; left: 12px;
+      padding: 4px 11px; border-radius: 100px;
+      font-size: 11px; font-weight: 600;
+      background: rgba(0,0,0,.65); backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,.1);
+    }
+    .badge-ceramics { color: #fbbf24; border-color: rgba(251,191,36,.4); }
+    .badge-jewelry  { color: #6ee7b7; border-color: rgba(110,231,183,.4); }
+    .badge-stone    { color: #a78bfa; border-color: rgba(167,139,250,.4); }
+    .badge-bone     { color: #fde68a; border-color: rgba(253,230,138,.4); }
 
-    /* ── ARTICLE OVERLAY ──────────────────────────── */
+    .card-body {
+      padding: 18px 18px 12px;
+      flex: 1; display: flex; flex-direction: column;
+    }
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px; font-weight: 600;
+      margin-bottom: 4px; line-height: 1.3;
+    }
+    .card-sub { font-size: 12px; color: var(--text3); font-style: italic; margin-bottom: 12px; }
+    .card-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+    .meta-tag {
+      font-size: 11px; padding: 3px 8px;
+      background: rgba(255,255,255,.04); border: 1px solid var(--border);
+      border-radius: 4px; color: var(--text3);
+    }
+    .card-abstract {
+      font-size: 13px; color: var(--text2); line-height: 1.6;
+      display: -webkit-box; -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical; overflow: hidden;
+      flex: 1;
+    }
+    /* footer always at the bottom */
+    .card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 18px; border-top: 1px solid var(--border);
+      background: rgba(0,0,0,.12);
+      margin-top: auto; flex-shrink: 0;
+    }
+    .footer-period { font-size: 12px; color: var(--gold); font-weight: 500; }
+    .footer-link   { font-size: 12px; color: var(--purple-l); }
+
+    /* ── LIST CARD ───────────────────────────────── */
+    .list-card {
+      display: flex; align-items: center; gap: 16px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--r-md); padding: 14px;
+      cursor: pointer; transition: var(--tr);
+      animation: fadeUp .35s ease both;
+    }
+    .list-card:hover {
+      border-color: var(--border-a); background: var(--card-h);
+      transform: translateX(5px);
+      box-shadow: -3px 0 0 var(--purple);
+    }
+    .list-thumb {
+      width: 82px; height: 82px; border-radius: var(--r-sm);
+      overflow: hidden; flex-shrink: 0; background: var(--bg2);
+    }
+    .list-body { flex: 1; min-width: 0; }
+    .list-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px; font-weight: 600; margin-bottom: 6px;
+    }
+    .list-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 6px; }
+    .list-abstract {
+      font-size: 13px; color: var(--text2); line-height: 1.5;
+      display: -webkit-box; -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .list-arrow { font-size: 22px; color: var(--text3); flex-shrink: 0; padding: 0 6px; }
+
+    /* ── EMPTY STATE ─────────────────────────────── */
+    .empty-state { text-align: center; padding: 72px 32px; color: var(--text3); }
+    .empty-icon  { font-size: 52px; margin-bottom: 18px; }
+    .empty-title { font-size: 20px; font-weight: 600; color: var(--text2); margin-bottom: 8px; }
+    .empty-text  { font-size: 14px; margin-bottom: 20px; line-height: 1.6; }
+    .btn-ghost {
+      padding: 9px 20px; border: 1px solid var(--border);
+      border-radius: var(--r-sm); background: transparent;
+      color: var(--text2); font-size: 13px; transition: var(--tr);
+      font-family: inherit;
+    }
+    .btn-ghost:hover { border-color: var(--purple); color: var(--purple-l); }
+
+    /* ── ARTICLE OVERLAY ─────────────────────────── */
     #article-overlay {
-      display: none;
-      position: fixed; inset: 0; z-index: 500;
-      background: rgba(0,0,0,.65);
-      backdrop-filter: blur(6px);
-      overflow-y: auto;
-      animation: fadeIn .22s ease;
+      display: none; position: fixed; inset: 0; z-index: 500;
+      background: rgba(0,0,0,.7); backdrop-filter: blur(8px);
+      overflow-y: auto; animation: fadeIn .2s ease;
     }
     #article-overlay.open { display: flex; justify-content: center; padding: 40px 20px; }
     .overlay-panel {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: var(--r-lg);
-      max-width: 1020px; width: 100%;
-      padding: 40px;
-      position: relative;
-      animation: fadeUp .3s ease;
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--r-lg); max-width: 1020px; width: 100%;
+      padding: 44px; position: relative; animation: fadeUp .3s ease;
+      height: fit-content;
     }
     .overlay-close {
       position: absolute; top: 18px; right: 20px;
@@ -233,136 +450,201 @@
       display: flex; align-items: center; justify-content: center;
       cursor: pointer; transition: var(--tr);
     }
-    .overlay-close:hover { background: rgba(255,255,255,.14); color: var(--text); }
+    .overlay-close:hover { background: rgba(255,255,255,.15); color: var(--text); }
+
+    /* ── ARTICLE INSIDE OVERLAY ──────────────────── */
+    .article-breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; color: var(--text3);
+      margin-bottom: 28px; flex-wrap: wrap;
+    }
+    .bc-link { color: var(--purple-l); cursor: pointer; }
+    .bc-link:hover { text-decoration: underline; }
+    .bc-sep { color: var(--text3); }
+    .article-header { margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+    .article-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 14px; border-radius: 100px;
+      font-size: 12px; font-weight: 700; margin-bottom: 16px;
+      background: var(--purple-gl); border: 1px solid var(--border-a);
+      color: var(--purple-l);
+    }
+    .article-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(24px, 3.5vw, 38px);
+      font-weight: 700; line-height: 1.15; margin-bottom: 10px;
+    }
+    .article-subtitle { font-size: 16px; color: var(--text2); font-style: italic; margin-bottom: 16px; }
+    .article-abstract {
+      font-size: 15px; color: var(--text2); line-height: 1.75;
+      padding: 16px 20px; border-left: 3px solid var(--purple);
+      background: var(--purple-gl); border-radius: 0 var(--r-sm) var(--r-sm) 0;
+      font-style: italic;
+    }
+    .article-layout {
+      display: grid; grid-template-columns: 1fr 290px;
+      gap: 44px; align-items: start; margin-bottom: 44px;
+    }
+    .article-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px; font-weight: 600;
+      margin: 28px 0 10px; color: var(--text);
+      padding-bottom: 8px; border-bottom: 1px solid var(--border);
+    }
+    .article-body p { font-size: 15px; color: var(--text2); line-height: 1.85; margin-bottom: 14px; }
+    .article-body strong { color: var(--text); }
+    .article-gallery {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 10px; margin: 18px 0;
+    }
+    .gallery-item {
+      border-radius: var(--r-sm); overflow: hidden;
+      aspect-ratio: 1; cursor: zoom-in;
+      background: var(--bg2); transition: var(--tr);
+      border: 1px solid var(--border);
+    }
+    .gallery-item:hover { transform: scale(1.02); border-color: var(--border-a); }
+    .article-tags {
+      display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+      margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--border);
+    }
+    .tags-label { font-size: 13px; color: var(--text3); margin-right: 4px; }
+    .article-tag {
+      padding: 5px 12px; border: 1px solid var(--border);
+      border-radius: 100px; font-size: 12px;
+      color: var(--text3); cursor: pointer; transition: var(--tr);
+    }
+    .article-tag:hover { border-color: var(--gold); color: var(--gold-l); }
+    .article-infobox {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--r-md); overflow: hidden;
+      position: sticky; top: 20px;
+    }
+    .infobox-header {
+      padding: 14px 18px; text-align: center;
+      background: var(--purple-gl); border-bottom: 1px solid var(--border);
+    }
+    .infobox-title { font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 600; }
+    .infobox-img { aspect-ratio: 4/3; overflow: hidden; background: var(--bg2); }
+    .infobox-data { padding: 14px 16px; }
+    .infobox-row {
+      display: grid; grid-template-columns: auto 1fr;
+      gap: 4px 12px; padding: 7px 0;
+      border-bottom: 1px solid rgba(255,255,255,.03); font-size: 13px;
+    }
+    .infobox-row:last-child { border-bottom: none; }
+    .info-label { font-weight: 600; color: var(--text3); white-space: nowrap; }
+    .info-value { color: var(--text2); }
+    .related-section { margin-top: 48px; padding-top: 32px; border-top: 2px solid var(--border); }
+    .related-title { font-family: 'Playfair Display', serif; font-size: 24px; margin-bottom: 20px; }
+
+    /* ── LIGHTBOX ────────────────────────────────── */
+    #lightbox {
+      position: fixed; inset: 0; background: rgba(0,0,0,.93);
+      z-index: 9999; display: flex; align-items: center; justify-content: center;
+      animation: fadeIn .2s ease; cursor: zoom-out;
+    }
+    #lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: var(--r-sm); width: auto; height: auto; }
+    #lightbox button {
+      position: absolute; top: 20px; right: 20px;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,.12); border: none;
+      color: #fff; font-size: 20px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: var(--tr);
+    }
+    #lightbox button:hover { background: rgba(255,255,255,.22); }
+
+    /* ── ANIMATIONS ──────────────────────────────── */
+    @keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 
     /* ── LIGHT THEME ─────────────────────────────── */
-    html[data-theme="light"] {
-      --bg-primary:   #f4ede0;
-      --bg-secondary: #ede3d0;
-      --bg-card:      #fdf8f0;
-      --border-col:   rgba(100,70,20,0.18);
-      --text1:        #1a1208;
-      --text2:        #3a2a10;
-      --text3:        #6b5530;
-      --gold-l:       #8b6014;
-      --gold-d:       #c8952a;
-    }
-    html[data-theme="light"] body { background-color: #f4ede0; color: #1a1208; }
-    html[data-theme="light"] .navbar {
-      background: rgba(232,220,200,0.97);
-      border-bottom-color: rgba(100,70,20,0.18);
-    }
-    html[data-theme="light"] .sidebar {
-      background: rgba(237,227,208,0.97);
-      border-right-color: rgba(100,70,20,0.15);
-    }
+    html[data-theme="light"] body { background: #f4ede0; color: #1a1208; }
+    html[data-theme="light"] .navbar { background: rgba(232,220,200,.97); border-bottom-color: rgba(100,70,20,.18); }
+    html[data-theme="light"] .nav-link { color: #3a2a10; }
+    html[data-theme="light"] .nav-link:hover { background: rgba(100,70,20,.07); color: #1a1208; }
+    html[data-theme="light"] .nav-logo-text { background: linear-gradient(135deg,#8b4e0f,#6b3a9e); -webkit-background-clip:text; background-clip:text; }
+    html[data-theme="light"] .sidebar { background: rgba(237,227,208,.97); border-right-color: rgba(100,70,20,.15); }
     html[data-theme="light"] .sidebar-item { color: #3a2a10; }
-    html[data-theme="light"] .sidebar-item:hover,
-    html[data-theme="light"] .sidebar-item.active {
-      background: rgba(200,149,42,0.15); color: #8b6014;
-    }
-    html[data-theme="light"] .artifact-card {
-      background: #fdf8f0; border-color: rgba(100,70,20,0.15);
-      box-shadow: 0 2px 12px rgba(80,50,10,0.08);
-    }
-    html[data-theme="light"] .artifact-card:hover {
-      border-color: rgba(200,149,42,0.5);
-      box-shadow: 0 8px 28px rgba(80,50,10,0.15);
-    }
+    html[data-theme="light"] .sidebar-item:hover, html[data-theme="light"] .sidebar-item.active { background: rgba(200,149,42,.15); color: #8b6014; }
+    html[data-theme="light"] .sb-title { color: #8b6014; }
+    html[data-theme="light"] .sb-count { background: rgba(100,70,20,.1); color: #8b6014; }
+    html[data-theme="light"] .artifact-card { background: #fdf8f0; border-color: rgba(100,70,20,.15); box-shadow: 0 2px 12px rgba(80,50,10,.08); }
+    html[data-theme="light"] .artifact-card:hover { border-color: rgba(200,149,42,.5); box-shadow: 0 8px 28px rgba(80,50,10,.15); }
     html[data-theme="light"] .card-title { color: #1a1208; }
-    html[data-theme="light"] .card-sub   { color: #6b5530; }
+    html[data-theme="light"] .card-sub { color: #6b5530; }
     html[data-theme="light"] .card-abstract { color: #3a2a10; }
-    html[data-theme="light"] .filter-bar, html[data-theme="light"] .stats-row,
-    html[data-theme="light"] .search-wrap input, html[data-theme="light"] .sort-select {
-      background: #fdf8f0; border-color: rgba(100,70,20,0.18); color: #1a1208;
-    }
-    html[data-theme="light"] .filter-pill { color: #3a2a10; }
-    html[data-theme="light"] .filter-pill.active { color: #8b6014; }
-    html[data-theme="light"] .page-title {
-      background: linear-gradient(135deg, #2d1f0a 20%, #8b4e0f 55%, #6b3a9e 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
+    html[data-theme="light"] .list-card { background: #fdf8f0; border-color: rgba(100,70,20,.15); }
+    html[data-theme="light"] .filter-bar { background: rgba(253,248,240,.9); border-color: rgba(100,70,20,.15); }
+    html[data-theme="light"] .filter-pill { color: #3a2a10; border-color: rgba(100,70,20,.2); }
+    html[data-theme="light"] .filter-pill.active { color: #8b6014; border-color: #c8952a; background: rgba(200,149,42,.1); }
+    html[data-theme="light"] .search-wrap input { background: #fdf8f0; border-color: rgba(100,70,20,.2); color: #1a1208; }
+    html[data-theme="light"] .search-wrap input::placeholder { color: #9a7a4a; }
+    html[data-theme="light"] .sort-select { background: #fdf8f0; border-color: rgba(100,70,20,.2); color: #1a1208; }
+    html[data-theme="light"] .page-title { background: linear-gradient(135deg,#2d1f0a 20%,#8b4e0f 55%,#6b3a9e 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
     html[data-theme="light"] .page-subtitle { color: #4a3520; }
-    html[data-theme="light"] .stat-lbl { color: #6b5530; }
     html[data-theme="light"] .result-meta { color: #6b5530; }
-    html[data-theme="light"] .back-nav { color: #6b5530; }
-    html[data-theme="light"] .overlay-panel { background: #fdf8f0; border-color: rgba(100,70,20,0.18); }
-    html[data-theme="light"] .article-title  { color: #1a1208; }
+    html[data-theme="light"] .overlay-panel { background: #fdf8f0; border-color: rgba(100,70,20,.18); }
+    html[data-theme="light"] .article-title { color: #1a1208; }
     html[data-theme="light"] .article-subtitle { color: #6b5530; }
-    html[data-theme="light"] .article-abstract {
-      background: rgba(200,149,42,0.08); border-left-color: #c8952a; color: #3a2a10;
-    }
-    html[data-theme="light"] .article-infobox {
-      background: #fdf8f0; border-color: rgba(100,70,20,0.18);
-    }
+    html[data-theme="light"] .article-abstract { background: rgba(200,149,42,.08); border-left-color: #c8952a; color: #3a2a10; }
+    html[data-theme="light"] .article-infobox { background: #fdf8f0; border-color: rgba(100,70,20,.18); }
     html[data-theme="light"] .info-label { color: #8b6014; }
     html[data-theme="light"] .info-value { color: #1a1208; }
-    html[data-theme="light"] .theme-btn {
-      border-color: rgba(100,70,20,0.3); background: rgba(100,70,20,0.08); color: #8b6014;
-    }
-    html[data-theme="light"] .nav-logo-text { color: #8b6014; }
-    html[data-theme="light"] .nav-tagline   { color: #6b5530; }
-    html[data-theme="light"] .nav-stat-val  { color: #8b6014; }
-    html[data-theme="light"] .nav-stat-label { color: #6b5530; }
-    html[data-theme="light"] .nav-search input { color: #1a1208; }
-    html[data-theme="light"] .nav-search input::placeholder { color: #9a7a4a; }
-    html[data-theme="light"] .bg-blobs { opacity: 0.25; }
-    html[data-theme="light"] #bg-canvas { opacity: 0.3; }
+    html[data-theme="light"] .article-body p { color: #2a1e08; }
+    html[data-theme="light"] .article-body h3 { color: #8b6014; }
+    html[data-theme="light"] .theme-btn { border-color: rgba(100,70,20,.3); background: rgba(100,70,20,.07); color: #8b6014; }
+    html[data-theme="light"] .nav-sep { background: rgba(100,70,20,.18); }
+    html[data-theme="light"] .bg-blobs { opacity: .25; }
+    html[data-theme="light"] #bg-canvas { opacity: .3; }
 
-    /* ── CATEGORY BADGE COLORS ──────────────────── */
-    .pill-all      { }
-    .pill-ceramics { }
-    .pill-jewelry  { }
-    .pill-stone    { }
-    .pill-bone     { }
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 900px) {
+      .sidebar { display: none; }
+      .main-content { padding: 20px; }
+      .article-layout { grid-template-columns: 1fr; }
+      .article-infobox { position: static; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 540px) {
+      .overlay-panel { padding: 24px 18px; }
+    }
   </style>
 </head>
 <body>
 
-<!-- ─── BACKGROUND ───────────────────────────── -->
+<!-- ─── BACKGROUND ──────────────────────────── -->
 <canvas id="bg-canvas"></canvas>
 <div class="bg-blobs"></div>
 
-<!-- ─── NAVBAR ──────────────────────────────── -->
+<!-- ═══════════════════════════════════════════
+     NAVBAR — same as index.html
+═══════════════════════════════════════════ -->
 <nav class="navbar" role="navigation" aria-label="Main navigation">
 
-  <a href="index.html" class="nav-logo" aria-label="Go to homepage">
-    <!-- logo -->
+  <a href="index.html" class="nav-brand" aria-label="ArchaeoKZ homepage">
+    <span class="nav-logo-icon">🏛️</span>
+    <span class="nav-logo-text">ArchaeoKZ</span>
   </a>
 
-  <div class="nav-divider"></div>
-  <p class="nav-tagline">Open Encyclopedia of<br>Kazakhstan Archaeology</p>
-
-  <div class="nav-search">
-    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
-         viewBox="0 0 24 24" aria-hidden="true">
-      <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
-    </svg>
-    <input id="search-input" type="search"
-           placeholder="Search artifacts, cultures, materials…"
-           aria-label="Search the encyclopedia"
-           autocomplete="off">
+  <div class="nav-links" role="list">
+    <a href="index.html"     class="nav-link"        role="listitem"><span class="nav-link-icon">🏠</span> Home</a>
+    <a href="artifacts.html" class="nav-link active"  role="listitem"><span class="nav-link-icon">🏺</span> Artifacts</a>
+    <a href="identify.html"  class="nav-link"         role="listitem"><span class="nav-link-icon">🤖</span> AI Identifier</a>
   </div>
 
-  <button class="theme-btn" id="theme-toggle" aria-label="Toggle theme" title="Switch theme">
-    <span class="tb-icon" id="theme-icon">☀️</span>
-    <span id="theme-label">Light</span>
-  </button>
-
-  <div class="nav-stats" aria-label="Encyclopedia statistics">
-    <div class="nav-stat">
-      <div class="nav-stat-val">7</div>
-      <div class="nav-stat-label">Artifacts</div>
-    </div>
-    <div class="nav-stat">
-      <div class="nav-stat-val">4</div>
-      <div class="nav-stat-label">Categories</div>
-    </div>
-    <div class="nav-stat">
-      <div class="nav-stat-val">KZ</div>
-      <div class="nav-stat-label">Region</div>
-    </div>
+  <div class="nav-right">
+    <a href="identify.html" class="nav-btn nav-btn-primary" aria-label="Open AI Identifier">
+      🤖 AI Identifier
+    </a>
+    <div class="nav-sep"></div>
+    <button class="theme-btn" id="theme-toggle" aria-label="Toggle colour theme">
+      <span id="theme-icon">☀️</span>
+      <span id="theme-label">Light</span>
+    </button>
   </div>
+
 </nav>
 
 <!-- ─── APP LAYOUT ──────────────────────────── -->
@@ -372,62 +654,27 @@
   <aside class="sidebar" role="navigation" aria-label="Encyclopedia sections">
 
     <div class="sb-section">
-      <div class="sb-title">Navigation</div>
-      <a href="index.html" class="sidebar-item">
-        <span class="sb-icon">🏠</span>
-        <span>Home</span>
-      </a>
-      <a href="artifacts.html" class="sidebar-item active">
-        <span class="sb-icon">🏺</span>
-        <span>All Artifacts</span>
-        <span class="sb-count">7</span>
-      </a>
-      <a href="identify.html" class="sidebar-item sb-ai-tool">
-        <span class="sb-icon">🤖</span>
-        <span>AI Identifier</span>
-        <span class="sb-badge">NEW</span>
-      </a>
+      <div class="sb-title">Pages</div>
+      <a href="index.html"     class="sidebar-item"><span class="sb-icon">🏠</span><span>Home</span></a>
+      <a href="artifacts.html" class="sidebar-item active"><span class="sb-icon">🏺</span><span>All Artifacts</span><span class="sb-count">7</span></a>
+      <a href="identify.html"  class="sidebar-item sb-ai-tool"><span class="sb-icon">🤖</span><span>AI Identifier</span><span class="sb-badge">NEW</span></a>
     </div>
 
     <div class="sb-section">
       <div class="sb-title">Category</div>
       <ul style="list-style:none">
-        <li class="sidebar-item active" data-cat="all">
-          <span class="sb-icon">🏛️</span>
-          <span>All</span>
-          <span class="sb-count">7</span>
-        </li>
-        <li class="sidebar-item" data-cat="ceramics">
-          <span class="sb-icon">🏺</span>
-          <span>Ceramics</span>
-          <span class="sb-count">3</span>
-        </li>
-        <li class="sidebar-item" data-cat="jewelry">
-          <span class="sb-icon">💍</span>
-          <span>Jewelry</span>
-          <span class="sb-count">1</span>
-        </li>
-        <li class="sidebar-item" data-cat="stone">
-          <span class="sb-icon">🪨</span>
-          <span>Stone Objects</span>
-          <span class="sb-count">2</span>
-        </li>
-        <li class="sidebar-item" data-cat="bone">
-          <span class="sb-icon">🦴</span>
-          <span>Bone Objects</span>
-          <span class="sb-count">1</span>
-        </li>
+        <li class="sidebar-item active" data-cat="all">     <span class="sb-icon">🏛️</span><span>All</span>          <span class="sb-count">7</span></li>
+        <li class="sidebar-item" data-cat="ceramics">       <span class="sb-icon">🏺</span><span>Ceramics</span>      <span class="sb-count">3</span></li>
+        <li class="sidebar-item" data-cat="jewelry">        <span class="sb-icon">💍</span><span>Jewelry</span>       <span class="sb-count">1</span></li>
+        <li class="sidebar-item" data-cat="stone">          <span class="sb-icon">🪨</span><span>Stone Objects</span> <span class="sb-count">2</span></li>
+        <li class="sidebar-item" data-cat="bone">           <span class="sb-icon">🦴</span><span>Bone Objects</span>  <span class="sb-count">1</span></li>
       </ul>
     </div>
 
     <div class="sb-section">
       <div class="sb-title">Period</div>
       <ul style="list-style:none">
-        <li class="sidebar-item active" data-cat="all">
-          <span class="sb-icon">⏳</span>
-          <span>Bronze Age</span>
-          <span class="sb-count">7</span>
-        </li>
+        <li class="sidebar-item active" data-cat="all"><span class="sb-icon">⏳</span><span>Bronze Age</span><span class="sb-count">7</span></li>
       </ul>
     </div>
 
@@ -436,7 +683,6 @@
       <div style="padding:0 8px;font-size:12px;color:var(--text3);line-height:1.7">
         Encyclopedia created by<br>
         <strong style="color:var(--gold-l)">Gambit Jr.</strong><br>
-        as part of Innovation Project<br>
         FLL Season 2024–2025.<br><br>
         Open access for everyone:<br>
         researchers, students<br>
@@ -449,65 +695,36 @@
   <!-- MAIN -->
   <main class="main-content" role="main">
 
-    <!-- Back link -->
-    <a href="index.html" class="back-nav" aria-label="Back to homepage">
-      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path d="M19 12H5M5 12l7 7M5 12l7-7"/>
-      </svg>
-      Back to Encyclopedia
-    </a>
-
-    <!-- Page Hero -->
-    <section class="page-hero" aria-labelledby="page-title">
+    <!-- Page Header -->
+    <header class="page-header">
       <div class="page-eyebrow">🏺 Complete Catalog</div>
       <h1 class="page-title" id="page-title">Artifact Collection</h1>
       <p class="page-subtitle">
-        Explore the full collection of Bronze Age artifacts from Central Kazakhstan — ceramics, jewelry, stone tools and bone ornaments.
+        Full collection of Bronze Age artifacts from Central Kazakhstan — ceramics, jewelry, stone tools and bone ornaments.
       </p>
-
-      <div class="stats-row" aria-label="Collection statistics">
-        <div class="stat-item">
-          <div class="stat-val">7</div>
-          <div class="stat-lbl">Artifacts</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-val">4</div>
-          <div class="stat-lbl">Categories</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-val">~3500</div>
-          <div class="stat-lbl">Years of History</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-val">KZ</div>
-          <div class="stat-lbl">Region</div>
-        </div>
-      </div>
-    </section>
+    </header>
 
     <!-- Filter bar -->
     <div class="filter-bar" role="toolbar" aria-label="Filter by category">
       <span class="filter-label">Filter:</span>
       <div class="filter-pills" role="tablist">
-        <button class="filter-pill active" data-cat="all" role="tab" aria-selected="true">🏛️ All</button>
-        <button class="filter-pill" data-cat="ceramics" role="tab">🏺 Ceramics</button>
-        <button class="filter-pill" data-cat="jewelry" role="tab">💍 Jewelry</button>
-        <button class="filter-pill" data-cat="stone" role="tab">🪨 Stone</button>
-        <button class="filter-pill" data-cat="bone" role="tab">🦴 Bone</button>
+        <button class="filter-pill active" data-cat="all"      role="tab">🏛️ All</button>
+        <button class="filter-pill" data-cat="ceramics"        role="tab">🏺 Ceramics</button>
+        <button class="filter-pill" data-cat="jewelry"         role="tab">💍 Jewelry</button>
+        <button class="filter-pill" data-cat="stone"           role="tab">🪨 Stone</button>
+        <button class="filter-pill" data-cat="bone"            role="tab">🦴 Bone</button>
       </div>
     </div>
 
-    <!-- Controls row -->
+    <!-- Controls -->
     <div class="controls-row">
       <div class="search-wrap">
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
-             viewBox="0 0 24 24" aria-hidden="true">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
           <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
         </svg>
         <input id="catalog-search" type="search"
                placeholder="Search by name, material, culture…"
-               aria-label="Search artifacts"
-               autocomplete="off">
+               aria-label="Search artifacts" autocomplete="off">
       </div>
       <select id="sort-select" class="sort-select" aria-label="Sort order">
         <option value="default">Default order</option>
@@ -516,21 +733,19 @@
         <option value="category">By Category</option>
       </select>
       <div class="view-toggle" role="group" aria-label="Display mode">
-        <button class="view-btn active" data-view="grid" title="Grid" aria-label="Grid view">⊞</button>
-        <button class="view-btn" data-view="list" title="List" aria-label="List view">☰</button>
+        <button class="view-btn active" data-view="grid" title="Grid"  aria-label="Grid view">⊞</button>
+        <button class="view-btn"        data-view="list" title="List"  aria-label="List view">☰</button>
       </div>
     </div>
 
     <!-- Result count -->
-    <div class="result-meta">
-      Found: <strong><span id="result-count">7</span></strong> artifacts
-    </div>
+    <div class="result-meta">Found: <strong><span id="result-count">7</span></strong> artifacts</div>
 
-    <!-- Cards -->
+    <!-- Cards container -->
     <div id="artifacts-container" class="artifacts-grid" role="list" aria-label="Artifacts"></div>
 
   </main>
-</div><!-- /.app-layout -->
+</div>
 
 <!-- ─── ARTICLE OVERLAY ──────────────────── -->
 <div id="article-overlay" role="dialog" aria-modal="true" aria-label="Artifact detail">
@@ -542,197 +757,160 @@
 
 <script src="encyclopedia.js"></script>
 <script>
-  // ─── OVERRIDE openArticle to use overlay ──────
+  // ── Override openArticle → overlay ────────────
   window.openArticle = function(id) {
     const artifact = ARTIFACTS.find(a => a.id === id);
     if (!artifact) return;
     const overlay = document.getElementById('article-overlay');
-    const av = document.getElementById('article-view');
-    av.innerHTML = renderArticle(artifact);
+    document.getElementById('article-view').innerHTML = renderArticle(artifact);
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
-    // scroll panel to top
     overlay.scrollTo({ top: 0 });
   };
-
-  window.goToBrowse = function() {
-    closeOverlay();
-  };
+  window.goToBrowse = closeOverlay;
 
   function closeOverlay() {
-    const overlay = document.getElementById('article-overlay');
-    overlay.classList.remove('open');
+    document.getElementById('article-overlay').classList.remove('open');
     document.body.style.overflow = '';
   }
 
   document.getElementById('overlay-close-btn').addEventListener('click', closeOverlay);
-  document.getElementById('article-overlay').addEventListener('click', function(e) {
-    if (e.target === this) closeOverlay();
-  });
+  document.getElementById('article-overlay').addEventListener('click', e => { if (e.target === e.currentTarget) closeOverlay(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeOverlay(); });
 
-  // ─── STATE ────────────────────────────────────
-  const state = {
-    activeCategory: 'all',
-    searchQuery: '',
-    sortBy: 'default',
-    displayMode: 'grid'
-  };
+  // ── State ─────────────────────────────────────
+  const state = { activeCategory: 'all', searchQuery: '', sortBy: 'default', displayMode: 'grid' };
 
-  // ─── FILTER & SORT ───────────────────────────
+  // ── Filter & sort ─────────────────────────────
   function filterAndSort() {
-    let results = [...ARTIFACTS];
-    if (state.activeCategory !== 'all')
-      results = results.filter(a => a.category === state.activeCategory);
+    let r = [...ARTIFACTS];
+    if (state.activeCategory !== 'all') r = r.filter(a => a.category === state.activeCategory);
     if (state.searchQuery.trim()) {
       const q = state.searchQuery.toLowerCase();
-      results = results.filter(a =>
-        a.name.toLowerCase().includes(q) ||
-        a.subtitle.toLowerCase().includes(q) ||
-        a.abstract.toLowerCase().includes(q) ||
-        a.tags.some(t => t.toLowerCase().includes(q)) ||
-        a.material.toLowerCase().includes(q) ||
-        a.period.toLowerCase().includes(q) ||
-        a.culture.toLowerCase().includes(q) ||
-        (a.catalogNumber && a.catalogNumber.toLowerCase().includes(q))
+      r = r.filter(a =>
+        a.name.toLowerCase().includes(q) || a.subtitle.toLowerCase().includes(q) ||
+        a.abstract.toLowerCase().includes(q) || a.tags.some(t => t.toLowerCase().includes(q)) ||
+        a.material.toLowerCase().includes(q) || a.period.toLowerCase().includes(q) ||
+        a.culture.toLowerCase().includes(q) || (a.catalogNumber && a.catalogNumber.toLowerCase().includes(q))
       );
     }
-    switch (state.sortBy) {
-      case 'name-asc':  results.sort((a,b) => a.name.localeCompare(b.name, 'en')); break;
-      case 'name-desc': results.sort((a,b) => b.name.localeCompare(a.name, 'en')); break;
-      case 'category':  results.sort((a,b) => a.category.localeCompare(b.category)); break;
-    }
-    return results;
+    if (state.sortBy === 'name-asc')  r.sort((a,b) => a.name.localeCompare(b.name, 'en'));
+    if (state.sortBy === 'name-desc') r.sort((a,b) => b.name.localeCompare(a.name, 'en'));
+    if (state.sortBy === 'category')  r.sort((a,b) => a.category.localeCompare(b.category));
+    return r;
   }
 
-  // ─── RENDER ──────────────────────────────────
+  // ── Render ────────────────────────────────────
   function renderCatalog() {
-    const results = filterAndSort();
+    const results   = filterAndSort();
     const container = document.getElementById('artifacts-container');
     const countEl   = document.getElementById('result-count');
     if (countEl) countEl.textContent = results.length;
     if (!container) return;
-
     if (results.length === 0) {
       container.className = '';
       container.innerHTML = `
-      <div class="empty-state">
-        <div class="empty-icon">🔍</div>
-        <div class="empty-title">No artifacts found</div>
-        <div class="empty-text">Try a different query or reset the filters</div>
-        <button class="btn-ghost" onclick="resetFilters()">Reset filters</button>
-      </div>`;
+        <div class="empty-state">
+          <div class="empty-icon">🔍</div>
+          <div class="empty-title">No artifacts found</div>
+          <div class="empty-text">Try a different query or reset the filters</div>
+          <button class="btn-ghost" onclick="resetFilters()">Reset filters</button>
+        </div>`;
       return;
     }
-
     if (state.displayMode === 'grid') {
       container.className = 'artifacts-grid';
-      container.innerHTML = results.map((a, i) => renderGridCard(a, i * 60)).join('');
+      container.innerHTML = results.map((a, i) => renderGridCard(a, i * 55)).join('');
     } else {
       container.className = 'artifacts-list';
-      container.innerHTML = results.map((a, i) => renderListCard(a, i * 40)).join('');
+      container.innerHTML = results.map((a, i) => renderListCard(a, i * 38)).join('');
     }
   }
 
   function resetFilters() {
-    state.searchQuery    = '';
-    state.activeCategory = 'all';
+    state.searchQuery = ''; state.activeCategory = 'all';
     const inp = document.getElementById('catalog-search');
     if (inp) inp.value = '';
-    const snav = document.getElementById('search-input');
-    if (snav) snav.value = '';
-    updatePills();
-    updateSidebar();
-    renderCatalog();
+    syncUI(); renderCatalog();
   }
 
-  function updatePills() {
+  function syncUI() {
     document.querySelectorAll('.filter-pill[data-cat]').forEach(el =>
-      el.classList.toggle('active', el.dataset.cat === state.activeCategory)
-    );
-  }
-
-  function updateSidebar() {
+      el.classList.toggle('active', el.dataset.cat === state.activeCategory));
     document.querySelectorAll('.sidebar-item[data-cat]').forEach(el =>
-      el.classList.toggle('active', el.dataset.cat === state.activeCategory)
-    );
+      el.classList.toggle('active', el.dataset.cat === state.activeCategory));
   }
 
-  // ─── EVENT LISTENERS ─────────────────────────
+  // ── Init ──────────────────────────────────────
   document.addEventListener('DOMContentLoaded', () => {
     initParticles();
 
-    // Filter pills
-    document.querySelectorAll('.filter-pill[data-cat]').forEach(el => {
+    document.querySelectorAll('.filter-pill[data-cat], .sidebar-item[data-cat]').forEach(el => {
       el.addEventListener('click', () => {
         state.activeCategory = el.dataset.cat;
-        updatePills();
-        updateSidebar();
-        renderCatalog();
+        syncUI(); renderCatalog();
       });
     });
 
-    // Sidebar category
-    document.querySelectorAll('.sidebar-item[data-cat]').forEach(el => {
-      el.addEventListener('click', () => {
-        state.activeCategory = el.dataset.cat;
-        updatePills();
-        updateSidebar();
-        renderCatalog();
-      });
-    });
-
-    // Catalog search
     document.getElementById('catalog-search')?.addEventListener('input', e => {
-      state.searchQuery = e.target.value;
-      renderCatalog();
+      state.searchQuery = e.target.value; renderCatalog();
     });
 
-    // Navbar search (mirrors catalog search)
-    document.getElementById('search-input')?.addEventListener('input', e => {
-      state.searchQuery = e.target.value;
-      const cs = document.getElementById('catalog-search');
-      if (cs) cs.value = e.target.value;
-      renderCatalog();
-    });
-
-    // Sort
     document.getElementById('sort-select')?.addEventListener('change', e => {
-      state.sortBy = e.target.value;
-      renderCatalog();
+      state.sortBy = e.target.value; renderCatalog();
     });
 
-    // View toggle
     document.querySelectorAll('.view-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        state.displayMode = btn.dataset.view;
-        renderCatalog();
+        state.displayMode = btn.dataset.view; renderCatalog();
       });
     });
 
     renderCatalog();
   });
 
-  // ─── THEME TOGGLE ─────────────────────────────
+  // ── Theme ─────────────────────────────────────
   const html  = document.documentElement;
-  const btn   = document.getElementById('theme-toggle');
-  const icon  = document.getElementById('theme-icon');
-  const label = document.getElementById('theme-label');
-  const saved = localStorage.getItem('archaeo-theme') || 'dark';
-  applyTheme(saved);
-
-  btn.addEventListener('click', () => {
+  const tbtn  = document.getElementById('theme-toggle');
+  const ticon = document.getElementById('theme-icon');
+  const tlbl  = document.getElementById('theme-label');
+  applyTheme(localStorage.getItem('archaeo-theme') || 'dark');
+  tbtn.addEventListener('click', () => {
     const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
-    applyTheme(next);
-    localStorage.setItem('archaeo-theme', next);
+    applyTheme(next); localStorage.setItem('archaeo-theme', next);
   });
-
   function applyTheme(t) {
     html.dataset.theme = t;
-    if (t === 'dark') { icon.textContent = '☀️'; label.textContent = 'Light'; }
-    else              { icon.textContent = '🌙'; label.textContent = 'Dark';  }
+    ticon.textContent = t === 'dark' ? '☀️' : '🌙';
+    tlbl.textContent  = t === 'dark' ? 'Light' : 'Dark';
+  }
+
+  // ── Particle background ───────────────────────
+  function initParticles() {
+    const canvas = document.getElementById('bg-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let W = canvas.width = window.innerWidth;
+    let H = canvas.height = window.innerHeight;
+    const pts = Array.from({length:55}, () => ({
+      x: Math.random()*W, y: Math.random()*H,
+      r: Math.random()*1.5+0.3, dx: (Math.random()-.5)*.25,
+      dy: (Math.random()-.5)*.25, a: Math.random()*.45+.08
+    }));
+    (function draw() {
+      ctx.clearRect(0,0,W,H);
+      pts.forEach(p => {
+        ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle=`rgba(200,149,42,${p.a})`; ctx.fill();
+        p.x+=p.dx; p.y+=p.dy;
+        if(p.x<0||p.x>W) p.dx*=-1;
+        if(p.y<0||p.y>H) p.dy*=-1;
+      });
+      requestAnimationFrame(draw);
+    })();
+    window.addEventListener('resize', () => { W=canvas.width=window.innerWidth; H=canvas.height=window.innerHeight; });
   }
 </script>
 </body>
