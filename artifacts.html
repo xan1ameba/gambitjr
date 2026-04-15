@@ -661,9 +661,9 @@
   </a>
 
   <div class="nav-links" role="list">
-    <a href="index.html"     class="nav-link"        role="listitem"><span class="nav-link-icon">🏠</span> Home</a>
-    <a href="artifacts.html" class="nav-link active"  role="listitem"><span class="nav-link-icon">🏺</span> Artifacts</a>
-    <a href="identify.html"  class="nav-link"         role="listitem"><span class="nav-link-icon">🤖</span> AI Identifier</a>
+    <a href="index.html"     class="nav-link"        role="listitem"><span class="nav-link-icon">🏠</span><span data-i18n="navHome"> Home</span></a>
+    <a href="artifacts.html" class="nav-link active"  role="listitem"><span class="nav-link-icon">🏺</span><span data-i18n="navArtifacts"> Artifacts</span></a>
+    <a href="identify.html"  class="nav-link"         role="listitem"><span class="nav-link-icon">🤖</span><span data-i18n="navAI"> AI Identifier</span></a>
   </div>
 
   <div class="nav-right">
@@ -902,8 +902,9 @@
       eyebrow: 'Complete Catalog', pageTitle: 'Artifact Collection',
       pageSubtitle: 'Full collection of Bronze Age artifacts from Central Kazakhstan — ceramics, jewelry, stone tools and bone ornaments.',
       filterLabel: 'Filter:',
+      navHome: 'Home', navArtifacts: 'Artifacts', navAI: 'AI Identifier',
       catAll: 'All', catCeramics: 'Ceramics', catJewelry: 'Jewelry',
-      catStone: 'Stone', catBone: 'Bone',
+      catStone: 'Stone Objects', catBone: 'Bone Objects',
       found: 'Found:', artifacts: 'artifacts',
       period: 'Period:', bronze: 'Bronze Age', about: 'About',
       sbPeriod: 'Period', sbAbout: 'About',
@@ -916,8 +917,9 @@
       eyebrow: 'Полный каталог', pageTitle: 'Коллекция артефактов',
       pageSubtitle: 'Полная коллекция артефактов Бронзового века Центрального Казахстана — керамика, украшения, каменные орудия и костяные изделия.',
       filterLabel: 'Фильтр:',
+      navHome: 'Главная', navArtifacts: 'Артефакты', navAI: 'AI Идентификатор',
       catAll: 'Все', catCeramics: 'Керамика', catJewelry: 'Украшения',
-      catStone: 'Камень', catBone: 'Кость',
+      catStone: 'Каменные', catBone: 'Костяные',
       found: 'Найдено:', artifacts: 'артефакта(-ов)',
       period: 'Период:', bronze: 'Бронзовый век', about: 'О проекте',
       sbPeriod: 'Период', sbAbout: 'О проекте',
@@ -1023,5 +1025,3 @@
     window.addEventListener('resize', () => { W=canvas.width=window.innerWidth; H=canvas.height=window.innerHeight; });
   }
 </script>
-</body>
-</html>
