@@ -127,6 +127,33 @@
     }
     .nav-sep { width: 1px; height: 22px; background: var(--border); flex-shrink: 0; margin: 0 6px; }
 
+    /* Mobile burger */
+    .nav-burger {
+      display: none;
+      background: none; border: none; cursor: pointer; color: inherit;
+      padding: 4px; margin-left: 6px;
+    }
+    .nav-burger svg { width: 24px; height: 24px; color: var(--text); }
+    html[data-theme="light"] .nav-burger svg { color: #1a1208; }
+
+    @media (max-width: 768px) {
+      .nav-burger { display: flex; align-items: center; justify-content: center; }
+      .navbar .nav-links {
+        display: none;
+        position: absolute; top: var(--nav-h); left: 0; right: 0;
+        flex-direction: column;
+        background: rgba(7,7,15,0.95);
+        padding: 20px;
+        border-bottom: 1px solid var(--border);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+      html[data-theme="light"] .navbar .nav-links {
+        background: rgba(244,237,224, 0.95);
+      }
+      .navbar .nav-links.mobile-active { display: flex; }
+    }
+
     .nav-btn {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 8px 20px; border-radius: 100px;
@@ -995,3 +1022,6 @@
     })();
     window.addEventListener('resize', () => { W=canvas.width=window.innerWidth; H=canvas.height=window.innerHeight; });
   }
+</script>
+</body>
+</html>
