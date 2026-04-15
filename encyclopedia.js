@@ -583,6 +583,17 @@ function openArticle(id) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+// ── Mobile Menu Toggle ──────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  const burger = document.getElementById('mobile-menu-btn');
+  const navLinksNode = document.querySelector('.nav-links');
+  if (burger && navLinksNode) {
+    burger.addEventListener('click', () => {
+      navLinksNode.classList.toggle('mobile-active');
+    });
+  }
+});
+
 function goToBrowse() {
   state.view = 'browse';
   state.activeArtifact = null;
