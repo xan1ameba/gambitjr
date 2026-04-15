@@ -640,7 +640,15 @@
   </div>
 
   <div class="nav-right">
-    <!-- Navbar actions removed per user request -->
+    <button class="lang-btn" id="lang-toggle" aria-label="Switch language">
+      <span id="lang-icon">🌐</span>
+      <span id="lang-label">RU</span>
+    </button>
+    <div class="nav-sep"></div>
+    <button class="theme-btn" id="theme-toggle" aria-label="Toggle colour theme">
+      <span id="theme-icon">☀️</span>
+      <span id="theme-label">Light</span>
+    </button>
   </div>
 
 </nav>
@@ -854,6 +862,26 @@
       });
     });
 
+    // Language Toggle Listener
+    const lbtn = document.getElementById('lang-toggle');
+    if (lbtn) {
+      lbtn.addEventListener('click', () => {
+        const next = document.documentElement.dataset.lang === 'en' ? 'ru' : 'en';
+        applyLang(next);
+        localStorage.setItem('archaeo-lang', next);
+      });
+    }
+
+    // Theme Toggle Listener
+    const tbtn = document.getElementById('theme-toggle');
+    if (tbtn) {
+      tbtn.addEventListener('click', () => {
+        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        applyTheme(next);
+        localStorage.setItem('archaeo-theme', next);
+      });
+    }
+
     renderCatalog();
   });
 
@@ -887,10 +915,13 @@
     }
   };
 
-  // lbtn is removed, skipping event listener
-
   function applyLang(l) {
     document.documentElement.dataset.lang = l;
+    
+    const licon = document.getElementById('lang-icon');
+    const llbl  = document.getElementById('lang-label');
+    if (licon) licon.textContent = '🌐';
+    if (llbl)  llbl.textContent  = l === 'en' ? 'RU' : 'EN';
     
     if (typeof STRINGS === 'undefined') return;
     const s = STRINGS[l];
@@ -909,13 +940,19 @@
     }
   }
 
-  // ── Theme ─────────────────────────────────────
-  const html  = document.documentElement;
-  applyTheme(localStorage.getItem('archaeo-theme') || 'dark');
+  applyLang(localStorage.getItem('archaeo-lang') || 'en');
 
+  // ── Theme ─────────────────────────────────────
   function applyTheme(t) {
-    html.dataset.theme = t;
+    document.documentElement.dataset.theme = t;
+    const ticon = document.getElementById('theme-icon');
+    const tlbl  = document.getElementById('theme-label');
+    const isDark = (t === 'dark');
+    if (ticon) ticon.textContent = isDark ? '☀️' : '🌙';
+    if (tlbl)  tlbl.textContent  = isDark ? 'Light' : 'Dark';
   }
+
+  applyTheme(localStorage.getItem('archaeo-theme') || 'dark');
 
   // ── Particle background ───────────────────────
   function initParticles() {
