@@ -872,8 +872,8 @@
       eyebrow: 'Complete Catalog', pageTitle: 'Artifact Collection',
       pageSubtitle: 'Full collection of Bronze Age artifacts from Central Kazakhstan — ceramics, jewelry, stone tools and bone ornaments.',
       filterLabel: 'Filter:',
-      catAll: '🏛️ All', catCeramics: '🏺 Ceramics', catJewelry: '💍 Jewelry',
-      catStone: '🪨 Stone', catBone: '🦴 Bone',
+      catAll: 'All', catCeramics: 'Ceramics', catJewelry: 'Jewelry',
+      catStone: 'Stone', catBone: 'Bone',
       found: 'Found:', artifacts: 'artifacts',
       period: 'Period:', bronze: 'Bronze Age', about: 'About',
       sbPeriod: 'Period', sbAbout: 'About',
@@ -885,8 +885,8 @@
       eyebrow: 'Полный каталог', pageTitle: 'Коллекция артефактов',
       pageSubtitle: 'Полная коллекция артефактов Бронзового века Центрального Казахстана — керамика, украшения, каменные орудия и костяные изделия.',
       filterLabel: 'Фильтр:',
-      catAll: '🏛️ Все', catCeramics: '🏺 Керамика', catJewelry: '💍 Украшения',
-      catStone: '🪸 Камень', catBone: '🦴 Кость',
+      catAll: 'Все', catCeramics: 'Керамика', catJewelry: 'Украшения',
+      catStone: 'Камень', catBone: 'Кость',
       found: 'Найдено:', artifacts: 'артефакта(-ов)',
       period: 'Период:', bronze: 'Бронзовый век', about: 'О проекте',
       sbPeriod: 'Период', sbAbout: 'О проекте',
@@ -929,6 +929,16 @@
     if (rm) {
       const cnt = document.getElementById('result-count')?.textContent || '7';
       rm.innerHTML = `${s.found} <strong><span id="result-count">${cnt}</span></strong> ${s.artifacts}`;
+    }
+
+    // re-render encyclopedia items
+    if (typeof state !== 'undefined' && typeof renderBrowse === 'function') {
+      if (state.view === 'article' && state.activeArtifact) {
+        const av = document.getElementById('article-view');
+        if (av) av.innerHTML = renderArticle(state.activeArtifact);
+      } else {
+        renderBrowse();
+      }
     }
   }
 
