@@ -388,35 +388,51 @@
 <canvas id="bg-canvas"></canvas>
 <div class="bg-blobs"></div>
 
-<!-- NAVBAR (same as main site) -->
-<nav class="navbar" role="navigation">
-  <div class="nav-logo" onclick="window.location.href='index.html'" style="cursor:pointer">
-  </div>
-  <div class="nav-divider"></div>
-  <p class="nav-tagline">Open Encyclopedia of<br>Kazakhstan Archaeology</p>
+<!-- ─── NAVBAR ──────────────────────────────── -->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
 
-  <div class="nav-search" style="pointer-events:none;opacity:0.3">
-    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
-    </svg>
-    <input type="search" placeholder="Search artifacts…" disabled>
+  <!-- Brand -->
+  <a href="index.html" class="nav-brand" aria-label="Go to homepage">
+    <span class="nav-logo-icon">🏛️</span>
+  </a>
+
+  <!-- Links -->
+  <div class="nav-links" role="list">
+    <a href="index.html" class="nav-link" role="listitem">
+      <span class="nav-link-icon">🏠</span> Home
+    </a>
+    <a href="artifacts.html" class="nav-link" role="listitem">
+      <span class="nav-link-icon">🏺</span> Artifacts
+    </a>
+    <a href="identify.html" class="nav-link active" role="listitem">
+      <span class="nav-link-icon">🤖</span> AI Identifier
+    </a>
   </div>
 
-  <button class="theme-btn" id="theme-toggle">
-    <span class="tb-icon" id="theme-icon">☀️</span>
-    <span id="theme-label">Light</span>
-  </button>
+  <!-- Right side actions -->
+  <div class="nav-right">
+    <button class="lang-btn" id="lang-toggle" aria-label="Switch language">
+      <span id="lang-icon">🌐</span>
+      <span id="lang-label">RU</span>
+    </button>
+    <div class="nav-sep"></div>
+    <button class="theme-btn" id="theme-toggle" aria-label="Toggle colour theme">
+      <span id="theme-icon">☀️</span>
+      <span id="theme-label">Light</span>
+    </button>
+  </div>
+
 </nav>
 
 <!-- MAIN -->
 <div class="id-page">
 
-  <a class="id-back" href="index.html">← Back to Encyclopedia</a>
+  <a class="id-back" href="index.html" data-i18n="back">← Back to Encyclopedia</a>
 
   <div class="id-header">
-    <div class="id-eyebrow">🤖 AI-Powered Analysis</div>
-    <h1 class="id-title">Artifact Identifier</h1>
-    <p class="id-subtitle">
+    <div class="id-eyebrow" data-i18n="idEyebrow">🤖 AI-Powered Analysis</div>
+    <h1 class="id-title" data-i18n="idTitle">Artifact Identifier</h1>
+    <p class="id-subtitle" data-i18n="idSubtitle">
       Upload a photo of any archaeological artifact — our AI will identify it,
       determine its period, culture, material and provide a full description.
     </p>
@@ -426,8 +442,8 @@
   <div class="upload-zone" id="upload-zone">
     <input type="file" id="file-input" accept="image/*">
     <div class="upload-icon">🏺</div>
-    <div class="upload-text">Drop your artifact photo here</div>
-    <div class="upload-sub">or click to browse · JPG, PNG, WEBP</div>
+    <div class="upload-text" data-i18n="uploadText">Drop your artifact photo here</div>
+    <div class="upload-sub" data-i18n="uploadSub">or click to browse · JPG, PNG, WEBP</div>
   </div>
 
   <!-- PREVIEW -->
@@ -438,7 +454,7 @@
 
   <!-- ANALYSE BUTTON -->
   <button class="analyse-btn" id="analyse-btn" onclick="analyseArtifact()">
-    🔍 Identify Artifact
+    <span data-i18n="analyseBtn">🔍 Identify Artifact</span>
   </button>
 
   <!-- LOADING -->
@@ -494,7 +510,7 @@
     </div>
   </div>
 
-  <div class="disclaimer">
+  <div class="disclaimer" data-i18n="disclaimer">
     AI identification is provided for educational purposes only.<br>
     For accurate scientific attribution, consult a professional archaeologist.
   </div>
@@ -503,6 +519,66 @@
 
 <script src="encyclopedia.js"></script>
 <script>
+// ── LANGUAGE ───────────────────────────────────────
+const lBtn    = document.getElementById('lang-toggle');
+const lIcon   = document.getElementById('lang-icon');
+const lLbl    = document.getElementById('lang-label');
+const navLinks= document.querySelectorAll('.nav-link');
+
+const STRINGS = {
+  en: {
+    back: '← Back to Encyclopedia',
+    idEyebrow: '🤖 AI-Powered Analysis',
+    idTitle: 'Artifact Identifier',
+    idSubtitle: 'Upload a photo of any archaeological artifact — our AI will identify it, determine its period, culture, material and provide a full description.',
+    uploadText: 'Drop your artifact photo here',
+    uploadSub: 'or click to browse · JPG, PNG, WEBP',
+    analyseBtn: '🔍 Identify Artifact',
+    disclaimer: 'AI identification is provided for educational purposes only.<br>For accurate scientific attribution, consult a professional archaeologist.',
+    home: 'Home', artifacts: 'Artifacts', ai: 'AI Identifier'
+  },
+  ru: {
+    back: '← Вернуться к Энциклопедии',
+    idEyebrow: '🤖 Анализ ИИ',
+    idTitle: 'Идентификатор Артефактов',
+    idSubtitle: 'Загрузите фото археологического объекта — наш ИИ определит его период, культуру, материал и даст подробное описание.',
+    uploadText: 'Перетащите сюда фото артефакта',
+    uploadSub: 'или нажмите чтобы выбрать · JPG, PNG, WEBP',
+    analyseBtn: '🔍 Определить Артефакт',
+    disclaimer: 'ИИ-идентификация предоставляется только в образовательных целях.<br>Для точной атрибуции обращайтесь к археологу.',
+    home: 'Главная', artifacts: 'Артефакты', ai: 'AI Идентификатор'
+  }
+};
+
+function applyLang(l) {
+  document.documentElement.dataset.lang = l;
+  if (lIcon) lIcon.textContent = '🌐';
+  if (lLbl)  lLbl.textContent  = l === 'en' ? 'RU' : 'EN';
+  
+  const s = STRINGS[l];
+  if (!s) return;
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (s[key] !== undefined) el.innerHTML = s[key];
+  });
+  
+  if (navLinks[0]) navLinks[0].lastChild.textContent = ' ' + s.home;
+  if (navLinks[1]) navLinks[1].lastChild.textContent = ' ' + s.artifacts;
+  if (navLinks[2]) navLinks[2].lastChild.textContent = ' ' + s.ai;
+}
+
+const savedLang = localStorage.getItem('archaeo-lang') || 'en';
+applyLang(savedLang);
+
+if (lBtn) {
+  lBtn.addEventListener('click', () => {
+    const next = document.documentElement.dataset.lang === 'en' ? 'ru' : 'en';
+    applyLang(next);
+    localStorage.setItem('archaeo-lang', next);
+  });
+}
+
 // ── THEME (same as index.html) ─────────────────────
 const html  = document.documentElement;
 const tBtn  = document.getElementById('theme-toggle');
