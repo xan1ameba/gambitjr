@@ -114,14 +114,7 @@
       border-color: rgba(200,149,42,0.2);
     }
 
-    /* ── HERO TITLE FIX FOR LIGHT THEME ─────────────── */
-    html[data-theme="light"] .hero-title {
-      background: linear-gradient(135deg, #1a1208 0%, #8b6014 55%, #5a3d8a 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
+    html[data-theme="light"] .hero-title { color: #1a1208; }
     html[data-theme="light"] .hero-text  { color: #3a2a10; }
     html[data-theme="light"] .hs-val     { color: #8b6014; }
     html[data-theme="light"] .hs-label   { color: #6b5530; }
@@ -310,7 +303,12 @@
   <aside class="sidebar" role="navigation" aria-label="Encyclopedia sections">
 
     <div class="sb-section">
-      <div class="sb-title">AI Tool</div>
+      <div class="sb-title">Pages</div>
+      <a href="artifacts.html" class="sidebar-item">
+        <span class="sb-icon">🏺</span>
+        <span>Artifacts Catalog</span>
+        <span class="sb-count">7</span>
+      </a>
       <a href="identify.html" class="sidebar-item sb-ai-tool">
         <span class="sb-icon">🤖</span>
         <span>AI Identifier</span>
@@ -403,10 +401,14 @@
           For scholars, students and everyone curious about history.
         </p>
         
-        <div class="hero-actions">
+        <div class="hero-actions" style="gap:12px">
+          <a href="artifacts.html" class="cta-btn" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);color:#fff!important;box-shadow:0 4px 15px rgba(124,58,237,.35)">
+            <span class="cta-icon">🏺</span>
+            <span>Browse Artifacts</span>
+          </a>
           <a href="identify.html" class="cta-btn">
             <span class="cta-icon">🤖</span>
-            <span>Identify Artifact with AI</span>
+            <span>AI Identifier</span>
           </a>
         </div>
 
