@@ -84,17 +84,24 @@
 
     /* Logo */
     .nav-brand {
-      display: flex; align-items: center; gap: 10px;
+      display: flex; align-items: center;
       flex-shrink: 0; margin-right: 32px;
-      cursor: default;
+      text-decoration: none;
     }
-    .nav-logo-icon { font-size: 24px; }
-    .nav-logo-text {
-      font-family: 'Playfair Display', serif;
-      font-size: 19px; font-weight: 700;
-      background: linear-gradient(135deg, var(--gold-l), var(--purple-l));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .nav-logo-icon { font-size: 26px; }
+
+    /* ── LANGUAGE SWITCHER ─────────────────────── */
+    .lang-btn {
+      display: flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 20px;
+      border: 1px solid rgba(124,58,237,0.3);
+      background: rgba(124,58,237,0.07);
+      color: var(--purple-l); font-size: 13px; font-weight: 600;
+      cursor: pointer; transition: var(--tr); white-space: nowrap;
+    }
+    .lang-btn:hover { background: rgba(124,58,237,.16); border-color: rgba(124,58,237,.5); }
+    html[data-theme="light"] .lang-btn {
+      border-color: rgba(100,70,20,.3); background: rgba(100,70,20,.07); color: #8b6014;
     }
 
     /* Nav links */
@@ -362,10 +369,6 @@
     }
     html[data-theme="light"] .nav-link { color: #3a2a10; }
     html[data-theme="light"] .nav-link:hover { background: rgba(100,70,20,.07); color: #1a1208; }
-    html[data-theme="light"] .nav-logo-text {
-      background: linear-gradient(135deg, #8b4e0f, #6b3a9e);
-      -webkit-background-clip: text; background-clip: text;
-    }
     html[data-theme="light"] .hero-title {
       background: linear-gradient(150deg, #2d1f0a 20%, #8b4e0f 55%, #6b3a9e 95%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
@@ -410,10 +413,9 @@
 <nav class="navbar" role="navigation" aria-label="Main navigation">
 
   <!-- Brand -->
-  <div class="nav-brand" aria-label="ArchaeoKZ">
+  <a href="index.html" class="nav-brand" aria-label="Go to homepage">
     <span class="nav-logo-icon">🏛️</span>
-    <span class="nav-logo-text">ArchaeoKZ</span>
-  </div>
+  </a>
 
   <!-- Links -->
   <div class="nav-links" role="list">
@@ -430,9 +432,10 @@
 
   <!-- Right side actions -->
   <div class="nav-right">
-    <a href="artifacts.html" class="nav-btn nav-btn-primary" aria-label="Browse all artifacts">
-      🏺 Browse Artifacts
-    </a>
+    <button class="lang-btn" id="lang-toggle" aria-label="Switch language">
+      <span id="lang-icon">🌐</span>
+      <span id="lang-label">RU</span>
+    </button>
     <div class="nav-sep"></div>
     <button class="theme-btn" id="theme-toggle" aria-label="Toggle colour theme">
       <span id="theme-icon">☀️</span>
@@ -450,11 +453,11 @@
 
     <div class="hero-eyebrow">🏺 Open Encyclopedia</div>
 
-    <h1 class="hero-title" id="hero-title">
+    <h1 class="hero-title" id="hero-title" data-i18n="heroTitle">
       Archaeology of<br>Central Asia
     </h1>
 
-    <p class="hero-text">
+    <p class="hero-text" data-i18n="heroText">
       Explore Bronze Age artifacts of Kazakhstan in open access.
       For scholars, students and everyone curious about history.
     </p>
@@ -463,15 +466,15 @@
     <div class="hero-cta">
       <a href="artifacts.html" class="cta-btn cta-primary" id="cta-browse" aria-label="Browse all artifacts">
         <span class="cta-icon">🏺</span>
-        <span>Browse Artifacts</span>
+        <span data-i18n="browse">Browse Artifacts</span>
       </a>
       <a href="identify.html" class="cta-btn cta-gold" id="cta-ai" aria-label="Identify artifact with AI">
         <span class="cta-icon">🤖</span>
-        <span>AI Identifier</span>
+        <span data-i18n="ai">AI Identifier</span>
       </a>
       <a href="#about" class="cta-btn cta-ghost" id="cta-about" aria-label="Learn about this project">
         <span class="cta-icon">📖</span>
-        <span>About Project</span>
+        <span data-i18n="about">About Project</span>
       </a>
     </div>
 
@@ -564,6 +567,74 @@
       H = canvas.height = window.innerHeight;
     });
   })();
+
+  // ── i18n strings ──────────────────────────────
+  const STRINGS = {
+    en: {
+      heroTitle:  'Archaeology of<br>Central Asia',
+      heroText:   'Explore Bronze Age artifacts of Kazakhstan in open access. For scholars, students and everyone curious about history.',
+      browse:     'Browse Artifacts',
+      ai:         'AI Identifier',
+      about:      'About Project',
+      artifacts:  'Artifacts', home: 'Home',
+      ceramics:   'Ceramics', jewelry: 'Jewelry & Ornaments', stone: 'Stone & Bone Objects',
+      cFeat:      'Hand-built vessels of the Andronovo cultural community, fired in reduction and oxidation atmospheres.',
+      jFeat:      'Bronze bracelets, pendants and amulets from Bronze Age burial mounds of Central Kazakhstan.',
+      sFeat:      'Whetstone pendants, tools and bone ornaments — evidence of craftsmanship 3500 years ago.',
+      footer:     'Open Encyclopedia of Archaeology · Created by',
+      statArt:    'Artifacts', statYrs: 'Years of History', statCat: 'Categories'
+    },
+    ru: {
+      heroTitle:  'Археология<br>Центральной Азии',
+      heroText:   'Исследуйте артефакты Бронзового века Казахстана в открытом доступе. Для учёных, студентов и всех любопытных.',
+      browse:     'Смотреть артефакты',
+      ai:         'AI Идентификатор',
+      about:      'О проекте',
+      artifacts:  'Артефакты', home: 'Главная',
+      ceramics:   'Керамика', jewelry: 'Украшения', stone: 'Каменные и костяные изделия',
+      cFeat:      'Лепные сосуды андроновской культурно-исторической общности, обожжённые в восстановительной и окислительной атмосфере.',
+      jFeat:      'Бронзовые браслеты, подвески и амулеты из погребений Бронзового века Центрального Казахстана.',
+      sFeat:      'Подвески-оселки, орудия и костяные украшения — свидетельство мастерства 3500-летней давности.',
+      footer:     'Открытая Энциклопедия Археологии · Создана командой',
+      statArt:    'Артефактов', statYrs: 'Лет истории', statCat: 'Категорий'
+    }
+  };
+
+  // ── Language toggle ───────────────────────────
+  const lbtn  = document.getElementById('lang-toggle');
+  const licon = document.getElementById('lang-icon');
+  const llbl  = document.getElementById('lang-label');
+
+  applyLang(localStorage.getItem('archaeo-lang') || 'en');
+
+  lbtn.addEventListener('click', () => {
+    const next = document.documentElement.dataset.lang === 'en' ? 'ru' : 'en';
+    applyLang(next);
+    localStorage.setItem('archaeo-lang', next);
+  });
+
+  function applyLang(l) {
+    document.documentElement.dataset.lang = l;
+    licon.textContent = '🌐';
+    llbl.textContent  = l === 'en' ? 'RU' : 'EN';
+    const s = STRINGS[l];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (s[key] !== undefined) el.innerHTML = s[key];
+    });
+    // hs-labels
+    const hsl = document.querySelectorAll('.hs-label');
+    if (hsl[0]) hsl[0].textContent = s.statArt;
+    if (hsl[1]) hsl[1].textContent = s.statYrs;
+    if (hsl[2]) hsl[2].textContent = s.statCat;
+    // nav links text
+    const navLinks = document.querySelectorAll('.nav-link');
+    if (navLinks[0]) navLinks[0].lastChild.textContent = ' ' + s.home;
+    if (navLinks[1]) navLinks[1].lastChild.textContent = ' ' + s.artifacts;
+    // footer
+    const footer = document.querySelector('.site-footer p');
+    if (footer) footer.innerHTML = `${s.footer} <strong>Gambit Jr.</strong> · FLL Season 2024–2025`;
+  }
 
   // ── Theme toggle ──────────────────────────────
   const html  = document.documentElement;
