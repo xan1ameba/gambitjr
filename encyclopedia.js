@@ -254,16 +254,83 @@ const ARTIFACTS = [
 // CATEGORY CONFIG
 // ======================
 const CATEGORIES = {
-  all:      { name: 'All Artifacts',  icon: '🏛️', color: '#7c3aed' },
-  ceramics: { name: 'Ceramics',       icon: '🏺', color: '#c8952a' },
-  jewelry:  { name: 'Jewelry',        icon: '💍', color: '#34d399' },
-  stone:    { name: 'Stone Objects',  icon: '🪨', color: '#818cf8' },
-  bone:     { name: 'Bone Objects',   icon: '🦴', color: '#fbbf24' }
+  all:      { name: 'All Artifacts',  nameRu: 'Все', icon: '🏛️', color: '#7c3aed' },
+  ceramics: { name: 'Ceramics',       nameRu: 'Керамика', icon: '🏺', color: '#c8952a' },
+  jewelry:  { name: 'Jewelry',        nameRu: 'Украшения', icon: '💍', color: '#34d399' },
+  stone:    { name: 'Stone Objects',  nameRu: 'Камень', icon: '🪨', color: '#818cf8' },
+  bone:     { name: 'Bone Objects',   nameRu: 'Кость', icon: '🦴', color: '#fbbf24' }
 };
 
 Object.keys(CATEGORIES).forEach(k => {
   CATEGORIES[k].count = k === 'all' ? ARTIFACTS.length : ARTIFACTS.filter(a => a.category === k).length;
 });
+
+// ======================
+// RU TRANSLATIONS
+// ======================
+const RU_DB = {
+  'vessel-dark': {
+    name: 'Темно-серый лепной керамический сосуд',
+    subtitle: 'Лепной сосуд яйцевидной формы, обожженный в восстановительной среде',
+    period: 'Бронзовый век', periodYears: 'XVIII–XII века до н.э.', culture: 'Андроновская культурно-историческая общность',
+    material: 'Глина (ручная лепка)', technique: 'Ручная лепка, заглаживание, восстановительный обжиг', dimensions: 'Высота: ~22–26 см, Диаметр тулова: ~18–22 см', location: 'Казахстан',
+    abstract: 'Темно-серый лепной сосуд — типичный образец керамики бронзового века Центрального Казахстана (андроновская общность).',
+    fullText: '<h3>Описание</h3><p>Сосуд изготовлен из обожженной темно-серой глины. Форма яйцевидная, с плоским дном и слегка отогнутым наружу венчиком. Стенки равномерной толщины, тщательно заглажены. Поверхность без орнамента.</p><h3>Технология изготовления</h3><p>Сосуд изготовлен методом ручной лепки без использования гончарного круга. Темно-серый цвет является результатом восстановительного (бескислородного) обжига.</p><h3>Культурный контекст</h3><p>Подобная посуда служила универсальной тарой для хранения продуктов питания и приготовления пищи, а также использовалась в качестве погребального инвентаря.</p>'
+  },
+  'vessel-brown': {
+    name: 'Красно-коричневый лепной керамический сосуд', subtitle: 'Лепной сосуд с выраженными следами нагара на стенках',
+    period: 'Бронзовый век', periodYears: 'XVIII–XII века до н.э.', culture: 'Андроновская культурно-историческая общность',
+    material: 'Глина (ручная лепка)', technique: 'Ручная лепка, окислительный обжиг', dimensions: 'Высота: ~20–24 см, Диаметр тулова: ~16–20 см', location: 'Казахстан',
+    abstract: 'Красно-коричневый лепной керамический сосуд с вторичными следами обжига — свидетельство активного использования в быту перед помещением в погребение.',
+    fullText: '<h3>Описание</h3><p>Круглобокий горшок со слегка сужающейся шейкой. Поверхность красно-коричневая с ярко выраженными темными пятнами — следами нагара от готовки. Видны трещины от термического шока.</p><h3>Использование</h3><p>Горшок активно использовался на открытом огне в повседневной жизни, после чего был помещен в качестве инвентаря в погребение (срубно-андроновской культуры).</p>'
+  },
+  'bracelets-bronze': {
+    name: 'Разомкнутые бронзовые браслеты', subtitle: 'Пара разомкнутых браслетов круглого сечения с патиной',
+    period: 'Бронзовый век', periodYears: 'XVIII–XII века до н.э.', culture: 'Андроновская культурно-историческая общность',
+    material: 'Бронза (сплав меди с оловом)', technique: 'Литье в открытую форму, ковка, полировка', dimensions: 'Диаметр: ~6–7 см, проволока: ~4–5 мм', location: 'Казахстан',
+    abstract: 'Пара разомкнутых бронзовых браслетов — традиционное украшение женского погребального наряда бронзового века. Покрыты сине-зеленой патиной.',
+    fullText: '<h3>Описание</h3><p>Пара разомкнутых браслетов с круглым сечением проволоки. Концы слегка сужены. Поверхность покрыта многовековой сине-зеленой патиной.</p><h3>Технология</h3><p>Изготовлены литьем в форму с последующей ковкой. Бронзовый сплав был идеальным благодаря температуре плавления.</p><h3>Символика</h3><p>Традиционно носились парно на обоих запястьях как часть праздничного и погребального убора.</p>'
+  },
+  'bone-pendant': {
+    name: 'Подвеска-амулет из зуба животного', subtitle: 'Амулет-подвеска с просверленным отверстием для подвешивания',
+    period: 'Бронзовый век', periodYears: 'XVIII–XII века до н.э.', culture: 'Степные культуры Центральной Азии',
+    material: 'Зуб животного (лошадь/скот)', technique: 'Сверление, шлифовка', dimensions: 'Длина: ~9–12 см', location: 'Казахстан', catalogNumber: 'Тк 171/2019/К12/04/3',
+    abstract: 'Амулет-подвеска из зуба крупного животного со сквозным отверстием. Находка из профессиональных раскопок 2019 года.',
+    fullText: '<h3>Описание</h3><p>Подвеска на широком конце имеет просверленное отверстие (6-8 мм) для подвешивания. Цвет кремово-бежевый. Выполняла функции оберега и маркера благополучия у номадов.</p>'
+  },
+  'stone-pendant-red': {
+    name: 'Подвеска-оселок из красного сланца', subtitle: 'Удлиненная подвеска-оселок с просверленным отверстием',
+    period: 'Бронзовый век', periodYears: 'XVIII–XII века до н.э.', culture: 'Степные культуры Центральной Азии',
+    material: 'Красный сланец', technique: 'Пикетаж, шлифовка, сверление', dimensions: 'Длина: ~14–18 см', location: 'Казахстан',
+    abstract: 'Удлиненная подвеска-оселок из красного сланца. Сочетает функции украшения и точильного камня для оружия.',
+    fullText: '<h3>Описание</h3><p>Предмет из плотного красного сланца сужающейся формы со сквозным отверстием. Использовался для правки бронзовых лезвий и носился на ремешке как статусный маркер воина.</p>'
+  },
+  'stone-bar-grey': {
+    name: 'Серый каменный оселок', subtitle: 'Крупная прямоугольная подвеска из серой галечной породы',
+    period: 'Бронзовый век', periodYears: 'XVIII–XII века до н.э.', culture: 'Степные культуры Центральной Азии',
+    material: 'Серая галечная порода', technique: 'Шлифовка, сверление', dimensions: 'Длина: ~13–16 см', location: 'Казахстан',
+    abstract: 'Крупная прямоугольная подвеска-брусок из серо-зеленой галечной породы. Характерный элемент экипировки воина бронзового века.',
+    fullText: '<h3>Описание</h3><p>Плоский массивный брусок, предназначенный для заточки длинных бронзовых кинжалов. Использовался конными воинами.</p>'
+  },
+  'spindle-whorl': {
+    name: 'Глиняное пряслице', subtitle: 'Биконический маховичок для веретена',
+    period: 'Бронзовый век', periodYears: 'XVIII–XII века до н.э.', culture: 'Андроновская культурно-историческая общность',
+    material: 'Глина (обожженная)', technique: 'Ручная лепка, обжиг', dimensions: 'Диаметр: ~4–5 см, Высота: ~3–4 см', location: 'Казахстан',
+    abstract: 'Глиняное пряслице — маховичок для веретена, использовавшийся при прядении шерсти. Доказательство развитого текстильного производства.',
+    fullText: '<h3>Описание</h3><p>Форма биконическая со сквозным центральным отверстием для деревянного стержня веретена. Служило утяжелителем для поддержания вращения при изготовлении нитей из шерсти.</p>'
+  }
+};
+
+function tr(obj, field) {
+  const isRu = typeof document !== 'undefined' && document.documentElement.dataset.lang === 'ru';
+  if (isRu && obj.id && RU_DB[obj.id] && RU_DB[obj.id][field] !== undefined) return RU_DB[obj.id][field];
+  if (isRu && obj.nameRu && field === 'name') return obj.nameRu;
+  return obj[field] || '';
+}
+
+function trText(en, ru) {
+  return (typeof document !== 'undefined' && document.documentElement.dataset.lang === 'ru') ? ru : en;
+}
 
 // ======================
 // STATE
@@ -333,7 +400,7 @@ function makeImg(src, alt, artifact) {
   const cat   = CATEGORIES[artifact.category];
   const bg    = GRADIENTS[artifact.category] || GRADIENTS.ceramics;
   const icon  = cat?.icon  || '🏛️';
-  const label = cat?.name  || 'Artifact';
+  const label = tr(cat, 'name')  || 'Artifact';
   return `<img src="${src}" alt="${alt}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class='img-placeholder' style='display:none;background:${bg}'><span class='ph-icon'>${icon}</span><span class='ph-label'>${label}</span></div>`;
 }
 
@@ -343,28 +410,28 @@ function makeImg(src, alt, artifact) {
 function renderGridCard(artifact, delay = 0) {
   const cat = CATEGORIES[artifact.category];
   const img = artifact.images.length
-    ? makeImg(artifact.images[0], artifact.name, artifact)
+    ? makeImg(artifact.images[0], tr(artifact, 'name'), artifact)
     : makePlaceholder(artifact);
   return `
   <article class="artifact-card" onclick="openArticle('${artifact.id}')"
-           style="animation-delay:${delay}ms" aria-label="${artifact.name}">
+           style="animation-delay:${delay}ms" aria-label="${tr(artifact, 'name')}">
     <div class="card-img-wrap">
       ${img}
-      <div class="card-badge badge-${artifact.category}">${cat?.icon} ${cat?.name}</div>
+      <div class="card-badge badge-${artifact.category}">${cat?.icon} ${tr(cat, 'name')}</div>
     </div>
     <div class="card-body">
-      <div class="card-title">${artifact.name}</div>
-      <div class="card-sub">${artifact.subtitle}</div>
+      <div class="card-title">${tr(artifact, 'name')}</div>
+      <div class="card-sub">${tr(artifact, 'subtitle')}</div>
       <div class="card-meta">
-        <span class="meta-tag">${artifact.period}</span>
-        <span class="meta-tag">${artifact.material.split('(')[0].trim()}</span>
-        ${artifact.catalogNumber ? `<span class="meta-tag">📋 Cat. No.</span>` : ''}
+        <span class="meta-tag">${tr(artifact, 'period')}</span>
+        <span class="meta-tag">${tr(artifact, 'material').split('(')[0].trim()}</span>
+        ${artifact.catalogNumber ? `<span class="meta-tag">📋 ${trText('Cat. No.', 'Кат. №')}</span>` : ''}
       </div>
-      <p class="card-abstract">${artifact.abstract}</p>
+      <p class="card-abstract">${tr(artifact, 'abstract')}</p>
     </div>
     <div class="card-footer">
-      <span class="footer-period">⏳ ${artifact.periodYears}</span>
-      <span class="footer-link">Read more →</span>
+      <span class="footer-period">⏳ ${tr(artifact, 'periodYears')}</span>
+      <span class="footer-link">${trText('Read more', 'Подробнее')} →</span>
     </div>
   </article>`;
 }
@@ -373,20 +440,20 @@ function renderListCard(artifact, delay = 0) {
   const cat = CATEGORIES[artifact.category];
   const bg  = GRADIENTS[artifact.category] || GRADIENTS.ceramics;
   const imgHTML = artifact.images.length
-    ? `<div class="list-thumb">${makeImg(artifact.images[0], artifact.name, artifact)}</div>`
+    ? `<div class="list-thumb">${makeImg(artifact.images[0], tr(artifact, 'name'), artifact)}</div>`
     : `<div class="list-thumb" style="background:${bg};display:flex;align-items:center;justify-content:center;font-size:28px">${cat?.icon}</div>`;
   return `
   <article class="list-card" onclick="openArticle('${artifact.id}')"
-           style="animation-delay:${delay}ms" aria-label="${artifact.name}">
+           style="animation-delay:${delay}ms" aria-label="${tr(artifact, 'name')}">
     ${imgHTML}
     <div class="list-body">
-      <div class="list-title">${artifact.name}</div>
+      <div class="list-title">${tr(artifact, 'name')}</div>
       <div class="list-meta">
-        <span class="meta-tag">${cat?.icon} ${cat?.name}</span>
-        <span class="meta-tag">${artifact.period}</span>
-        <span class="meta-tag">${artifact.material.split('(')[0].trim()}</span>
+        <span class="meta-tag">${cat?.icon} ${tr(cat, 'name')}</span>
+        <span class="meta-tag">${tr(artifact, 'period')}</span>
+        <span class="meta-tag">${tr(artifact, 'material').split('(')[0].trim()}</span>
       </div>
-      <p class="list-abstract">${artifact.abstract}</p>
+      <p class="list-abstract">${tr(artifact, 'abstract')}</p>
     </div>
     <span class="list-arrow">›</span>
   </article>`;
@@ -408,9 +475,9 @@ function renderBrowse() {
     container.innerHTML = `
     <div class="empty-state">
       <div class="empty-icon">🔍</div>
-      <div class="empty-title">No artifacts found</div>
-      <div class="empty-text">Try a different query or reset the filters</div>
-      <button class="btn-ghost" onclick="resetFilters()">Reset filters</button>
+      <div class="empty-title">${trText('No artifacts found', 'Артефакты не найдены')}</div>
+      <div class="empty-text">${trText('Try a different query or reset the filters', 'Попробуйте другой запрос или сбросьте фильтры')}</div>
+      <button class="btn-ghost" onclick="resetFilters()">${trText('Reset filters', 'Сбросить фильтры')}</button>
     </div>`;
     return;
   }
@@ -431,14 +498,14 @@ function renderArticle(artifact) {
   const cat = CATEGORIES[artifact.category];
 
   const infoImg = artifact.images.length
-    ? `<div class="infobox-img">${makeImg(artifact.images[0], artifact.name, artifact)}</div>` : '';
+    ? `<div class="infobox-img">${makeImg(artifact.images[0], tr(artifact, 'name'), artifact)}</div>` : '';
 
   const gallery = artifact.images.length > 1 ? `
-    <h3>Photo Gallery</h3>
+    <h3>${trText('Photo Gallery', 'Фотогалерея')}</h3>
     <div class="article-gallery">
       ${artifact.images.map((src, i) => `
         <div class="gallery-item" onclick="openLightbox('${src}')">
-          ${makeImg(src, artifact.name + ' — photo ' + (i+1), artifact)}
+          ${makeImg(src, tr(artifact, 'name') + ' — photo ' + (i+1), artifact)}
         </div>`).join('')}
     </div>` : '';
 
@@ -447,49 +514,49 @@ function renderArticle(artifact) {
     .slice(0, 3);
   const relatedHTML = related.length ? `
     <div class="related-section">
-      <h2 class="related-title">See Also</h2>
+      <h2 class="related-title">${trText('See Also', 'Смотрите также')}</h2>
       <div class="artifacts-grid">${related.map(a => renderGridCard(a)).join('')}</div>
     </div>` : '';
 
   return `
   <div class="article-breadcrumb">
-    <span class="bc-link" onclick="goToBrowse()">🏛️ Encyclopedia</span>
+    <span class="bc-link" onclick="goToBrowse()">🏛️ ${trText('Encyclopedia', 'Энциклопедия')}</span>
     <span class="bc-sep">›</span>
-    <span class="bc-link" onclick="setCategory('${artifact.category}');goToBrowse()">${cat?.icon} ${cat?.name}</span>
+    <span class="bc-link" onclick="setCategory('${artifact.category}');goToBrowse()">${cat?.icon} ${tr(cat, 'name')}</span>
     <span class="bc-sep">›</span>
-    <span>${artifact.name}</span>
+    <span>${tr(artifact, 'name')}</span>
   </div>
 
   <div class="article-header">
-    <div class="article-badge badge-${artifact.category}">${cat?.icon} ${cat?.name}</div>
-    <h1 class="article-title">${artifact.name}</h1>
-    <p class="article-subtitle">${artifact.subtitle}</p>
-    <blockquote class="article-abstract">${artifact.abstract}</blockquote>
+    <div class="article-badge badge-${artifact.category}">${cat?.icon} ${tr(cat, 'name')}</div>
+    <h1 class="article-title">${tr(artifact, 'name')}</h1>
+    <p class="article-subtitle">${tr(artifact, 'subtitle')}</p>
+    <blockquote class="article-abstract">${tr(artifact, 'abstract')}</blockquote>
   </div>
 
   <div class="article-layout">
     <div class="article-body">
-      ${artifact.fullText}
+      ${tr(artifact, 'fullText')}
       ${gallery}
       <div class="article-tags">
-        <span class="tags-label">🏷️ Tags:</span>
+        <span class="tags-label">🏷️ ${trText('Tags:', 'Тэги:')}</span>
         ${artifact.tags.map(t => `<span class="article-tag" onclick="searchTag('${t}')">${t}</span>`).join('')}
       </div>
     </div>
     <aside class="article-infobox">
-      <div class="infobox-header"><span class="infobox-title">${artifact.name}</span></div>
+      <div class="infobox-header"><span class="infobox-title">${tr(artifact, 'name')}</span></div>
       ${infoImg}
       <div class="infobox-data">
         ${[
-          ['Category',    cat?.name],
-          ['Period',      artifact.period],
-          ['Dating',      artifact.periodYears],
-          ['Culture',     artifact.culture],
-          ['Material',    artifact.material],
-          ['Technique',   artifact.technique],
-          ['Dimensions',  artifact.dimensions],
-          ['Location',    artifact.location],
-          ...(artifact.catalogNumber ? [['Cat. No.', artifact.catalogNumber]] : [])
+          [trText('Category', 'Категория'),    tr(cat, 'name')],
+          [trText('Period', 'Период'),      tr(artifact, 'period')],
+          [trText('Dating', 'Датировка'),      tr(artifact, 'periodYears')],
+          [trText('Culture', 'Культура'),     tr(artifact, 'culture')],
+          [trText('Material', 'Материал'),    tr(artifact, 'material')],
+          [trText('Technique', 'Техника'),   tr(artifact, 'technique')],
+          [trText('Dimensions', 'Размеры'),  tr(artifact, 'dimensions')],
+          [trText('Location', 'Локация'),    tr(artifact, 'location')],
+          ...(artifact.catalogNumber ? [[trText('Cat. No.', 'Кат. №'), artifact.catalogNumber]] : [])
         ].map(([l, v]) => `
         <div class="infobox-row">
           <span class="info-label">${l}</span>
