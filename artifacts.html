@@ -768,7 +768,7 @@
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeOverlay(); });
 
   // ── State ─────────────────────────────────────
-  const state = { activeCategory: 'all', searchQuery: '', sortBy: 'default', displayMode: 'grid' };
+  // We reuse the global 'state' object from encyclopedia.js
 
   // ── Filter & sort ─────────────────────────────
   function filterAndSort() {
