@@ -640,15 +640,7 @@
   </div>
 
   <div class="nav-right">
-    <button class="lang-btn" id="lang-toggle" aria-label="Switch language">
-      <span id="lang-icon">🌐</span>
-      <span id="lang-label">RU</span>
-    </button>
-    <div class="nav-sep"></div>
-    <button class="theme-btn" id="theme-toggle" aria-label="Toggle colour theme">
-      <span id="theme-icon">☀️</span>
-      <span id="theme-label">Light</span>
-    </button>
+    <!-- Navbar actions removed per user request -->
   </div>
 
 </nav>
@@ -694,20 +686,22 @@
   <!-- MAIN -->
   <main class="main-content" role="main">
 
-    <!-- Top Bar with Tagline & Search -->
+    <!-- Page Header -->
+    <header class="page-header" style="margin-bottom: 24px;">
+      <div class="page-eyebrow">🏺 <span data-i18n="eyebrow">Complete Catalog</span></div>
+      <h1 class="page-title" id="page-title" data-i18n="pageTitle">Artifact Collection</h1>
+      <p class="page-subtitle" data-i18n="pageSubtitle">
+        Full collection of Bronze Age artifacts from Central Kazakhstan — ceramics, jewelry, stone tools and bone ornaments.
+      </p>
+    </header>
+
+    <!-- Search & Controls -->
     <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--border);">
-      <div style="display: flex; align-items: center; gap: 24px;">
-        <p style="font-size: 13px; color: var(--text3); line-height: 1.5;" data-i18n="tagline">Open Encyclopedia of<br>Kazakhstan Archaeology</p>
-        <button class="theme-btn" id="theme-toggle-inner" aria-label="Toggle colour theme">
-          <span id="theme-icon-inner">☀️</span>
-          <span id="theme-label-inner">Light</span>
-        </button>
-      </div>
-      <div class="search-wrap" style="flex: 1; max-width: 400px; min-width: 260px; margin: 0;">
-        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text3); pointer-events: none;">
+      <div class="search-wrap" style="flex: 1; max-width: 440px; min-width: 260px; margin: 0; position: relative;">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text3); pointer-events: none;">
           <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
         </svg>
-        <input id="catalog-search" type="search" placeholder="Search artifacts..." aria-label="Search artifacts" autocomplete="off" style="width: 100%; padding: 10px 16px 10px 42px; background: var(--card); border: 1px solid var(--border); border-radius: 100px; color: var(--text); font-size: 14px; outline: none; transition: var(--tr); font-family: inherit;">
+        <input id="catalog-search" type="search" placeholder="Search artifacts..." aria-label="Search artifacts" autocomplete="off" style="width: 100%; padding: 12px 16px 12px 42px; background: var(--card); border: 1px solid var(--border); border-radius: 100px; color: var(--text); font-size: 14px; outline: none; transition: var(--tr); font-family: inherit;">
       </div>
     </div>
 
@@ -893,26 +887,15 @@
     }
   };
 
-  const lbtn  = document.getElementById('lang-toggle');
-  const licon = document.getElementById('lang-icon');
-  const llbl  = document.getElementById('lang-label');
-
-  applyLang(localStorage.getItem('archaeo-lang') || 'en');
-
-  if (lbtn) {
-    lbtn.addEventListener('click', () => {
-      const next = document.documentElement.dataset.lang === 'en' ? 'ru' : 'en';
-      applyLang(next);
-      localStorage.setItem('archaeo-lang', next);
-    });
-  }
+  // lbtn is removed, skipping event listener
 
   function applyLang(l) {
     document.documentElement.dataset.lang = l;
-    if (licon) licon.textContent = '🌐';
-    if (llbl)  llbl.textContent  = l === 'en' ? 'RU' : 'EN';
     
+    if (typeof STRINGS === 'undefined') return;
     const s = STRINGS[l];
+    if (!s) return;
+
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.dataset.i18n;
       if (s[key] !== undefined) el.innerHTML = s[key];
@@ -928,33 +911,10 @@
 
   // ── Theme ─────────────────────────────────────
   const html  = document.documentElement;
-  const tbtn  = document.getElementById('theme-toggle');
-  const ticon = document.getElementById('theme-icon');
-  const tlbl  = document.getElementById('theme-label');
-
-  const tbtn2 = document.getElementById('theme-toggle-inner');
-  const ticon2= document.getElementById('theme-icon-inner');
-  const tlbl2 = document.getElementById('theme-label-inner');
-
   applyTheme(localStorage.getItem('archaeo-theme') || 'dark');
-  
-  if (tbtn) tbtn.addEventListener('click', toggleTheme);
-  if (tbtn2) tbtn2.addEventListener('click', toggleTheme);
-
-  function toggleTheme() {
-    const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
-    applyTheme(next); localStorage.setItem('archaeo-theme', next);
-  }
 
   function applyTheme(t) {
     html.dataset.theme = t;
-    const isDark = (t === 'dark');
-    if (ticon) ticon.textContent = isDark ? '☀️' : '🌙';
-    if (tlbl)  tlbl.textContent  = isDark ? 'Light' : 'Dark';
-    if (tbtn2) {
-      ticon2.textContent = isDark ? '☀️' : '🌙';
-      tlbl2.textContent  = isDark ? 'Light' : 'Dark';
-    }
   }
 
   // ── Particle background ───────────────────────
