@@ -85,17 +85,24 @@
     }
 
     .nav-brand {
-      display: flex; align-items: center; gap: 10px;
+      display: flex; align-items: center;
       flex-shrink: 0; margin-right: 32px;
       text-decoration: none;
     }
-    .nav-logo-icon { font-size: 24px; }
-    .nav-logo-text {
-      font-family: 'Playfair Display', serif;
-      font-size: 19px; font-weight: 700;
-      background: linear-gradient(135deg, var(--gold-l), var(--purple-l));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .nav-logo-icon { font-size: 26px; }
+
+    /* ── LANGUAGE SWITCHER ─────────────────────── */
+    .lang-btn {
+      display: flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 20px;
+      border: 1px solid rgba(124,58,237,0.3);
+      background: rgba(124,58,237,0.07);
+      color: var(--purple-l); font-size: 13px; font-weight: 600;
+      cursor: pointer; transition: var(--tr); white-space: nowrap;
+    }
+    .lang-btn:hover { background: rgba(124,58,237,.16); border-color: rgba(124,58,237,.5); }
+    html[data-theme="light"] .lang-btn {
+      border-color: rgba(100,70,20,.3); background: rgba(100,70,20,.07); color: #8b6014;
     }
 
     .nav-links {
@@ -564,7 +571,6 @@
     html[data-theme="light"] .navbar { background: rgba(232,220,200,.97); border-bottom-color: rgba(100,70,20,.18); }
     html[data-theme="light"] .nav-link { color: #3a2a10; }
     html[data-theme="light"] .nav-link:hover { background: rgba(100,70,20,.07); color: #1a1208; }
-    html[data-theme="light"] .nav-logo-text { background: linear-gradient(135deg,#8b4e0f,#6b3a9e); -webkit-background-clip:text; background-clip:text; }
     html[data-theme="light"] .sidebar { background: rgba(237,227,208,.97); border-right-color: rgba(100,70,20,.15); }
     html[data-theme="light"] .sidebar-item { color: #3a2a10; }
     html[data-theme="light"] .sidebar-item:hover, html[data-theme="light"] .sidebar-item.active { background: rgba(200,149,42,.15); color: #8b6014; }
@@ -623,9 +629,8 @@
 ═══════════════════════════════════════════ -->
 <nav class="navbar" role="navigation" aria-label="Main navigation">
 
-  <a href="index.html" class="nav-brand" aria-label="ArchaeoKZ homepage">
+  <a href="index.html" class="nav-brand" aria-label="Go to homepage">
     <span class="nav-logo-icon">🏛️</span>
-    <span class="nav-logo-text">ArchaeoKZ</span>
   </a>
 
   <div class="nav-links" role="list">
@@ -635,9 +640,10 @@
   </div>
 
   <div class="nav-right">
-    <a href="identify.html" class="nav-btn nav-btn-primary" aria-label="Open AI Identifier">
-      🤖 AI Identifier
-    </a>
+    <button class="lang-btn" id="lang-toggle" aria-label="Switch language">
+      <span id="lang-icon">🌐</span>
+      <span id="lang-label">RU</span>
+    </button>
     <div class="nav-sep"></div>
     <button class="theme-btn" id="theme-toggle" aria-label="Toggle colour theme">
       <span id="theme-icon">☀️</span>
@@ -655,19 +661,19 @@
 
     <div class="sb-section">
       <div class="sb-title">Pages</div>
-      <a href="index.html"     class="sidebar-item"><span class="sb-icon">🏠</span><span>Home</span></a>
-      <a href="artifacts.html" class="sidebar-item active"><span class="sb-icon">🏺</span><span>All Artifacts</span><span class="sb-count">7</span></a>
-      <a href="identify.html"  class="sidebar-item sb-ai-tool"><span class="sb-icon">🤖</span><span>AI Identifier</span><span class="sb-badge">NEW</span></a>
+      <a href="index.html"     class="sidebar-item"><span class="sb-icon">🏠</span><span data-i18n="home">Home</span></a>
+      <a href="artifacts.html" class="sidebar-item active"><span class="sb-icon">🏺</span><span data-i18n="allArtifacts">All Artifacts</span><span class="sb-count">7</span></a>
+      <a href="identify.html"  class="sidebar-item sb-ai-tool"><span class="sb-icon">🤖</span><span data-i18n="ai">AI Identifier</span><span class="sb-badge">NEW</span></a>
     </div>
 
     <div class="sb-section">
       <div class="sb-title">Category</div>
       <ul style="list-style:none">
-        <li class="sidebar-item active" data-cat="all">     <span class="sb-icon">🏛️</span><span>All</span>          <span class="sb-count">7</span></li>
-        <li class="sidebar-item" data-cat="ceramics">       <span class="sb-icon">🏺</span><span>Ceramics</span>      <span class="sb-count">3</span></li>
-        <li class="sidebar-item" data-cat="jewelry">        <span class="sb-icon">💍</span><span>Jewelry</span>       <span class="sb-count">1</span></li>
-        <li class="sidebar-item" data-cat="stone">          <span class="sb-icon">🪨</span><span>Stone Objects</span> <span class="sb-count">2</span></li>
-        <li class="sidebar-item" data-cat="bone">           <span class="sb-icon">🦴</span><span>Bone Objects</span>  <span class="sb-count">1</span></li>
+        <li class="sidebar-item active" data-cat="all">     <span class="sb-icon">🏛️</span><span data-i18n="catAll">All</span>          <span class="sb-count">7</span></li>
+        <li class="sidebar-item" data-cat="ceramics">       <span class="sb-icon">🏺</span><span data-i18n="catCeramics">Ceramics</span>      <span class="sb-count">3</span></li>
+        <li class="sidebar-item" data-cat="jewelry">        <span class="sb-icon">💍</span><span data-i18n="catJewelry">Jewelry</span>       <span class="sb-count">1</span></li>
+        <li class="sidebar-item" data-cat="stone">          <span class="sb-icon">🪸</span><span data-i18n="catStone">Stone Objects</span> <span class="sb-count">2</span></li>
+        <li class="sidebar-item" data-cat="bone">           <span class="sb-icon">🦴</span><span data-i18n="catBone">Bone Objects</span>  <span class="sb-count">1</span></li>
       </ul>
     </div>
 
@@ -697,22 +703,22 @@
 
     <!-- Page Header -->
     <header class="page-header">
-      <div class="page-eyebrow">🏺 Complete Catalog</div>
-      <h1 class="page-title" id="page-title">Artifact Collection</h1>
-      <p class="page-subtitle">
+      <div class="page-eyebrow">🏺 <span data-i18n="eyebrow">Complete Catalog</span></div>
+      <h1 class="page-title" id="page-title" data-i18n="pageTitle">Artifact Collection</h1>
+      <p class="page-subtitle" data-i18n="pageSubtitle">
         Full collection of Bronze Age artifacts from Central Kazakhstan — ceramics, jewelry, stone tools and bone ornaments.
       </p>
     </header>
 
     <!-- Filter bar -->
     <div class="filter-bar" role="toolbar" aria-label="Filter by category">
-      <span class="filter-label">Filter:</span>
+      <span class="filter-label" data-i18n="filterLabel">Filter:</span>
       <div class="filter-pills" role="tablist">
-        <button class="filter-pill active" data-cat="all"      role="tab">🏛️ All</button>
-        <button class="filter-pill" data-cat="ceramics"        role="tab">🏺 Ceramics</button>
-        <button class="filter-pill" data-cat="jewelry"         role="tab">💍 Jewelry</button>
-        <button class="filter-pill" data-cat="stone"           role="tab">🪨 Stone</button>
-        <button class="filter-pill" data-cat="bone"            role="tab">🦴 Bone</button>
+        <button class="filter-pill active" data-cat="all"      role="tab" data-i18n="catAll">🏛️ All</button>
+        <button class="filter-pill" data-cat="ceramics"        role="tab" data-i18n="catCeramics">🏺 Ceramics</button>
+        <button class="filter-pill" data-cat="jewelry"         role="tab" data-i18n="catJewelry">💍 Jewelry</button>
+        <button class="filter-pill" data-cat="stone"           role="tab" data-i18n="catStone">🪨 Stone</button>
+        <button class="filter-pill" data-cat="bone"            role="tab" data-i18n="catBone">🦴 Bone</button>
       </div>
     </div>
 
