@@ -458,13 +458,13 @@
   <!-- Links -->
   <div class="nav-links" role="list">
     <a href="index.html" class="nav-link" role="listitem">
-      <span class="nav-link-icon">🏠</span> Home
+      <span class="nav-link-icon">🏠</span><span data-i18n="home"> Home</span>
     </a>
     <a href="artifacts.html" class="nav-link" role="listitem">
-      <span class="nav-link-icon">🏺</span> Artifacts
+      <span class="nav-link-icon">🏺</span><span data-i18n="artifacts"> Artifacts</span>
     </a>
     <a href="identify.html" class="nav-link active" role="listitem">
-      <span class="nav-link-icon">🤖</span> AI Identifier
+      <span class="nav-link-icon">🤖</span><span data-i18n="ai"> AI Identifier</span>
     </a>
   </div>
 
@@ -624,10 +624,6 @@ function applyLang(l) {
     const key = el.dataset.i18n;
     if (s[key] !== undefined) el.innerHTML = s[key];
   });
-  
-  if (navLinks[0]) navLinks[0].lastChild.textContent = ' ' + s.home;
-  if (navLinks[1]) navLinks[1].lastChild.textContent = ' ' + s.artifacts;
-  if (navLinks[2]) navLinks[2].lastChild.textContent = ' ' + s.ai;
 }
 
 const savedLang = localStorage.getItem('archaeo-lang') || 'en';
