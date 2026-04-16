@@ -18,7 +18,8 @@
   <style>
     /* ── RESET ─────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; background: var(--bg, #07070f); }
+    html[data-theme="light"] { background: #f4ede0; }
 
     /* ── VARIABLES ──────────────────────────────── */
     :root {
@@ -673,7 +674,7 @@
   <div class="nav-links" role="list">
     <a href="index.html"     class="nav-link"        role="listitem"><span class="nav-link-icon">🏠</span><span data-i18n="navHome"> Home</span></a>
     <a href="artifacts.html" class="nav-link active"  role="listitem"><span class="nav-link-icon">🏺</span><span data-i18n="navArtifacts"> Artifacts</span></a>
-    <a href="identify.html"  class="nav-link"         role="listitem"><span class="nav-link-icon">🤖</span><span data-i18n="navAI"> AI Identifier</span></a>
+    <a href="identify.html"  class="nav-link"         role="listitem" id="nav-ai-link"><span class="nav-link-icon">🤖</span><span class="nav-ai-text"> AI Identifier</span></a>
   </div>
 
   <div class="nav-right">
@@ -967,6 +968,9 @@
       const key = el.dataset.i18n;
       if (s[key] !== undefined) el.innerHTML = s[key];
     });
+
+    const aiTextSpan = document.querySelector('#nav-ai-link .nav-ai-text');
+    if (aiTextSpan) aiTextSpan.textContent = ' ' + s.navAI;
     
     // result meta
     const rm = document.querySelector('.result-meta');
@@ -1025,3 +1029,19 @@
       ctx.clearRect(0,0,W,H);
       pts.forEach(p => {
         ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle=`rgba(200,149,42,${p.a})`; ctx.fill();
+        p.x+=p.dx; p.y+=p.dy;
+        if(p.x<0||p.x>W) p.dx*=-1;
+        if(p.y<0||p.y>H) p.dy*=-1;
+      });
+      requestAnimationFrame(draw);
+    })();
+    window.addEventListener('resize', () => { W=canvas.width=window.innerWidth; H=canvas.height=window.innerHeight; });
+  }
+
+  // Show page after text and theme are fully injected
+  requestAnimationFrame(() => document.body.classList.add('ready'));
+
+</script>
+</body>
+</html>
