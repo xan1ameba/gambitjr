@@ -18,7 +18,8 @@
   <style>
     /* ── RESET ─────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; background: var(--bg, #07070f); }
+    html[data-theme="light"] { background: #f4ede0; }
 
     /* ── VARIABLES ──────────────────────────────── */
     :root {
@@ -463,8 +464,8 @@
     <a href="artifacts.html" class="nav-link" role="listitem">
       <span class="nav-link-icon">🏺</span><span data-i18n="artifacts"> Artifacts</span>
     </a>
-    <a href="identify.html" class="nav-link" role="listitem">
-      <span class="nav-link-icon">🤖</span><span data-i18n="ai"> AI Identifier</span>
+    <a href="identify.html" class="nav-link" role="listitem" id="nav-ai-link">
+      <span class="nav-link-icon">🤖</span><span class="nav-ai-text"> AI Identifier</span>
     </a>
   </div>
 
@@ -664,6 +665,9 @@
     if (hsl[0]) hsl[0].textContent = s.statArt;
     if (hsl[1]) hsl[1].textContent = s.statYrs;
     if (hsl[2]) hsl[2].textContent = s.statCat;
+    // nav link AI explicit replacement
+    const aiTextSpan = document.querySelector('#nav-ai-link .nav-ai-text');
+    if (aiTextSpan) aiTextSpan.textContent = ' ' + s.ai;
     // footer
     // footer
     const footer = document.querySelector('.site-footer p');
