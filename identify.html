@@ -5,8 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Artifact Identifier — ArchaeoKZ</title>
   <link rel="stylesheet" href="styles.css">
+  <script>
+    const savedTheme = localStorage.getItem('archaeo-theme') || 'dark';
+    document.documentElement.dataset.theme = savedTheme;
+  </script>
   <style>
     /* ── PAGE LAYOUT ─────────────────────────────── */
+    html { background: var(--bg, #07070f); transition: background 0.3s; }
+    html[data-theme="light"] { background: #f4ede0; }
     .id-page {
       min-height: 100vh;
       display: flex;
@@ -16,35 +22,19 @@
       position: relative;
       z-index: 1;
     }
+    body {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
+    }
+    body.ready {
+      opacity: 1;
+      visibility: visible;
+    }
 
     .id-back {
       align-self: flex-start;
-      margin-bottom: 32px;  document.getElementById('r-icon').textContent        = r.icon || '🏺';
-  document.getElementById('r-name').textContent        = r.name || '—';
-  document.getElementById('r-subtitle').textContent    = r.subtitle || '';
-  document.getElementById('r-period').textContent      = r.period || '—';
-  document.getElementById('r-dating').textContent      = r.dating || '—';
-  document.getElementById('r-culture').textContent     = r.culture || '—';
-  document.getElementById('r-category').textContent    = r.category || '—';
-  document.getElementById('r-material').textContent    = r.material || '—';
-  document.getElementById('r-technique').textContent   = r.technique || '—';
-  document.getElementById('r-region').textContent      = r.region || '—';
-  document.getElementById('r-dimensions').textContent  = r.dimensions || '—';
-  document.getElementById('r-description').textContent = r.description || '—';
-  document.getElementById('r-significance').textContent= r.significance || '—';
-
-  const pct = Math.min(100, Math.max(0, Number(r.confidence) || 70));
-  document.getElementById('conf-pct').textContent = pct + '%';
-  setTimeout(() => {
-    document.getElementById('conf-fill').style.width = pct + '%';
-  }, 100);
-
-  document.getElementById('result-card').style.display = 'block';
-}
-
-// ── ERROR ──────────────────────────────────────────
-function showError(msg) {
-
+      margin-bottom: 32px;
       color: var(--gold-l, #e8b94f);
       font-size: 14px;
       cursor: pointer;
@@ -489,8 +479,8 @@ function showError(msg) {
     <a href="artifacts.html" class="nav-link" role="listitem">
       <span class="nav-link-icon">🏺</span><span data-i18n="artifacts"> Artifacts</span>
     </a>
-    <a href="identify.html" class="nav-link active" role="listitem">
-      <span class="nav-link-icon">🤖</span><span data-i18n="ai"> AI Identifier</span>
+    <a href="identify.html" class="nav-link active" role="listitem" id="nav-ai-link">
+      <span class="nav-link-icon">🤖</span><span class="nav-ai-text"> AI Identifier</span>
     </a>
   </div>
 
@@ -650,6 +640,9 @@ function applyLang(l) {
     const key = el.dataset.i18n;
     if (s[key] !== undefined) el.innerHTML = s[key];
   });
+
+  const aiTextSpan = document.querySelector('#nav-ai-link .nav-ai-text');
+  if (aiTextSpan) aiTextSpan.textContent = ' ' + s.ai;
 }
 
 const savedLang = localStorage.getItem('archaeo-lang') || 'en';
@@ -898,6 +891,9 @@ function showError(msg) {
   el.textContent = msg;
   el.style.display = 'block';
 }
+
+// Show page after text and theme are fully injected
+requestAnimationFrame(() => document.body.classList.add('ready'));
 </script>
 </body>
 </html>
