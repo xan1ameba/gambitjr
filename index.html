@@ -657,6 +657,7 @@
     const navLinks = document.querySelectorAll('.nav-link');
     if (navLinks[0]) navLinks[0].lastChild.textContent = ' ' + s.home;
     if (navLinks[1]) navLinks[1].lastChild.textContent = ' ' + s.artifacts;
+    if (navLinks[2]) navLinks[2].lastChild.textContent = ' ' + s.ai;
     // footer
     const footer = document.querySelector('.site-footer p');
     if (footer) footer.innerHTML = `${s.footer} <strong>Gambit Jr.</strong> · FLL Season 2024–2025`;
