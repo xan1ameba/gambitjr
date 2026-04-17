@@ -247,6 +247,113 @@ const ARTIFACTS = [
       <p>Spindle whorls are among the most common find types at Bronze Age settlements and in burials across Eurasia. Their abundance indicates that spinning and weaving were key branches of the domestic economy, traditionally carried out by women. Assemblages of spindle whorls in female burials attest to the high social status of the skilled craftswoman.</p>
     `,
     tags: ['Bronze Age', 'ceramics', 'spindle whorl', 'spinning', 'weaving', 'daily life', 'domestic economy', 'female dress', 'Andronovo culture', 'Kazakhstan']
+  },
+
+  {
+    id: 'mirror-bronze',
+    name: 'Bronze Mirror',
+    nameEn: 'Bronze Mirror',
+    subtitle: 'Cast bronze mirror with a central loop',
+    category: 'jewelry',
+    period: 'Bronze Age',
+    periodYears: '18th–12th century BCE',
+    culture: 'Andronovo Cultural-Historical Community',
+    material: 'Bronze',
+    technique: 'Casting, polishing',
+    dimensions: 'Diameter: ~10-15 cm',
+    location: 'Kazakhstan',
+    catalogNumber: null,
+    images: [
+      'mirror-bronze-01.jpg',
+      'mirror-bronze-02.jpg',
+      'mirror-bronze-03.jpg',
+      'mirror-bronze-04.jpg',
+      'mirror-bronze-05.jpg'
+    ],
+    abstract: 'A cast bronze mirror used by the elite of the Bronze Age steppe communities, serving both functional and ceremonial purposes.',
+    fullText: `
+      <h3>Description</h3>
+      <p>A round, flat bronze mirror with a raised edge and a functional loop on the back for attachment or holding. The reflective surface would originally have been highly polished to a golden sheen. These artifacts frequently acquire a rich, green copper-based patina from millennia of deposition in the soil.</p>
+
+      <h3>Symbolic Significance</h3>
+      <p>In Bronze Age nomadic and settled societies, mirrors were widely considered objects of luxury and high social status. Beyond personal grooming, they held ritual and magical functions, often associated with sun worship, the soul, and transitions to the afterlife. As such, they are typically found in high-status burials, especially belonging to women.</p>
+
+      <h3>Manufacturing Technology</h3>
+      <p>Mirrors of this type were typically produced by casting molten bronze in specialized stone or clay moulds. Following casting, the reflective face was painstakingly ground and polished.</p>
+    `,
+    tags: ['Bronze Age', 'jewelry', 'bronze', 'mirror', 'ritual', 'Andronovo culture', 'Kazakhstan']
+  },
+
+  {
+    id: 'altar-stone',
+    name: 'Stone Altar',
+    nameEn: 'Stone Altar',
+    subtitle: 'Ritual stone offering table (sacrificial altar)',
+    category: 'stone',
+    period: 'Early Iron Age / Late Bronze Age',
+    periodYears: '1st millennium BCE',
+    culture: 'Saka / Steppe Nomadic Cultures',
+    material: 'Stone',
+    technique: 'Carving, grinding',
+    dimensions: 'Varies; typically 20-40 cm length',
+    location: 'Kazakhstan',
+    catalogNumber: null,
+    images: [
+      'altar-stone-01.jpg',
+      'altar-stone-02.jpg',
+      'altar-stone-03.jpg',
+      'altar-stone-04.jpg',
+      'altar-stone-05.jpg',
+      'altar-stone-06.jpg',
+      'altar-stone-07.jpg',
+      'altar-stone-08.jpg',
+      'altar-stone-09.jpg',
+      'altar-stone-10.jpg'
+    ],
+    abstract: 'A carved stone altar or offering table, commonly associated with the complex religious practices and fire worship of early nomadic peoples in Central Asia.',
+    fullText: `
+      <h3>Description</h3>
+      <p>A heavy, carved stone tray or footed altar with a depression in the center. Such altars often feature distinctive legs or carved animal motifs. The basin was used to hold materials for ceremonies or offerings.</p>
+
+      <h3>Ritual Use</h3>
+      <p>Stone altars were central to religious rituals among Eurasian steppe nomads, notably the Saka. They were often used to burn small amounts of aromatic materials (like hemp or ephedra), fat, or to hold ritual liquids. Fire and smoke played a vital purifying and communicative role in interacting with the divine.</p>
+
+      <h3>Archaeological Context</h3>
+      <p>In Kazakhstan and neighboring regions, these altars are often recovered from complex funerary environments or sanctuaries, indicating the structured nature of their religious rites.</p>
+    `,
+    tags: ['Stone', 'Altar', 'Ritual', 'Saka', 'Early Iron Age', 'Nomads', 'Kazakhstan']
+  },
+
+  {
+    id: 'incense-burner',
+    name: 'Incense Burner',
+    nameEn: 'Incense Burner',
+    subtitle: 'Ceramic censer with a handle',
+    category: 'ceramics',
+    period: 'Early Iron Age / Late Bronze Age',
+    periodYears: '1st millennium BCE',
+    culture: 'Saka / Steppe Nomadic Cultures',
+    material: 'Ceramics',
+    technique: 'Hand modelling, firing',
+    dimensions: 'Diameter: ~10-15 cm',
+    location: 'Kazakhstan',
+    catalogNumber: null,
+    images: [
+      'incense-burner-01.jpg',
+      'incense-burner-02.jpg'
+    ],
+    abstract: 'A portable censer used by ancient nomads for burning aromatic herbs and substances for spiritual purification.',
+    fullText: `
+      <h3>Description</h3>
+      <p>A small, bowl-like receptacle often designed with a handle or pedestal to keep heat away from the user. It is built to house smoldering herbs or incense without cracking from thermal stress.</p>
+
+      <h3>Ceremonial Function</h3>
+      <p>As detailed by historical sources such as Herodotus, ancient nomadic tribes utilized incense burners to inhale the smoke of specific plants in enclosed tents. This practice was associated with purification rites following burials, or for entering trance states during spiritual ceremonies.</p>
+
+      <h3>Historical Timeline</h3>
+      <p>While some designs trace back to the Late Bronze Age, the use of specialized, portable incense burners reached its zenith among equestrian nomadic cultures in the 1st millennium BCE across the Eurasian steppe.</p>
+    `,
+    tags: ['Ceramics', 'Incense Burner', 'Ritual', 'Saka', 'Early Iron Age', 'Kazakhstan']
   }
 ];
 
@@ -318,6 +425,27 @@ const RU_DB = {
     material: 'Глина (обожженная)', technique: 'Ручная лепка, обжиг', dimensions: 'Диаметр: ~4–5 см, Высота: ~3–4 см', location: 'Казахстан',
     abstract: 'Глиняное пряслице — маховичок для веретена, использовавшийся при прядении шерсти. Доказательство развитого текстильного производства.',
     fullText: '<h3>Описание</h3><p>Форма биконическая со сквозным центральным отверстием для деревянного стержня веретена. Служило утяжелителем для поддержания вращения при изготовлении нитей из шерсти.</p>'
+  },
+  'mirror-bronze': {
+    name: 'Бронзовое зеркало', subtitle: 'Литое бронзовое зеркало с центральной петелькой',
+    period: 'Бронзовый век', periodYears: 'XVIII–XII века до н.э.', culture: 'Андроновская культурно-историческая общность',
+    material: 'Бронза', technique: 'Литье, полировка', dimensions: 'Диаметр: ~10-15 см', location: 'Казахстан',
+    abstract: 'Литое бронзовое зеркало, использовавшееся элитой степных сообществ эпохи бронзы для функциональных и церемониальных целей.',
+    fullText: '<h3>Описание</h3><p>Круглое плоское бронзовое зеркало с рельефным краем и функциональной петелькой на обратной стороне. Отражающая поверхность была отполирована до золотистого блеска.</p><h3>Символика</h3><p>В древности зеркала считались предметами роскоши и высокого социального статуса, а также наделялись магическими свойствами, связанными с культом солнца и душой.</p>'
+  },
+  'altar-stone': {
+    name: 'Каменный жертвенник', subtitle: 'Ритуальный каменный столик',
+    period: 'Ранний железный век', periodYears: 'I тыс. до н.э.', culture: 'Саки / Кочевые культуры',
+    material: 'Камень', technique: 'Резьба, шлифовка', dimensions: 'Длина: ~20-40 см', location: 'Казахстан',
+    abstract: 'Резной каменный жертвенник, связанный со сложными религиозными практиками и огнепоклонством ранних кочевников.',
+    fullText: '<h3>Описание</h3><p>Тяжелый резной каменный поднос с углублением в центре, часто на ножках. Использовался для проведения ритуалов.</p><h3>Использование</h3><p>На жертвенниках сжигали ароматические травы, жир или оставляли подношения. Огонь и дым играли важнейшую очистительную роль в ритуалах евразийских номадов.</p>'
+  },
+  'incense-burner': {
+    name: 'Курильница', subtitle: 'Керамическая курильница с ручкой',
+    period: 'Ранний железный век', periodYears: 'I тыс. до н.э.', culture: 'Саки / Кочевые культуры',
+    material: 'Керамика', technique: 'Лепка', dimensions: 'Диаметр: ~10-15 см', location: 'Казахстан',
+    abstract: 'Переносная курильница, использовавшаяся древними кочевниками для сжигания благовоний и духовного очищения.',
+    fullText: '<h3>Описание</h3><p>Небольшая чашеобразная емкость, предназначенная для розжига трав и благовоний, часто снабженная ручкой или поддоном для защиты от жара.</p><h3>Функция</h3><p>Использовались во время обрядов очищения и духовных практик, вдыхая дым священных растений.</p>'
   }
 };
 
