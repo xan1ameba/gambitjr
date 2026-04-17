@@ -264,11 +264,11 @@ const ARTIFACTS = [
     location: 'Kazakhstan',
     catalogNumber: null,
     images: [
-      'mirror-bronze-01.jpg',
-      'mirror-bronze-02.jpg',
-      'mirror-bronze-03.jpg',
-      'mirror-bronze-04.jpg',
-      'mirror-bronze-05.jpg'
+      'Бр айна1.jpg',
+      'Бр айна 1,2.jpg',
+      'Бр айна 1,3.jpg',
+      'Бр айна 2.jpg',
+      'Бр айна 3.jpg'
     ],
     abstract: 'A cast bronze mirror used by the elite of the Bronze Age steppe communities, serving both functional and ceremonial purposes.',
     fullText: `
@@ -299,16 +299,16 @@ const ARTIFACTS = [
     location: 'Kazakhstan',
     catalogNumber: null,
     images: [
-      'altar-stone-01.jpg',
-      'altar-stone-02.jpg',
-      'altar-stone-03.jpg',
-      'altar-stone-04.jpg',
-      'altar-stone-05.jpg',
-      'altar-stone-06.jpg',
-      'altar-stone-07.jpg',
-      'altar-stone-08.jpg',
-      'altar-stone-09.jpg',
-      'altar-stone-10.jpg'
+      'Жертвеник2,1.jpg',
+      'Жертвеник2,2.jpg',
+      'Жертвеник2,3.jpg',
+      'Жертвеник2,4.jpg',
+      'Жертвеник2,5.jpg',
+      'Жертвеник2,6.jpg',
+      'Жертвеник2,7.jpg',
+      'Жертвеник2,8.jpg',
+      'Жертвеник2,9.jpg',
+      'Жертвеник2,10.jpg'
     ],
     abstract: 'A carved stone altar or offering table, commonly associated with the complex religious practices and fire worship of early nomadic peoples in Central Asia.',
     fullText: `
@@ -339,8 +339,8 @@ const ARTIFACTS = [
     location: 'Kazakhstan',
     catalogNumber: null,
     images: [
-      'incense-burner-01.jpg',
-      'incense-burner-02.jpg'
+      'Курильница.jpg',
+      'Курильница 1.jpg'
     ],
     abstract: 'A portable censer used by ancient nomads for burning aromatic herbs and substances for spiritual purification.',
     fullText: `
