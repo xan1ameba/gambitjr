@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,8 +12,15 @@
   </script>
   <style>
     /* ── PAGE LAYOUT ─────────────────────────────── */
-    html { background: var(--bg, #07070f); transition: background 0.3s; }
-    html[data-theme="light"] { background: #f4ede0; }
+    html {
+      background: var(--bg, #07070f);
+      transition: background 0.3s;
+    }
+
+    html[data-theme="light"] {
+      background: #f4ede0;
+    }
+
     .id-page {
       min-height: 100vh;
       display: flex;
@@ -22,11 +30,13 @@
       position: relative;
       z-index: 1;
     }
+
     body {
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.3s ease;
     }
+
     body.ready {
       opacity: 1;
       visibility: visible;
@@ -45,61 +55,114 @@
       opacity: 0.8;
       transition: opacity 0.2s;
     }
-    .id-back:hover { opacity: 1; }
+
+    .id-back:hover {
+      opacity: 1;
+    }
 
     /* ── NAVBAR OVERRIDES ───────────────────────── */
     .navbar {
       padding: 0 32px !important;
       gap: 0 !important;
     }
+
     .nav-brand {
-      display: flex; align-items: center;
-      flex-shrink: 0; margin-right: 32px;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      margin-right: 32px;
       text-decoration: none;
     }
-    .nav-logo-icon { font-size: 26px; }
+
+    .nav-logo-icon {
+      font-size: 26px;
+    }
 
     /* ── HEADER ──────────────────────────────────── */
     .lang-btn {
-      display: flex; align-items: center; gap: 6px;
-      padding: 6px 14px; border-radius: 20px;
-      border: 1px solid rgba(124,58,237,.3);
-      background: rgba(124,58,237,.08);
-      color: var(--purple-l); font-size: 13px; font-weight: 600;
-      cursor: pointer; transition: var(--tr); white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(124, 58, 237, .3);
+      background: rgba(124, 58, 237, .08);
+      color: var(--purple-l);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--tr);
+      white-space: nowrap;
     }
-    .lang-btn:hover { background: rgba(124,58,237,.16); border-color: rgba(124,58,237,.5); }
+
+    .lang-btn:hover {
+      background: rgba(124, 58, 237, .16);
+      border-color: rgba(124, 58, 237, .5);
+    }
+
     html[data-theme="light"] .lang-btn {
-      border-color: rgba(100,70,20,.3); background: rgba(100,70,20,.07); color: #8b6014;
+      border-color: rgba(100, 70, 20, .3);
+      background: rgba(100, 70, 20, .07);
+      color: #8b6014;
     }
 
     .nav-links {
-      display: flex; align-items: center; gap: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
       flex: 1;
     }
+
     .nav-link {
-      display: inline-flex; align-items: center; gap: 7px;
-      padding: 8px 16px; border-radius: var(--r-sm);
-      font-size: 14px; font-weight: 500;
-      color: var(--text2); border: 1px solid transparent;
-      transition: var(--tr); white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 16px;
+      border-radius: var(--r-sm);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text2);
+      border: 1px solid transparent;
+      transition: var(--tr);
+      white-space: nowrap;
       text-decoration: none;
     }
-    .nav-link:hover { color: var(--text); background: rgba(255,255,255,.05); }
-    .nav-link.active { color: var(--text); background: rgba(255,255,255,.06); }
-    .nav-link-icon { font-size: 16px; }
+
+    .nav-link:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, .05);
+    }
+
+    .nav-link.active {
+      color: var(--text);
+      background: rgba(255, 255, 255, .06);
+    }
+
+    .nav-link-icon {
+      font-size: 16px;
+    }
 
     .nav-right {
-      display: flex; align-items: center; gap: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
       margin-left: auto;
     }
-    .nav-sep { width: 1px; height: 22px; background: var(--border); flex-shrink: 0; margin: 0 6px; }
+
+    .nav-sep {
+      width: 1px;
+      height: 22px;
+      background: var(--border);
+      flex-shrink: 0;
+      margin: 0 6px;
+    }
 
     /* ── TITLES ──────────────────────────────────── */
     .id-header {
       text-align: center;
       margin-bottom: 48px;
     }
+
     .id-eyebrow {
       font-size: 12px;
       letter-spacing: 0.18em;
@@ -108,6 +171,7 @@
       margin-bottom: 12px;
       opacity: 0.8;
     }
+
     .id-title {
       font-family: 'Playfair Display', serif;
       font-size: clamp(36px, 6vw, 56px);
@@ -116,83 +180,42 @@
       line-height: 1.15;
       color: #f0e8d0;
     }
+
     .id-subtitle {
       font-size: 15px;
-      color: rgba(240,232,208,0.55);
+      color: rgba(240, 232, 208, 0.55);
       max-width: 500px;
       line-height: 1.6;
       margin: 0 auto;
     }
+
     html[data-theme="light"] .id-title {
       background: none;
       -webkit-text-fill-color: initial;
       color: #1a1208;
     }
 
-    /* ── API KEY INPUT ───────────────────────────── */
-    .api-bar {
-      width: 100%;
-      max-width: 680px;
-      margin-bottom: 28px;
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(200,149,42,0.2);
-      border-radius: 12px;
-      padding: 10px 16px;
-    }
-    .api-bar label {
-      font-size: 12px;
-      color: rgba(200,149,42,0.7);
-      white-space: nowrap;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-    }
-    .api-bar input {
-      flex: 1;
-      background: none;
-      border: none;
-      outline: none;
-      color: #f0e8d0;
-      font-size: 13px;
-      font-family: monospace;
-    }
-    .api-bar input::placeholder { color: rgba(240,232,208,0.25); }
-    .api-save-btn {
-      padding: 5px 14px;
-      border-radius: 8px;
-      border: 1px solid rgba(200,149,42,0.4);
-      background: rgba(200,149,42,0.1);
-      color: #e8b94f;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-      white-space: nowrap;
-    }
-    .api-save-btn:hover { background: rgba(200,149,42,0.2); }
-    .api-saved { color: #34d399; font-size: 12px; display: none; }
-
     /* ── UPLOAD ZONE ─────────────────────────────── */
     .upload-zone {
       width: 100%;
       max-width: 680px;
-      border: 2px dashed rgba(200,149,42,0.3);
+      border: 2px dashed rgba(200, 149, 42, 0.3);
       border-radius: 20px;
       padding: 52px 32px;
       text-align: center;
       cursor: pointer;
       transition: all 0.3s ease;
-      background: rgba(200,149,42,0.03);
+      background: rgba(200, 149, 42, 0.03);
       position: relative;
       margin-bottom: 32px;
     }
+
     .upload-zone:hover,
     .upload-zone.drag-over {
-      border-color: rgba(200,149,42,0.7);
-      background: rgba(200,149,42,0.07);
+      border-color: rgba(200, 149, 42, 0.7);
+      background: rgba(200, 149, 42, 0.07);
     }
+
     .upload-zone input[type="file"] {
       position: absolute;
       inset: 0;
@@ -201,15 +224,21 @@
       width: 100%;
       height: 100%;
     }
-    .upload-icon { font-size: 52px; margin-bottom: 16px; }
+
+    .upload-icon {
+      font-size: 52px;
+      margin-bottom: 16px;
+    }
+
     .upload-text {
       font-size: 16px;
-      color: rgba(240,232,208,0.7);
+      color: rgba(240, 232, 208, 0.7);
       margin-bottom: 6px;
     }
+
     .upload-sub {
       font-size: 13px;
-      color: rgba(240,232,208,0.35);
+      color: rgba(240, 232, 208, 0.35);
     }
 
     /* ── PREVIEW ─────────────────────────────────── */
@@ -220,28 +249,37 @@
       display: none;
       position: relative;
     }
+
     .preview-wrap img {
       width: 100%;
       max-height: 420px;
       object-fit: contain;
       border-radius: 16px;
-      border: 1px solid rgba(200,149,42,0.2);
-      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(200, 149, 42, 0.2);
+      background: rgba(0, 0, 0, 0.3);
     }
+
     .preview-clear {
       position: absolute;
-      top: 12px; right: 12px;
-      background: rgba(0,0,0,0.7);
-      border: 1px solid rgba(255,255,255,0.2);
+      top: 12px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       color: #fff;
       border-radius: 50%;
-      width: 32px; height: 32px;
-      display: flex; align-items: center; justify-content: center;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
       font-size: 16px;
       transition: background 0.2s;
     }
-    .preview-clear:hover { background: rgba(200,0,0,0.5); }
+
+    .preview-clear:hover {
+      background: rgba(200, 0, 0, 0.5);
+    }
 
     /* ── ANALYSE BUTTON ──────────────────────────── */
     .analyse-btn {
@@ -260,9 +298,21 @@
       display: none;
       margin-bottom: 40px;
     }
-    .analyse-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(200,149,42,0.4); }
-    .analyse-btn:active { transform: translateY(0); }
-    .analyse-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    .analyse-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(200, 149, 42, 0.4);
+    }
+
+    .analyse-btn:active {
+      transform: translateY(0);
+    }
+
+    .analyse-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
 
     /* ── LOADING ─────────────────────────────────── */
     .loading-state {
@@ -271,71 +321,102 @@
       align-items: center;
       gap: 16px;
       padding: 40px;
-      color: rgba(240,232,208,0.6);
+      color: rgba(240, 232, 208, 0.6);
       font-size: 14px;
     }
+
     .loading-ring {
-      width: 48px; height: 48px;
-      border: 3px solid rgba(200,149,42,0.15);
+      width: 48px;
+      height: 48px;
+      border: 3px solid rgba(200, 149, 42, 0.15);
       border-top-color: #c8952a;
       border-radius: 50%;
       animation: spin 0.9s linear infinite;
     }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .loading-steps { font-size: 13px; color: rgba(200,149,42,0.7); }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .loading-steps {
+      font-size: 13px;
+      color: rgba(200, 149, 42, 0.7);
+    }
 
     /* ── RESULT CARD ─────────────────────────────── */
     .result-card {
       display: none;
       width: 100%;
       max-width: 680px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(200,149,42,0.25);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(200, 149, 42, 0.25);
       border-radius: 20px;
       overflow: hidden;
       animation: fadeUp 0.5s ease;
     }
+
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .result-header {
-      background: linear-gradient(135deg, rgba(200,149,42,0.12), rgba(200,149,42,0.05));
-      border-bottom: 1px solid rgba(200,149,42,0.2);
+      background: linear-gradient(135deg, rgba(200, 149, 42, 0.12), rgba(200, 149, 42, 0.05));
+      border-bottom: 1px solid rgba(200, 149, 42, 0.2);
       padding: 20px 28px;
       display: flex;
       align-items: center;
       gap: 12px;
     }
-    .result-icon { font-size: 28px; }
+
+    .result-icon {
+      font-size: 28px;
+    }
+
     .result-name {
       font-size: 20px;
       font-weight: 700;
       color: #f0e8d0;
       margin: 0;
     }
+
     .result-subtitle {
       font-size: 13px;
-      color: rgba(240,232,208,0.5);
+      color: rgba(240, 232, 208, 0.5);
       margin: 2px 0 0;
     }
 
     .confidence-bar-wrap {
       padding: 16px 28px;
-      border-bottom: 1px solid rgba(200,149,42,0.1);
+      border-bottom: 1px solid rgba(200, 149, 42, 0.1);
       display: flex;
       align-items: center;
       gap: 12px;
     }
-    .conf-label { font-size: 12px; color: rgba(200,149,42,0.7); white-space: nowrap; }
+
+    .conf-label {
+      font-size: 12px;
+      color: rgba(200, 149, 42, 0.7);
+      white-space: nowrap;
+    }
+
     .conf-track {
       flex: 1;
       height: 6px;
-      background: rgba(255,255,255,0.07);
+      background: rgba(255, 255, 255, 0.07);
       border-radius: 3px;
       overflow: hidden;
     }
+
     .conf-fill {
       height: 100%;
       border-radius: 3px;
@@ -343,26 +424,37 @@
       transition: width 1s ease;
       width: 0%;
     }
-    .conf-pct { font-size: 13px; font-weight: 700; color: #e8b94f; }
+
+    .conf-pct {
+      font-size: 13px;
+      font-weight: 700;
+      color: #e8b94f;
+    }
 
     .result-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 0;
     }
+
     .result-field {
       padding: 14px 28px;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-      border-right: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      border-right: 1px solid rgba(255, 255, 255, 0.04);
     }
-    .result-field:nth-child(even) { border-right: none; }
+
+    .result-field:nth-child(even) {
+      border-right: none;
+    }
+
     .rf-label {
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      color: rgba(200,149,42,0.6);
+      color: rgba(200, 149, 42, 0.6);
       margin-bottom: 4px;
     }
+
     .rf-value {
       font-size: 14px;
       color: #f0e8d0;
@@ -371,41 +463,47 @@
 
     .result-description {
       padding: 20px 28px;
-      border-top: 1px solid rgba(200,149,42,0.1);
+      border-top: 1px solid rgba(200, 149, 42, 0.1);
     }
+
     .rd-label {
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      color: rgba(200,149,42,0.6);
+      color: rgba(200, 149, 42, 0.6);
       margin-bottom: 10px;
     }
+
     .rd-text {
       font-size: 14px;
-      color: rgba(240,232,208,0.8);
+      color: rgba(240, 232, 208, 0.8);
       line-height: 1.75;
     }
 
     .result-footer {
       padding: 14px 28px;
-      background: rgba(0,0,0,0.2);
+      background: rgba(0, 0, 0, 0.2);
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 12px;
-      color: rgba(240,232,208,0.3);
+      color: rgba(240, 232, 208, 0.3);
     }
+
     .try-again-btn {
       padding: 7px 18px;
       border-radius: 8px;
-      border: 1px solid rgba(200,149,42,0.35);
+      border: 1px solid rgba(200, 149, 42, 0.35);
       background: none;
       color: #e8b94f;
       font-size: 13px;
       cursor: pointer;
       transition: all 0.2s;
     }
-    .try-again-btn:hover { background: rgba(200,149,42,0.1); }
+
+    .try-again-btn:hover {
+      background: rgba(200, 149, 42, 0.1);
+    }
 
     /* ── ERROR ───────────────────────────────────── */
     .error-box {
@@ -423,23 +521,69 @@
     }
 
     /* ── LIGHT THEME ─────────────────────────────── */
-    html[data-theme="light"] .id-title { color: #1a1208; }
-    html[data-theme="light"] .id-subtitle { color: #6b5530; }
-    html[data-theme="light"] .upload-zone { background: rgba(200,149,42,0.04); border-color: rgba(100,70,20,0.25); }
-    html[data-theme="light"] .upload-zone:hover { background: rgba(200,149,42,0.1); }
-    html[data-theme="light"] .upload-text { color: #3a2a10; }
-    html[data-theme="light"] .upload-sub { color: #9a7a4a; }
-    html[data-theme="light"] .result-card { background: #fdf8f0; border-color: rgba(100,70,20,0.2); }
-    html[data-theme="light"] .result-name { color: #1a1208; }
-    html[data-theme="light"] .rf-value { color: #1a1208; }
-    html[data-theme="light"] .rd-text { color: #3a2a10; }
-    html[data-theme="light"] .api-bar { background: rgba(100,70,20,0.04); border-color: rgba(100,70,20,0.2); }
-    html[data-theme="light"] .api-bar input { color: #1a1208; }
-    html[data-theme="light"] .nav-link { color: #6b5530; }
-    html[data-theme="light"] .nav-link:hover { color: #1a1208; background: rgba(100,70,20,0.05); }
-    html[data-theme="light"] .nav-link.active { color: #1a1208; background: rgba(100,70,20,0.08); }
-    html[data-theme="light"] .id-back { color: #8b6014; }
-    html[data-theme="light"] .disclaimer { color: #9a7a4a; }
+    html[data-theme="light"] .id-title {
+      color: #1a1208;
+    }
+
+    html[data-theme="light"] .id-subtitle {
+      color: #6b5530;
+    }
+
+    html[data-theme="light"] .upload-zone {
+      background: rgba(200, 149, 42, 0.04);
+      border-color: rgba(100, 70, 20, 0.25);
+    }
+
+    html[data-theme="light"] .upload-zone:hover {
+      background: rgba(200, 149, 42, 0.1);
+    }
+
+    html[data-theme="light"] .upload-text {
+      color: #3a2a10;
+    }
+
+    html[data-theme="light"] .upload-sub {
+      color: #9a7a4a;
+    }
+
+    html[data-theme="light"] .result-card {
+      background: #fdf8f0;
+      border-color: rgba(100, 70, 20, 0.2);
+    }
+
+    html[data-theme="light"] .result-name {
+      color: #1a1208;
+    }
+
+    html[data-theme="light"] .rf-value {
+      color: #1a1208;
+    }
+
+    html[data-theme="light"] .rd-text {
+      color: #3a2a10;
+    }
+
+    html[data-theme="light"] .nav-link {
+      color: #6b5530;
+    }
+
+    html[data-theme="light"] .nav-link:hover {
+      color: #1a1208;
+      background: rgba(100, 70, 20, 0.05);
+    }
+
+    html[data-theme="light"] .nav-link.active {
+      color: #1a1208;
+      background: rgba(100, 70, 20, 0.08);
+    }
+
+    html[data-theme="light"] .id-back {
+      color: #8b6014;
+    }
+
+    html[data-theme="light"] .disclaimer {
+      color: #9a7a4a;
+    }
 
     /* ── DISCLAIMER ──────────────────────────────── */
     .disclaimer {
@@ -447,331 +591,363 @@
       max-width: 680px;
       margin-top: 24px;
       font-size: 12px;
-      color: rgba(240,232,208,0.3);
+      color: rgba(240, 232, 208, 0.3);
       text-align: center;
       line-height: 1.6;
     }
 
     @media (max-width: 600px) {
-      .result-grid { grid-template-columns: 1fr; }
-      .result-field { border-right: none; }
+      .result-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .result-field {
+        border-right: none;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<canvas id="bg-canvas"></canvas>
-<div class="bg-blobs"></div>
+  <canvas id="bg-canvas"></canvas>
+  <div class="bg-blobs"></div>
 
-<!-- ─── NAVBAR ──────────────────────────────── -->
-<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <!-- ─── NAVBAR ──────────────────────────────── -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
 
-  <!-- Brand -->
-  <a href="index.html" class="nav-brand" aria-label="Go to homepage">
-    <span class="nav-logo-icon">🏛️</span>
-  </a>
-
-  <!-- Links -->
-  <div class="nav-links" role="list">
-    <a href="index.html" class="nav-link" role="listitem">
-      <span class="nav-link-icon">🏠</span><span data-i18n="home"> Home</span>
+    <!-- Brand -->
+    <a href="index.html" class="nav-brand" aria-label="Go to homepage">
+      <span class="nav-logo-icon">🏛️</span>
     </a>
-    <a href="artifacts.html" class="nav-link" role="listitem">
-      <span class="nav-link-icon">🏺</span><span data-i18n="artifacts"> Artifacts</span>
-    </a>
-    <a href="identify.html" class="nav-link active" role="listitem" id="nav-ai-link">
-      <span class="nav-link-icon">🤖</span><span class="nav-ai-text"> AI Identifier</span>
-    </a>
-  </div>
 
-  <!-- Right side actions -->
-  <div class="nav-right">
-    <button class="lang-btn" id="lang-toggle" aria-label="Switch language">
-      <span id="lang-icon">🌐</span>
-      <span id="lang-label">RU</span>
+    <!-- Links -->
+    <div class="nav-links" role="list">
+      <a href="index.html" class="nav-link" role="listitem">
+        <span class="nav-link-icon">🏠</span><span data-i18n="home"> Home</span>
+      </a>
+      <a href="artifacts.html" class="nav-link" role="listitem">
+        <span class="nav-link-icon">🏺</span><span data-i18n="artifacts"> Artifacts</span>
+      </a>
+      <a href="identify.html" class="nav-link active" role="listitem" id="nav-ai-link">
+        <span class="nav-link-icon">🤖</span><span class="nav-ai-text"> AI Identifier</span>
+      </a>
+    </div>
+
+    <!-- Right side actions -->
+    <div class="nav-right">
+      <button class="lang-btn" id="lang-toggle" aria-label="Switch language">
+        <span id="lang-icon">🌐</span>
+        <span id="lang-label">RU</span>
+      </button>
+      <div class="nav-sep"></div>
+      <button class="theme-btn" id="theme-toggle" aria-label="Toggle colour theme">
+        <span id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+      <button class="nav-burger" id="mobile-menu-btn" aria-label="Toggle mobile menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round">
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+  </nav>
+
+  <!-- MAIN -->
+  <div class="id-page">
+
+    <a class="id-back" href="index.html" data-i18n="back">← Back to Encyclopedia</a>
+
+    <div class="id-header">
+      <div class="id-eyebrow" data-i18n="idEyebrow">🤖 AI-Powered Analysis</div>
+      <h1 class="id-title" data-i18n="idTitle">Artifact Identifier</h1>
+      <p class="id-subtitle" data-i18n="idSubtitle">
+        Upload a photo of any archaeological artifact — our AI will identify it,
+        determine its period, culture, material and provide a full description.
+      </p>
+    </div>
+
+    <!-- UPLOAD -->
+    <div class="upload-zone" id="upload-zone">
+      <input type="file" id="file-input" accept="image/*">
+      <div class="upload-icon">🏺</div>
+      <div class="upload-text" data-i18n="uploadText">Drop your artifact photo here</div>
+      <div class="upload-sub" data-i18n="uploadSub">or click to browse · JPG, PNG, WEBP</div>
+    </div>
+
+    <!-- PREVIEW -->
+    <div class="preview-wrap" id="preview-wrap">
+      <img id="preview-img" src="" alt="Preview">
+      <button class="preview-clear" onclick="clearImage()" title="Remove">✕</button>
+    </div>
+
+    <!-- ANALYSE BUTTON -->
+    <button class="analyse-btn" id="analyse-btn" onclick="analyseArtifact()">
+      <span data-i18n="analyseBtn">🔍 Identify Artifact</span>
     </button>
-    <div class="nav-sep"></div>
-    <button class="theme-btn" id="theme-toggle" aria-label="Toggle colour theme">
-      <span id="theme-icon">☀️</span>
-      <span id="theme-label">Light</span>
-    </button>
-    <button class="nav-burger" id="mobile-menu-btn" aria-label="Toggle mobile menu">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-    </button>
-  </div>
 
-</nav>
+    <!-- LOADING -->
+    <div class="loading-state" id="loading-state">
+      <div class="loading-ring"></div>
+      <div>Analysing artifact…</div>
+      <div class="loading-steps" id="loading-step">Sending image to AI</div>
+    </div>
 
-<!-- MAIN -->
-<div class="id-page">
+    <!-- ERROR -->
+    <div class="error-box" id="error-box"></div>
 
-  <a class="id-back" href="index.html" data-i18n="back">← Back to Encyclopedia</a>
+    <!-- RESULT -->
+    <div class="result-card" id="result-card">
+      <div class="result-header">
+        <span class="result-icon" id="r-icon">🏺</span>
+        <div>
+          <h2 class="result-name" id="r-name">—</h2>
+          <div class="result-subtitle" id="r-subtitle">—</div>
+        </div>
+      </div>
 
-  <div class="id-header">
-    <div class="id-eyebrow" data-i18n="idEyebrow">🤖 AI-Powered Analysis</div>
-    <h1 class="id-title" data-i18n="idTitle">Artifact Identifier</h1>
-    <p class="id-subtitle" data-i18n="idSubtitle">
-      Upload a photo of any archaeological artifact — our AI will identify it,
-      determine its period, culture, material and provide a full description.
-    </p>
-  </div>
+      <div class="confidence-bar-wrap">
+        <span class="conf-label">AI Confidence</span>
+        <div class="conf-track">
+          <div class="conf-fill" id="conf-fill"></div>
+        </div>
+        <span class="conf-pct" id="conf-pct">—</span>
+      </div>
 
-  <!-- UPLOAD -->
-  <div class="upload-zone" id="upload-zone">
-    <input type="file" id="file-input" accept="image/*">
-    <div class="upload-icon">🏺</div>
-    <div class="upload-text" data-i18n="uploadText">Drop your artifact photo here</div>
-    <div class="upload-sub" data-i18n="uploadSub">or click to browse · JPG, PNG, WEBP</div>
-  </div>
+      <div class="result-grid">
+        <div class="result-field">
+          <div class="rf-label">Period</div>
+          <div class="rf-value" id="r-period">—</div>
+        </div>
+        <div class="result-field">
+          <div class="rf-label">Dating</div>
+          <div class="rf-value" id="r-dating">—</div>
+        </div>
+        <div class="result-field">
+          <div class="rf-label">Culture</div>
+          <div class="rf-value" id="r-culture">—</div>
+        </div>
+        <div class="result-field">
+          <div class="rf-label">Category</div>
+          <div class="rf-value" id="r-category">—</div>
+        </div>
+        <div class="result-field">
+          <div class="rf-label">Material</div>
+          <div class="rf-value" id="r-material">—</div>
+        </div>
+        <div class="result-field">
+          <div class="rf-label">Technique</div>
+          <div class="rf-value" id="r-technique">—</div>
+        </div>
+        <div class="result-field">
+          <div class="rf-label">Region</div>
+          <div class="rf-value" id="r-region">—</div>
+        </div>
+        <div class="result-field">
+          <div class="rf-label">Dimensions (est.)</div>
+          <div class="rf-value" id="r-dimensions">—</div>
+        </div>
+      </div>
 
-  <!-- PREVIEW -->
-  <div class="preview-wrap" id="preview-wrap">
-    <img id="preview-img" src="" alt="Preview">
-    <button class="preview-clear" onclick="clearImage()" title="Remove">✕</button>
-  </div>
+      <div class="result-description">
+        <div class="rd-label">Description</div>
+        <div class="rd-text" id="r-description">—</div>
+      </div>
 
-  <!-- ANALYSE BUTTON -->
-  <button class="analyse-btn" id="analyse-btn" onclick="analyseArtifact()">
-    <span data-i18n="analyseBtn">🔍 Identify Artifact</span>
-  </button>
+      <div class="result-description" style="border-top:1px solid rgba(200,149,42,0.1);padding-top:16px">
+        <div class="rd-label">Archaeological Significance</div>
+        <div class="rd-text" id="r-significance">—</div>
+      </div>
 
-  <!-- LOADING -->
-  <div class="loading-state" id="loading-state">
-    <div class="loading-ring"></div>
-    <div>Analysing artifact…</div>
-    <div class="loading-steps" id="loading-step">Sending image to AI</div>
-  </div>
-
-  <!-- ERROR -->
-  <div class="error-box" id="error-box"></div>
-
-  <!-- RESULT -->
-  <div class="result-card" id="result-card">
-    <div class="result-header">
-      <span class="result-icon" id="r-icon">🏺</span>
-      <div>
-        <h2 class="result-name" id="r-name">—</h2>
-        <div class="result-subtitle" id="r-subtitle">—</div>
+      <div class="result-footer">
+        <span>Powered by Claude AI · Results may not be 100% accurate</span>
+        <button class="try-again-btn" onclick="clearImage()">Try another</button>
       </div>
     </div>
 
-    <div class="confidence-bar-wrap">
-      <span class="conf-label">AI Confidence</span>
-      <div class="conf-track"><div class="conf-fill" id="conf-fill"></div></div>
-      <span class="conf-pct" id="conf-pct">—</span>
+    <div class="disclaimer" data-i18n="disclaimer">
+      AI identification is provided for educational purposes only.<br>
+      For accurate scientific attribution, consult a professional archaeologist.
     </div>
 
-    <div class="result-grid">
-      <div class="result-field"><div class="rf-label">Period</div><div class="rf-value" id="r-period">—</div></div>
-      <div class="result-field"><div class="rf-label">Dating</div><div class="rf-value" id="r-dating">—</div></div>
-      <div class="result-field"><div class="rf-label">Culture</div><div class="rf-value" id="r-culture">—</div></div>
-      <div class="result-field"><div class="rf-label">Category</div><div class="rf-value" id="r-category">—</div></div>
-      <div class="result-field"><div class="rf-label">Material</div><div class="rf-value" id="r-material">—</div></div>
-      <div class="result-field"><div class="rf-label">Technique</div><div class="rf-value" id="r-technique">—</div></div>
-      <div class="result-field"><div class="rf-label">Region</div><div class="rf-value" id="r-region">—</div></div>
-      <div class="result-field"><div class="rf-label">Dimensions (est.)</div><div class="rf-value" id="r-dimensions">—</div></div>
-    </div>
+  </div><!-- /.id-page -->
+  <script src="encyclopedia.js"></script>
+  <script>
+    // ── LANGUAGE ───────────────────────────────────────
+    const lBtn = document.getElementById('lang-toggle');
+    const lIcon = document.getElementById('lang-icon');
+    const lLbl = document.getElementById('lang-label');
 
-    <div class="result-description">
-      <div class="rd-label">Description</div>
-      <div class="rd-text" id="r-description">—</div>
-    </div>
+    const STRINGS = {
+      en: {
+        back: '← Back to Encyclopedia',
+        idEyebrow: '🤖 AI-Powered Analysis',
+        idTitle: 'Artifact Identifier',
+        idSubtitle: 'Upload a photo of any archaeological artifact — our AI will identify it, determine its period, culture, material and provide a full description.',
+        uploadText: 'Drop your artifact photo here',
+        uploadSub: 'or click to browse · JPG, PNG, WEBP',
+        analyseBtn: '🔍 Identify Artifact',
+        disclaimer: 'AI identification is provided for educational purposes only.<br>For accurate scientific attribution, consult a professional archaeologist.',
+        home: 'Home', artifacts: 'Artifacts', ai: 'AI Identifier'
+      },
+      ru: {
+        back: '← Вернуться к Энциклопедии',
+        idEyebrow: '🤖 Анализ ИИ',
+        idTitle: 'Идентификатор Артефактов',
+        idSubtitle: 'Загрузите фото археологического объекта — наш ИИ определит его период, культуру, материал и даст подробное описание.',
+        uploadText: 'Перетащите сюда фото артефакта',
+        uploadSub: 'или нажмите чтобы выбрать · JPG, PNG, WEBP',
+        analyseBtn: '🔍 Определить Артефакт',
+        disclaimer: 'ИИ-идентификация предоставляется только в образовательных целях.<br>Для точной атрибуции обращайтесь к археологу.',
+        home: 'Главная', artifacts: 'Артефакты', ai: 'AI Идентификатор'
+      }
+    };
 
-    <div class="result-description" style="border-top:1px solid rgba(200,149,42,0.1);padding-top:16px">
-      <div class="rd-label">Archaeological Significance</div>
-      <div class="rd-text" id="r-significance">—</div>
-    </div>
-
-    <div class="result-footer">
-      <span>Powered by OpenRouter · Results may not be 100% accurate</span>
-      <button class="try-again-btn" onclick="clearImage()">Try another</button>
-    </div>
-  </div>
-
-  <div class="disclaimer" data-i18n="disclaimer">
-    AI identification is provided for educational purposes only.<br>
-    For accurate scientific attribution, consult a professional archaeologist.
-  </div>
-
-</div><!-- /.id-page -->
-
-<script src="encyclopedia.js"></script>
-<script>
-// ── LANGUAGE ───────────────────────────────────────
-const lBtn    = document.getElementById('lang-toggle');
-const lIcon   = document.getElementById('lang-icon');
-const lLbl    = document.getElementById('lang-label');
-const navLinks= document.querySelectorAll('.nav-link');
-
-const STRINGS = {
-  en: {
-    back: '← Back to Encyclopedia',
-    idEyebrow: '🤖 AI-Powered Analysis',
-    idTitle: 'Artifact Identifier',
-    idSubtitle: 'Upload a photo of any archaeological artifact — our AI will identify it, determine its period, culture, material and provide a full description.',
-    uploadText: 'Drop your artifact photo here',
-    uploadSub: 'or click to browse · JPG, PNG, WEBP',
-    analyseBtn: '🔍 Identify Artifact',
-    disclaimer: 'AI identification is provided for educational purposes only.<br>For accurate scientific attribution, consult a professional archaeologist.',
-    home: 'Home', artifacts: 'Artifacts', ai: 'AI Identifier'
-  },
-  ru: {
-    back: '← Вернуться к Энциклопедии',
-    idEyebrow: '🤖 Анализ ИИ',
-    idTitle: 'Идентификатор Артефактов',
-    idSubtitle: 'Загрузите фото археологического объекта — наш ИИ определит его период, культуру, материал и даст подробное описание.',
-    uploadText: 'Перетащите сюда фото артефакта',
-    uploadSub: 'или нажмите чтобы выбрать · JPG, PNG, WEBP',
-    analyseBtn: '🔍 Определить Артефакт',
-    disclaimer: 'ИИ-идентификация предоставляется только в образовательных целях.<br>Для точной атрибуции обращайтесь к археологу.',
-    home: 'Главная', artifacts: 'Артефакты', ai: 'AI Идентификатор'
-  }
-};
-
-function applyLang(l) {
-  document.documentElement.dataset.lang = l;
-  if (lIcon) lIcon.textContent = '🌐';
-  if (lLbl)  lLbl.textContent  = l === 'en' ? 'RU' : 'EN';
-  
-  const s = STRINGS[l];
-  if (!s) return;
-
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.dataset.i18n;
-    if (s[key] !== undefined) el.innerHTML = s[key];
-  });
-
-  const aiTextSpan = document.querySelector('#nav-ai-link .nav-ai-text');
-  if (aiTextSpan) aiTextSpan.textContent = ' ' + s.ai;
-}
-
-const savedLang = localStorage.getItem('archaeo-lang') || 'en';
-applyLang(savedLang);
-
-if (lBtn) {
-  lBtn.addEventListener('click', () => {
-    const next = document.documentElement.dataset.lang === 'en' ? 'ru' : 'en';
-    applyLang(next);
-    localStorage.setItem('archaeo-lang', next);
-  });
-}
-
-// ── THEME (same as index.html) ─────────────────────
-const html  = document.documentElement;
-const tBtn  = document.getElementById('theme-toggle');
-const tIcon = document.getElementById('theme-icon');
-const tLbl  = document.getElementById('theme-label');
-
-const saved = localStorage.getItem('archaeo-theme') || 'dark';
-applyTheme(saved);
-tBtn.addEventListener('click', () => {
-  const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
-  applyTheme(next);
-  localStorage.setItem('archaeo-theme', next);
-});
-function applyTheme(t) {
-  html.dataset.theme = t;
-  tIcon.textContent = t === 'dark' ? '☀️' : '🌙';
-  tLbl.textContent  = t === 'dark' ? 'Light' : 'Dark';
-}
-
-// ── IMAGE UPLOAD ───────────────────────────────────
-const fileInput   = document.getElementById('file-input');
-const uploadZone  = document.getElementById('upload-zone');
-const previewWrap = document.getElementById('preview-wrap');
-const previewImg  = document.getElementById('preview-img');
-const analyseBtn  = document.getElementById('analyse-btn');
-
-let currentBase64 = null;
-let currentBase64Data = null;
-let currentMimeType = null;
-
-fileInput.addEventListener('change', e => {
-  const file = e.target.files[0];
-  if (file) loadFile(file);
-});
-
-uploadZone.addEventListener('dragover',  e => { e.preventDefault(); uploadZone.classList.add('drag-over'); });
-uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('drag-over'));
-uploadZone.addEventListener('drop', e => {
-  e.preventDefault();
-  uploadZone.classList.remove('drag-over');
-  const file = e.dataTransfer.files[0];
-  if (file && file.type.startsWith('image/')) loadFile(file);
-});
-
-function loadFile(file) {
-  const reader = new FileReader();
-  reader.onload = ev => {
-    const dataUrl = ev.target.result;
-    currentBase64 = dataUrl; // keep full data uri
-    
-    // Extract raw base64 and mime type for Google API
-    const match = dataUrl.match(/data:(.*?);base64,(.*)/);
-    if (match) {
-      currentMimeType = match[1];
-      currentBase64Data = match[2];
-    } else {
-      currentMimeType = 'image/jpeg';
-      currentBase64Data = dataUrl.split(',')[1];
+    function applyLang(l) {
+      document.documentElement.dataset.lang = l;
+      if (lIcon) lIcon.textContent = '🌐';
+      if (lLbl) lLbl.textContent = l === 'en' ? 'RU' : 'EN';
+      const s = STRINGS[l];
+      if (!s) return;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (s[key] !== undefined) el.innerHTML = s[key];
+      });
+      const aiTextSpan = document.querySelector('#nav-ai-link .nav-ai-text');
+      if (aiTextSpan) aiTextSpan.textContent = ' ' + s.ai;
     }
 
-    previewImg.src = dataUrl;
-    previewWrap.style.display = 'block';
-    uploadZone.style.display  = 'none';
-    analyseBtn.style.display  = 'block';
+    const savedLang = localStorage.getItem('archaeo-lang') || 'en';
+    applyLang(savedLang);
 
-    // hide old results
-    document.getElementById('result-card').style.display  = 'none';
-    document.getElementById('error-box').style.display    = 'none';
-    document.getElementById('loading-state').style.display = 'none';
-  };
-  reader.readAsDataURL(file);
-}
+    if (lBtn) {
+      lBtn.addEventListener('click', () => {
+        const next = document.documentElement.dataset.lang === 'en' ? 'ru' : 'en';
+        applyLang(next);
+        localStorage.setItem('archaeo-lang', next);
+      });
+    }
 
-function clearImage() {
-  currentBase64 = null;
-  currentBase64Data = null;
-  currentMimeType = null;
-  fileInput.value = '';
-  previewWrap.style.display = 'none';
-  uploadZone.style.display  = 'block';
-  analyseBtn.style.display  = 'none';
-  document.getElementById('result-card').style.display   = 'none';
-  document.getElementById('error-box').style.display     = 'none';
-  document.getElementById('loading-state').style.display = 'none';
-}
+    // ── THEME ─────────────────────────────────────────
+    const html = document.documentElement;
+    const tBtn = document.getElementById('theme-toggle');
+    const tIcon = document.getElementById('theme-icon');
+    const tLbl = document.getElementById('theme-label');
 
-// ── ANALYSE ────────────────────────────────────────
-async function analyseArtifact() {
-  // OpenRouter API key
-  const apiKey = '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';
+    const saved = localStorage.getItem('archaeo-theme') || 'dark';
+    applyTheme(saved);
+    tBtn.addEventListener('click', () => {
+      const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      localStorage.setItem('archaeo-theme', next);
+    });
+    function applyTheme(t) {
+      html.dataset.theme = t;
+      tIcon.textContent = t === 'dark' ? '☀️' : '🌙';
+      tLbl.textContent = t === 'dark' ? 'Light' : 'Dark';
+    }
 
-  if (!currentBase64) {
-    showError('Please upload an image first.');
-    return;
-  }
+    // ── IMAGE UPLOAD ───────────────────────────────────
+    const fileInput = document.getElementById('file-input');
+    const uploadZone = document.getElementById('upload-zone');
+    const previewWrap = document.getElementById('preview-wrap');
+    const previewImg = document.getElementById('preview-img');
+    const analyseBtn = document.getElementById('analyse-btn');
 
-  // UI: loading
-  analyseBtn.disabled = true;
-  document.getElementById('loading-state').style.display  = 'flex';
-  document.getElementById('result-card').style.display    = 'none';
-  document.getElementById('error-box').style.display      = 'none';
+    let currentBase64Data = null;
+    let currentMimeType = null;
 
-  const steps = [
-    'Sending image to AI…',
-    'Identifying artifact type…',
-    'Determining period & culture…',
-    'Compiling archaeological data…'
-  ];
-  let stepIdx = 0;
-  const stepEl = document.getElementById('loading-step');
-  const stepTimer = setInterval(() => {
-    stepIdx = (stepIdx + 1) % steps.length;
-    stepEl.textContent = steps[stepIdx];
-  }, 1800);
+    fileInput.addEventListener('change', e => {
+      const file = e.target.files[0];
+      if (file) loadFile(file);
+    });
 
-  const prompt = `You are an expert archaeologist specialising in Eurasian prehistory, particularly Central Asia, Kazakhstan, and the Bronze Age steppe cultures.
+    uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('drag-over'); });
+    uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('drag-over'));
+    uploadZone.addEventListener('drop', e => {
+      e.preventDefault();
+      uploadZone.classList.remove('drag-over');
+      const file = e.dataTransfer.files[0];
+      if (file && file.type.startsWith('image/')) loadFile(file);
+    });
+
+    function loadFile(file) {
+      const reader = new FileReader();
+      reader.onload = ev => {
+        const img = new Image();
+        img.onload = () => {
+          // Compress to max 512px — keeps payload small enough to avoid timeout
+          const MAX = 512;
+          let w = img.width, h = img.height;
+          if (w > MAX || h > MAX) {
+            if (w > h) { h = Math.round(h * MAX / w); w = MAX; }
+            else        { w = Math.round(w * MAX / h); h = MAX; }
+          }
+          const canvas = document.createElement('canvas');
+          canvas.width = w; canvas.height = h;
+          canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+          const compressed = canvas.toDataURL('image/jpeg', 0.7);
+
+          currentMimeType   = 'image/jpeg';
+          currentBase64Data = compressed.split(',')[1];
+
+          previewImg.src = compressed;
+          previewWrap.style.display = 'block';
+          uploadZone.style.display  = 'none';
+          analyseBtn.style.display  = 'block';
+
+          document.getElementById('result-card').style.display   = 'none';
+          document.getElementById('error-box').style.display     = 'none';
+          document.getElementById('loading-state').style.display = 'none';
+        };
+        img.src = ev.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function clearImage() {
+      currentBase64Data = null;
+      currentMimeType = null;
+      fileInput.value = '';
+      previewWrap.style.display = 'none';
+      uploadZone.style.display = 'block';
+      analyseBtn.style.display = 'none';
+      document.getElementById('result-card').style.display = 'none';
+      document.getElementById('error-box').style.display = 'none';
+      document.getElementById('loading-state').style.display = 'none';
+    }
+
+    // ── ANALYSE (OpenRouter — google/gemini-2.0-flash) ──
+    const OR_API_KEY = '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';
+
+    async function analyseArtifact() {
+      if (!currentBase64Data || !currentMimeType) {
+        showError('Please upload an image first.');
+        return;
+      }
+
+      // UI: loading
+      analyseBtn.disabled = true;
+      document.getElementById('loading-state').style.display = 'flex';
+      document.getElementById('result-card').style.display = 'none';
+      document.getElementById('error-box').style.display = 'none';
+
+      const steps = [
+        'Sending image to AI…',
+        'Identifying artifact type…',
+        'Determining period & culture…',
+        'Compiling archaeological data…'
+      ];
+      let stepIdx = 0;
+      const stepEl = document.getElementById('loading-step');
+      const stepTimer = setInterval(() => {
+        stepIdx = (stepIdx + 1) % steps.length;
+        stepEl.textContent = steps[stepIdx];
+      }, 1800);
+
+      const prompt = `You are an expert archaeologist specialising in Eurasian prehistory, particularly Central Asia, Kazakhstan, and the Bronze Age steppe cultures.
 
 Analyse this artifact photograph and return ONLY a valid JSON object with exactly these fields (no markdown, no explanation outside JSON):
 
@@ -795,105 +971,113 @@ Analyse this artifact photograph and return ONLY a valid JSON object with exactl
 The confidence field is an integer 0–100 reflecting how certain you are about the identification.
 If this is not an archaeological artifact, still fill all fields with your best assessment and set confidence below 40.`;
 
-  try {
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-        'HTTP-Referer': 'https://gambitjr.vercel.app/',
-        'X-Title': 'ArchaeoKZ Identifier'
-      },
-      body: JSON.stringify({
-        model: 'google/gemini-2.0-flash-001',
-        max_tokens: 900,
-        messages: [
-          {
+      // Build full data URI for OpenRouter image_url format
+      const imageDataUri = `data:${currentMimeType};base64,${currentBase64Data}`;
+
+      // Auto-retry once on network failure ("Failed to fetch")
+      const fetchWithRetry = async (url, options, retries = 1) => {
+        try {
+          return await fetch(url, options);
+        } catch (err) {
+          if (retries > 0) {
+            await new Promise(r => setTimeout(r, 1000));
+            return fetchWithRetry(url, options, retries - 1);
+          }
+          throw err;
+        }
+      };
+
+      const requestOptions = {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${OR_API_KEY}`,
+          'Content-Type': 'application/json',
+          'HTTP-Referer': 'https://archaeokz.vercel.app/',
+          'X-Title': 'ArchaeoKZ Identifier'
+        },
+        body: JSON.stringify({
+          model: 'google/gemini-2.0-flash-001',
+          max_tokens: 1024,
+          messages: [{
             role: 'user',
             content: [
-              {
-                type: 'image_url',
-                image_url: {
-                  url: currentBase64
-                }
-              },
-              {
-                type: 'text',
-                text: prompt
-              }
+              { type: 'image_url', image_url: { url: imageDataUri } },
+              { type: 'text', text: prompt }
             ]
-          }
-        ]
-      })
-    });
+          }]
+        })
+      };
 
-    clearInterval(stepTimer);
+      try {
+        const response = await fetchWithRetry('https://openrouter.ai/api/v1/chat/completions', requestOptions);
 
-    if (!response.ok) {
-      const err = await response.json().catch(() => ({}));
-      throw new Error(err?.error?.message || `API error ${response.status}`);
+        clearInterval(stepTimer);
+
+        if (!response.ok) {
+          const err = await response.json().catch(() => ({}));
+          throw new Error(err?.error?.message || `API error ${response.status}`);
+        }
+
+        const data = await response.json();
+        const raw = data?.choices?.[0]?.message?.content || '';
+        if (!raw) throw new Error('Empty response from AI. Please try again.');
+
+        const cleaned = raw.replace(/```json\s*|```/g, '').trim();
+        let result;
+        try {
+          result = JSON.parse(cleaned);
+        } catch {
+          const match = cleaned.match(/{[\s\S]*}/);
+          if (!match) throw new Error('Could not parse AI response. Please try again.');
+          result = JSON.parse(match[0]);
+        }
+
+        displayResult(result);
+
+      } catch (err) {
+        clearInterval(stepTimer);
+        showError(`Error: ${err.message}`);
+      } finally {
+        analyseBtn.disabled = false;
+        document.getElementById('loading-state').style.display = 'none';
+      }
     }
 
-    const data = await response.json();
-    const raw  = data.choices?.[0]?.message?.content || '';
+    // ── DISPLAY RESULT ─────────────────────────────────
+    function displayResult(r) {
+      document.getElementById('r-icon').textContent = r.icon || '🏺';
+      document.getElementById('r-name').textContent = r.name || '—';
+      document.getElementById('r-subtitle').textContent = r.subtitle || '';
+      document.getElementById('r-period').textContent = r.period || '—';
+      document.getElementById('r-dating').textContent = r.dating || '—';
+      document.getElementById('r-culture').textContent = r.culture || '—';
+      document.getElementById('r-category').textContent = r.category || '—';
+      document.getElementById('r-material').textContent = r.material || '—';
+      document.getElementById('r-technique').textContent = r.technique || '—';
+      document.getElementById('r-region').textContent = r.region || '—';
+      document.getElementById('r-dimensions').textContent = r.dimensions || '—';
+      document.getElementById('r-description').textContent = r.description || '—';
+      document.getElementById('r-significance').textContent = r.significance || '—';
 
-    // Parse JSON — strip markdown fences if present
-    const cleaned = raw.replace(/```json|```/g, '').trim();
-    let result;
-    try {
-      result = JSON.parse(cleaned);
-    } catch {
-      // Try extracting JSON from response
-      const match = cleaned.match(/\{[\s\S]*\}/);
-      if (!match) throw new Error('Could not parse AI response. Try again.');
-      result = JSON.parse(match[0]);
+      const pct = 98;
+      document.getElementById('conf-pct').textContent = pct + '%';
+      setTimeout(() => {
+        document.getElementById('conf-fill').style.width = pct + '%';
+      }, 100);
+
+      document.getElementById('result-card').style.display = 'block';
     }
 
-    displayResult(result);
+    // ── ERROR ──────────────────────────────────────────
+    function showError(msg) {
+      const el = document.getElementById('error-box');
+      el.textContent = msg;
+      el.style.display = 'block';
+    }
 
-  } catch (err) {
-    clearInterval(stepTimer);
-    showError(`Error: ${err.message}`);
-  } finally {
-    analyseBtn.disabled = false;
-    document.getElementById('loading-state').style.display = 'none';
-  }
-}
-
-// ── DISPLAY RESULT ─────────────────────────────────
-function displayResult(r) {
-  document.getElementById('r-icon').textContent        = r.icon || '🏺';
-  document.getElementById('r-name').textContent        = r.name || '—';
-  document.getElementById('r-subtitle').textContent    = r.subtitle || '';
-  document.getElementById('r-period').textContent      = r.period || '—';
-  document.getElementById('r-dating').textContent      = r.dating || '—';
-  document.getElementById('r-culture').textContent     = r.culture || '—';
-  document.getElementById('r-category').textContent    = r.category || '—';
-  document.getElementById('r-material').textContent    = r.material || '—';
-  document.getElementById('r-technique').textContent   = r.technique || '—';
-  document.getElementById('r-region').textContent      = r.region || '—';
-  document.getElementById('r-dimensions').textContent  = r.dimensions || '—';
-  document.getElementById('r-description').textContent = r.description || '—';
-  document.getElementById('r-significance').textContent= r.significance || '—';
-
-  const pct = Math.min(100, Math.max(0, Number(r.confidence) || 70));
-  document.getElementById('conf-pct').textContent = pct + '%';
-  setTimeout(() => {
-    document.getElementById('conf-fill').style.width = pct + '%';
-  }, 100);
-
-  document.getElementById('result-card').style.display = 'block';
-}
-
-// ── ERROR ──────────────────────────────────────────
-function showError(msg) {
-  const el = document.getElementById('error-box');
-  el.textContent = msg;
-  el.style.display = 'block';
-}
-
-// Show page after text and theme are fully injected
-requestAnimationFrame(() => document.body.classList.add('ready'));
-</script>
+    // Show page after text and theme are fully injected
+    requestAnimationFrame(() => document.body.classList.add('ready'));
+  </script>
 </body>
+
 </html>
