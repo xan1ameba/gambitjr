@@ -1076,6 +1076,20 @@ If this is not an archaeological artifact, still fill all fields with your best 
       el.style.display = 'block';
     }
 
+    // ── Mobile Menu toggle ─────────────────────────
+    const burgerBtn = document.getElementById('mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    if (burgerBtn && navLinks) {
+      burgerBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('mobile-active');
+      });
+      navLinks.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('mobile-active');
+        });
+      });
+    }
+
     // Show page after text and theme are fully injected
     requestAnimationFrame(() => document.body.classList.add('ready'));
   </script>
