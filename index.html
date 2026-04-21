@@ -432,7 +432,6 @@
     @media (max-width: 760px) {
       .features { grid-template-columns: 1fr; }
       .hs-item  { padding: 18px 24px; }
-      .nav-links { display: none; }
       .hero-title { font-size: 38px; }
     }
     @media (max-width: 540px) {
@@ -692,6 +691,20 @@
     html.dataset.theme = t;
     if (t === 'dark') { icon.textContent = '☀️'; label.textContent = 'Light'; }
     else              { icon.textContent = '🌙'; label.textContent = 'Dark';  }
+  }
+
+  // ── Mobile Menu toggle ─────────────────────────
+  const burgerBtn = document.getElementById('mobile-menu-btn');
+  const navLinks = document.querySelector('.nav-links');
+  if (burgerBtn && navLinks) {
+    burgerBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('mobile-active');
+    });
+    navLinks.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('mobile-active');
+      });
+    });
   }
 
   // Show page after text and theme are fully injected
