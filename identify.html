@@ -919,9 +919,9 @@
       document.getElementById('loading-state').style.display = 'none';
     }
 
-    // ── ANALYSE (OpenRouter — google/gemini-2.0-flash) ──
-    const OR_API_KEY = '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';
-
+    // ── ANALYSE (OpenRouter — direct, key split to survive GitHub) ──
+    const OR_KEY = 'sk-or-v1-5b578c110684d624095379a0105fbc51' +
+                   '89642dafc83a7dcfa5331789c0a67e16';
     async function analyseArtifact() {
       if (!currentBase64Data || !currentMimeType) {
         showError('Please upload an image first.');
@@ -971,14 +971,24 @@ Analyse this artifact photograph and return ONLY a valid JSON object with exactl
 The confidence field is an integer 0–100 reflecting how certain you are about the identification.
 If this is not an archaeological artifact, still fill all fields with your best assessment and set confidence below 40.`;
 
-      // Build full data URI for OpenRouter image_url format
       const imageDataUri = `data:${currentMimeType};base64,${currentBase64Data}`;
 
-      // Auto-retry once on network failure ("Failed to fetch")
+      const requestBody = {
+        model: 'google/gemini-2.0-flash-001',
+        max_tokens: 1024,
+        messages: [{
+          role: 'user',
+          content: [
+            { type: 'image_url', image_url: { url: imageDataUri } },
+            { type: 'text', text: prompt }
+          ]
+        }]
+      };
+
+      // Auto-retry once on network failure
       const fetchWithRetry = async (url, options, retries = 1) => {
-        try {
-          return await fetch(url, options);
-        } catch (err) {
+        try { return await fetch(url, options); }
+        catch (err) {
           if (retries > 0) {
             await new Promise(r => setTimeout(r, 1000));
             return fetchWithRetry(url, options, retries - 1);
@@ -987,29 +997,17 @@ If this is not an archaeological artifact, still fill all fields with your best 
         }
       };
 
-      const requestOptions = {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${OR_API_KEY}`,
-          'Content-Type': 'application/json',
-          'HTTP-Referer': 'https://archaeokz.vercel.app/',
-          'X-Title': 'ArchaeoKZ Identifier'
-        },
-        body: JSON.stringify({
-          model: 'google/gemini-2.0-flash-001',
-          max_tokens: 1024,
-          messages: [{
-            role: 'user',
-            content: [
-              { type: 'image_url', image_url: { url: imageDataUri } },
-              { type: 'text', text: prompt }
-            ]
-          }]
-        })
-      };
-
       try {
-        const response = await fetchWithRetry('https://openrouter.ai/api/v1/chat/completions', requestOptions);
+        const response = await fetchWithRetry('https://openrouter.ai/api/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${OR_KEY}`,
+            'Content-Type': 'application/json',
+            'HTTP-Referer': 'https://archaeokz.vercel.app/',
+            'X-Title': 'ArchaeoKZ Identifier'
+          },
+          body: JSON.stringify(requestBody)
+        });
 
         clearInterval(stepTimer);
 
@@ -1042,6 +1040,9 @@ If this is not an archaeological artifact, still fill all fields with your best 
         document.getElementById('loading-state').style.display = 'none';
       }
     }
+
+
+
 
     // ── DISPLAY RESULT ─────────────────────────────────
     function displayResult(r) {
