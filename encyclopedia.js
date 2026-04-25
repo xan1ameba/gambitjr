@@ -361,11 +361,11 @@ const ARTIFACTS = [
 // CATEGORY CONFIG
 // ======================
 const CATEGORIES = {
-  all:      { name: 'All Artifacts',  nameRu: 'Все', icon: '🏛️', color: '#7c3aed' },
-  ceramics: { name: 'Ceramics',       nameRu: 'Керамика', icon: '🏺', color: '#c8952a' },
-  jewelry:  { name: 'Jewelry',        nameRu: 'Украшения', icon: '💍', color: '#34d399' },
-  stone:    { name: 'Stone Objects',  nameRu: 'Камень', icon: '🪨', color: '#818cf8' },
-  bone:     { name: 'Bone Objects',   nameRu: 'Кость', icon: '🦴', color: '#fbbf24' }
+  all: { name: 'All Artifacts', nameRu: 'Все', icon: '🏛️', color: '#7c3aed' },
+  ceramics: { name: 'Ceramics', nameRu: 'Керамика', icon: '🏺', color: '#c8952a' },
+  jewelry: { name: 'Jewelry', nameRu: 'Украшения', icon: '💍', color: '#34d399' },
+  stone: { name: 'Stone Objects', nameRu: 'Камень', icon: '🪨', color: '#818cf8' },
+  bone: { name: 'Bone Objects', nameRu: 'Кость', icon: '🦴', color: '#fbbf24' }
 };
 
 Object.keys(CATEGORIES).forEach(k => {
@@ -497,9 +497,9 @@ function filterAndSort() {
   }
 
   switch (state.sortBy) {
-    case 'name-asc':  results.sort((a,b) => a.name.localeCompare(b.name, 'en')); break;
-    case 'name-desc': results.sort((a,b) => b.name.localeCompare(a.name, 'en')); break;
-    case 'category':  results.sort((a,b) => a.category.localeCompare(b.category)); break;
+    case 'name-asc': results.sort((a, b) => a.name.localeCompare(b.name, 'en')); break;
+    case 'name-desc': results.sort((a, b) => b.name.localeCompare(a.name, 'en')); break;
+    case 'category': results.sort((a, b) => a.category.localeCompare(b.category)); break;
   }
 
   return results;
@@ -510,14 +510,14 @@ function filterAndSort() {
 // ======================
 const GRADIENTS = {
   ceramics: 'linear-gradient(135deg, #1a1005 0%, #2d1a08 50%, #1a1205 100%)',
-  jewelry:  'linear-gradient(135deg, #051a1a 0%, #083d2d 50%, #051a14 100%)',
-  stone:    'linear-gradient(135deg, #0d0f1a 0%, #151a2d 50%, #0a0d1a 100%)',
-  bone:     'linear-gradient(135deg, #1a1810 0%, #2d2818 50%, #1a1811 100%)'
+  jewelry: 'linear-gradient(135deg, #051a1a 0%, #083d2d 50%, #051a14 100%)',
+  stone: 'linear-gradient(135deg, #0d0f1a 0%, #151a2d 50%, #0a0d1a 100%)',
+  bone: 'linear-gradient(135deg, #1a1810 0%, #2d2818 50%, #1a1811 100%)'
 };
 
 function makePlaceholder(artifact) {
   const cat = CATEGORIES[artifact.category];
-  const bg  = GRADIENTS[artifact.category] || GRADIENTS.ceramics;
+  const bg = GRADIENTS[artifact.category] || GRADIENTS.ceramics;
   return `<div class="img-placeholder" style="background:${bg}">
     <span class="ph-icon">${cat?.icon || '🏛️'}</span>
     <span class="ph-label">${cat?.name || 'Artifact'}</span>
@@ -525,10 +525,10 @@ function makePlaceholder(artifact) {
 }
 
 function makeImg(src, alt, artifact) {
-  const cat   = CATEGORIES[artifact.category];
-  const bg    = GRADIENTS[artifact.category] || GRADIENTS.ceramics;
-  const icon  = cat?.icon  || '🏛️';
-  const label = tr(cat, 'name')  || 'Artifact';
+  const cat = CATEGORIES[artifact.category];
+  const bg = GRADIENTS[artifact.category] || GRADIENTS.ceramics;
+  const icon = cat?.icon || '🏛️';
+  const label = tr(cat, 'name') || 'Artifact';
   return `<img src="${src}" alt="${alt}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class='img-placeholder' style='display:none;background:${bg}'><span class='ph-icon'>${icon}</span><span class='ph-label'>${label}</span></div>`;
 }
 
@@ -566,7 +566,7 @@ function renderGridCard(artifact, delay = 0) {
 
 function renderListCard(artifact, delay = 0) {
   const cat = CATEGORIES[artifact.category];
-  const bg  = GRADIENTS[artifact.category] || GRADIENTS.ceramics;
+  const bg = GRADIENTS[artifact.category] || GRADIENTS.ceramics;
   const imgHTML = artifact.images.length
     ? `<div class="list-thumb">${makeImg(artifact.images[0], tr(artifact, 'name'), artifact)}</div>`
     : `<div class="list-thumb" style="background:${bg};display:flex;align-items:center;justify-content:center;font-size:28px">${cat?.icon}</div>`;
@@ -593,7 +593,7 @@ function renderListCard(artifact, delay = 0) {
 function renderBrowse() {
   const results = filterAndSort();
   const container = document.getElementById('artifacts-container');
-  const countEl   = document.getElementById('result-count');
+  const countEl = document.getElementById('result-count');
   if (countEl) countEl.textContent = results.length;
 
   if (!container) return;
@@ -633,7 +633,7 @@ function renderArticle(artifact) {
     <div class="article-gallery">
       ${artifact.images.map((src, i) => `
         <div class="gallery-item" onclick="openLightbox('${src}')">
-          ${makeImg(src, tr(artifact, 'name') + ' — photo ' + (i+1), artifact)}
+          ${makeImg(src, tr(artifact, 'name') + ' — photo ' + (i + 1), artifact)}
         </div>`).join('')}
     </div>` : '';
 
@@ -676,16 +676,16 @@ function renderArticle(artifact) {
       ${infoImg}
       <div class="infobox-data">
         ${[
-          [trText('Category', 'Категория'),    tr(cat, 'name')],
-          [trText('Period', 'Период'),      tr(artifact, 'period')],
-          [trText('Dating', 'Датировка'),      tr(artifact, 'periodYears')],
-          [trText('Culture', 'Культура'),     tr(artifact, 'culture')],
-          [trText('Material', 'Материал'),    tr(artifact, 'material')],
-          [trText('Technique', 'Техника'),   tr(artifact, 'technique')],
-          [trText('Dimensions', 'Размеры'),  tr(artifact, 'dimensions')],
-          [trText('Location', 'Локация'),    tr(artifact, 'location')],
-          ...(artifact.catalogNumber ? [[trText('Cat. No.', 'Кат. №'), artifact.catalogNumber]] : [])
-        ].map(([l, v]) => `
+      [trText('Category', 'Категория'), tr(cat, 'name')],
+      [trText('Period', 'Период'), tr(artifact, 'period')],
+      [trText('Dating', 'Датировка'), tr(artifact, 'periodYears')],
+      [trText('Culture', 'Культура'), tr(artifact, 'culture')],
+      [trText('Material', 'Материал'), tr(artifact, 'material')],
+      [trText('Technique', 'Техника'), tr(artifact, 'technique')],
+      [trText('Dimensions', 'Размеры'), tr(artifact, 'dimensions')],
+      [trText('Location', 'Локация'), tr(artifact, 'location')],
+      ...(artifact.catalogNumber ? [[trText('Cat. No.', 'Кат. №'), artifact.catalogNumber]] : [])
+    ].map(([l, v]) => `
         <div class="infobox-row">
           <span class="info-label">${l}</span>
           <span class="info-value">${v}</span>
@@ -704,7 +704,7 @@ function openArticle(id) {
   if (!artifact) return;
   state.view = 'article';
   state.activeArtifact = artifact;
-  document.getElementById('browse-view').style.display  = 'none';
+  document.getElementById('browse-view').style.display = 'none';
   const av = document.getElementById('article-view');
   av.style.display = 'block';
   av.innerHTML = renderArticle(artifact);
@@ -712,7 +712,7 @@ function openArticle(id) {
 }
 
 // ── Mobile Menu Toggle ──────────────────────
-(function() {
+(function () {
   const burger = document.getElementById('mobile-menu-btn');
   const navLinksNode = document.querySelector('.nav-links');
   if (burger && navLinksNode) {
@@ -725,7 +725,7 @@ function openArticle(id) {
 function goToBrowse() {
   state.view = 'browse';
   state.activeArtifact = null;
-  document.getElementById('browse-view').style.display  = 'block';
+  document.getElementById('browse-view').style.display = 'block';
   document.getElementById('article-view').style.display = 'none';
   renderBrowse();
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -796,7 +796,7 @@ function initParticles() {
   let W = canvas.width = window.innerWidth;
   let H = canvas.height = window.innerHeight;
 
-  const particles = Array.from({length: 55}, () => ({
+  const particles = Array.from({ length: 55 }, () => ({
     x: Math.random() * W, y: Math.random() * H,
     r: Math.random() * 1.5 + 0.3,
     dx: (Math.random() - 0.5) * 0.25,
