@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Artifact Identifier — ArchaeoKZ</title>
+  <link rel="icon" type="image/png" href="favicon.png">
   <link rel="stylesheet" href="styles.css">
   <script>
     const savedTheme = localStorage.getItem('archaeo-theme') || 'dark';
@@ -18,7 +19,7 @@
     }
 
     html[data-theme="light"] {
-      background: #f4ede0;
+      background: #fdfbf7;
     }
 
     .id-page {
@@ -64,6 +65,9 @@
     .navbar {
       padding: 0 32px !important;
       gap: 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
     }
 
     .nav-brand {
@@ -107,46 +111,51 @@
     }
 
     .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      flex: 1;
+      display: flex; align-items: center; gap: 10px;
     }
 
     .nav-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 8px 16px;
-      border-radius: var(--r-sm);
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text2);
-      border: 1px solid transparent;
-      transition: var(--tr);
-      white-space: nowrap;
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 18px; border-radius: 24px;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.3px;
+      color: var(--text2); 
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.04);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: all 0.3s cubic-bezier(.4,0,.2,1); white-space: nowrap;
       text-decoration: none;
     }
 
     .nav-link:hover {
       color: var(--text);
-      background: rgba(255, 255, 255, .05);
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.15);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
 
     .nav-link.active {
       color: var(--text);
-      background: rgba(255, 255, 255, .06);
+      background: rgba(124,58,237,0.12);
+      border-color: rgba(124,58,237,0.4);
+      box-shadow: 0 4px 20px rgba(124,58,237,0.2);
     }
 
-    .nav-link-icon {
-      font-size: 16px;
+    .nav-link-icon { font-size: 16px; filter: grayscale(100%); opacity: 0.8; transition: var(--tr); }
+    .nav-link:hover .nav-link-icon, .nav-link.active .nav-link-icon { filter: grayscale(0%); opacity: 1; }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: absolute; right: auto; left: 32px; top: 50%; transform: translateY(-50%);
     }
 
     .nav-right {
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-left: auto;
+      position: absolute; right: 32px; top: 50%; transform: translateY(-50%);
     }
 
     .nav-sep {
@@ -521,69 +530,35 @@
     }
 
     /* ── LIGHT THEME ─────────────────────────────── */
-    html[data-theme="light"] .id-title {
-      color: #1a1208;
+    html[data-theme="light"] body { background: #fdfbf7; color: #2a241d; }
+    html[data-theme="light"] .navbar { background: rgba(253,251,247,.95); border-bottom-color: rgba(139,96,20,.15); box-shadow: 0 4px 20px rgba(0,0,0,.04); backdrop-filter: blur(20px); }
+    html[data-theme="light"] .nav-link { 
+      background: transparent; border-color: transparent; color: #5a4f43; box-shadow: none; font-weight: 600;
     }
-
-    html[data-theme="light"] .id-subtitle {
-      color: #6b5530;
+    html[data-theme="light"] .nav-link:hover { 
+      background: rgba(180,122,24,0.06); border-color: rgba(180,122,24,0.2); color: #2a241d; box-shadow: none;
     }
-
-    html[data-theme="light"] .upload-zone {
-      background: rgba(200, 149, 42, 0.04);
-      border-color: rgba(100, 70, 20, 0.25);
-    }
-
-    html[data-theme="light"] .upload-zone:hover {
-      background: rgba(200, 149, 42, 0.1);
-    }
-
-    html[data-theme="light"] .upload-text {
-      color: #3a2a10;
-    }
-
-    html[data-theme="light"] .upload-sub {
-      color: #9a7a4a;
-    }
-
-    html[data-theme="light"] .result-card {
-      background: #fdf8f0;
-      border-color: rgba(100, 70, 20, 0.2);
-    }
-
-    html[data-theme="light"] .result-name {
-      color: #1a1208;
-    }
-
-    html[data-theme="light"] .rf-value {
-      color: #1a1208;
-    }
-
-    html[data-theme="light"] .rd-text {
-      color: #3a2a10;
-    }
-
-    html[data-theme="light"] .nav-link {
-      color: #6b5530;
-    }
-
-    html[data-theme="light"] .nav-link:hover {
-      color: #1a1208;
-      background: rgba(100, 70, 20, 0.05);
-    }
-
     html[data-theme="light"] .nav-link.active {
-      color: #1a1208;
-      background: rgba(100, 70, 20, 0.08);
+      background: #ffffff; border-color: rgba(139,96,20,.2); color: #b47a18; box-shadow: 0 2px 8px rgba(139,96,20,.05);
     }
-
-    html[data-theme="light"] .id-back {
-      color: #8b6014;
-    }
-
-    html[data-theme="light"] .disclaimer {
-      color: #9a7a4a;
-    }
+    html[data-theme="light"] .id-title { background: none; -webkit-text-fill-color: #1c1813; color: #1c1813; text-shadow: none; }
+    html[data-theme="light"] .id-subtitle { color: #5a4f43; }
+    html[data-theme="light"] .upload-zone { background: #ffffff; border: 2px dashed rgba(139,96,20,.2); }
+    html[data-theme="light"] .upload-zone:hover { background: #fdfbf7; border-color: #b47a18; }
+    html[data-theme="light"] .upload-text { color: #1c1813; font-weight: 600; }
+    html[data-theme="light"] .upload-sub { color: #8c7b68; }
+    html[data-theme="light"] .result-card { background: #ffffff; border-color: rgba(139,96,20,.1); box-shadow: 0 10px 40px rgba(139,96,20,.05); }
+    html[data-theme="light"] .result-name { color: #1c1813; }
+    html[data-theme="light"] .rf-value { color: #1c1813; font-weight: 500; }
+    html[data-theme="light"] .rd-text { color: #4a4136; }
+    html[data-theme="light"] .id-back { color: #b47a18; font-weight: 600; }
+    html[data-theme="light"] .id-back:hover { color: #1c1813; }
+    html[data-theme="light"] .disclaimer { color: #8c7b68; }
+    html[data-theme="light"] .theme-btn { border-color: rgba(139,96,20,.15); background: #ffffff; color: #5a4f43; }
+    html[data-theme="light"] .lang-btn { border-color: rgba(139,96,20,.15); background: #ffffff; color: #5a4f43; }
+    html[data-theme="light"] .nav-sep { background: rgba(139,96,20,.15); }
+    html[data-theme="light"] .bg-blobs { opacity: .08; filter: saturate(2); }
+    html[data-theme="light"] #bg-canvas { opacity: .1; filter: invert(1); }
 
     /* ── DISCLAIMER ──────────────────────────────── */
     .disclaimer {
@@ -616,10 +591,14 @@
   <!-- ─── NAVBAR ──────────────────────────────── -->
   <nav class="navbar" role="navigation" aria-label="Main navigation">
 
-    <!-- Brand -->
-    <a href="index.html" class="nav-brand" aria-label="Go to homepage">
-      <span class="nav-logo-icon">🏛️</span>
-    </a>
+
+
+    <div class="nav-left">
+      <button class="lang-btn" id="lang-toggle" aria-label="Switch language">
+        <span id="lang-icon">🌐</span>
+        <span id="lang-label">RU</span>
+      </button>
+    </div>
 
     <!-- Links -->
     <div class="nav-links" role="list">
@@ -636,11 +615,6 @@
 
     <!-- Right side actions -->
     <div class="nav-right">
-      <button class="lang-btn" id="lang-toggle" aria-label="Switch language">
-        <span id="lang-icon">🌐</span>
-        <span id="lang-label">RU</span>
-      </button>
-      <div class="nav-sep"></div>
       <button class="theme-btn" id="theme-toggle" aria-label="Toggle colour theme">
         <span id="theme-icon">☀️</span>
         <span id="theme-label">Light</span>
