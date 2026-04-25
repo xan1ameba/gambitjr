@@ -580,6 +580,12 @@
         border-right: none;
       }
     }
+    @media (max-width: 540px) {
+      .nav-left { left: 16px; }
+      .nav-right { right: 16px; }
+      .lang-btn, .theme-btn { padding: 6px 10px; font-size: 12px; }
+      .nav-burger { margin-left: 2px; }
+    }
   </style>
 </head>
 
@@ -1064,9 +1070,3 @@ If this is not an archaeological artifact, still fill all fields with your best 
       });
     }
 
-    // Show page after text and theme are fully injected
-    requestAnimationFrame(() => document.body.classList.add('ready'));
-  </script>
-</body>
-
-</html>
