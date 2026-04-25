@@ -8,6 +8,7 @@
   <meta property="og:title"       content="Artifacts Catalog — ArchaeoKZ">
   <meta property="og:description" content="Complete catalog of Bronze Age artifacts of Central Asia in open access.">
   <title>Artifacts Catalog — ArchaeoKZ</title>
+  <link rel="icon" type="image/png" href="favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
@@ -19,7 +20,7 @@
     /* ── RESET ─────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; background: var(--bg, #07070f); }
-    html[data-theme="light"] { background: #f4ede0; }
+    html[data-theme="light"] { background: #fdfbf7; }
 
     /* ── VARIABLES ──────────────────────────────── */
     :root {
@@ -87,7 +88,7 @@
     .navbar {
       position: fixed; top: 0; left: 0; right: 0;
       height: var(--nav-h); z-index: 200;
-      display: flex; align-items: center;
+      display: flex; align-items: center; justify-content: center;
       padding: 0 32px; gap: 0;
       background: rgba(7,7,15,.85);
       backdrop-filter: blur(24px);
@@ -117,24 +118,42 @@
     }
 
     .nav-links {
-      display: flex; align-items: center; gap: 4px;
-      flex: 1;
+      display: flex; align-items: center; gap: 10px;
     }
     .nav-link {
-      display: inline-flex; align-items: center; gap: 7px;
-      padding: 8px 16px; border-radius: var(--r-sm);
-      font-size: 14px; font-weight: 500;
-      color: var(--text2); border: 1px solid transparent;
-      transition: var(--tr); white-space: nowrap;
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 18px; border-radius: 24px;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.3px;
+      color: var(--text2); 
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.04);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: all 0.3s cubic-bezier(.4,0,.2,1); white-space: nowrap;
       text-decoration: none;
     }
-    .nav-link:hover { color: var(--text); background: rgba(255,255,255,.05); }
-    .nav-link.active { color: var(--text); background: rgba(255,255,255,.06); }
-    .nav-link-icon { font-size: 16px; }
+    .nav-link:hover {
+      color: var(--text);
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.15);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .nav-link.active {
+      color: var(--text);
+      background: rgba(124,58,237,0.12);
+      border-color: rgba(124,58,237,0.4);
+      box-shadow: 0 4px 20px rgba(124,58,237,0.2);
+    }
+    .nav-link-icon { font-size: 16px; filter: grayscale(100%); opacity: 0.8; transition: var(--tr); }
+    .nav-link:hover .nav-link-icon, .nav-link.active .nav-link-icon { filter: grayscale(0%); opacity: 1; }
 
+    .nav-left {
+      display: flex; align-items: center; gap: 10px;
+      position: absolute; left: 32px; top: 50%; transform: translateY(-50%);
+    }
     .nav-right {
       display: flex; align-items: center; gap: 10px;
-      margin-left: auto;
+      position: absolute; right: 32px; top: 50%; transform: translateY(-50%);
     }
     .nav-sep { width: 1px; height: 22px; background: var(--border); flex-shrink: 0; margin: 0 6px; }
 
@@ -605,43 +624,52 @@
     @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 
     /* ── LIGHT THEME ─────────────────────────────── */
-    html[data-theme="light"] body { background: #f4ede0; color: #1a1208; }
-    html[data-theme="light"] .navbar { background: rgba(232,220,200,.97); border-bottom-color: rgba(100,70,20,.18); }
-    html[data-theme="light"] .nav-link { color: #3a2a10; }
-    html[data-theme="light"] .nav-link:hover { background: rgba(100,70,20,.07); color: #1a1208; }
-    html[data-theme="light"] .sidebar { background: rgba(237,227,208,.97); border-right-color: rgba(100,70,20,.15); }
-    html[data-theme="light"] .sidebar-item { color: #3a2a10; }
-    html[data-theme="light"] .sidebar-item:hover, html[data-theme="light"] .sidebar-item.active { background: rgba(200,149,42,.15); color: #8b6014; }
-    html[data-theme="light"] .sb-title { color: #8b6014; }
-    html[data-theme="light"] .sb-count { background: rgba(100,70,20,.1); color: #8b6014; }
-    html[data-theme="light"] .artifact-card { background: #fdf8f0; border-color: rgba(100,70,20,.15); box-shadow: 0 2px 12px rgba(80,50,10,.08); }
-    html[data-theme="light"] .artifact-card:hover { border-color: rgba(200,149,42,.5); box-shadow: 0 8px 28px rgba(80,50,10,.15); }
-    html[data-theme="light"] .card-title { color: #1a1208; }
-    html[data-theme="light"] .card-sub { color: #6b5530; }
-    html[data-theme="light"] .card-abstract { color: #3a2a10; }
-    html[data-theme="light"] .list-card { background: #fdf8f0; border-color: rgba(100,70,20,.15); }
-    html[data-theme="light"] .filter-bar { background: rgba(253,248,240,.9); border-color: rgba(100,70,20,.15); }
-    html[data-theme="light"] .filter-pill { color: #3a2a10; border-color: rgba(100,70,20,.2); }
-    html[data-theme="light"] .filter-pill.active { color: #8b6014; border-color: #c8952a; background: rgba(200,149,42,.1); }
-    html[data-theme="light"] .search-wrap input { background: #fdf8f0; border-color: rgba(100,70,20,.2); color: #1a1208; }
-    html[data-theme="light"] .search-wrap input::placeholder { color: #9a7a4a; }
-    html[data-theme="light"] .sort-select { background: #fdf8f0; border-color: rgba(100,70,20,.2); color: #1a1208; }
-    html[data-theme="light"] .page-title { background: linear-gradient(135deg,#2d1f0a 20%,#8b4e0f 55%,#6b3a9e 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-    html[data-theme="light"] .page-subtitle { color: #4a3520; }
-    html[data-theme="light"] .result-meta { color: #6b5530; }
-    html[data-theme="light"] .overlay-panel { background: #fdf8f0; border-color: rgba(100,70,20,.18); }
-    html[data-theme="light"] .article-title { color: #1a1208; }
-    html[data-theme="light"] .article-subtitle { color: #6b5530; }
-    html[data-theme="light"] .article-abstract { background: rgba(200,149,42,.08); border-left-color: #c8952a; color: #3a2a10; }
-    html[data-theme="light"] .article-infobox { background: #fdf8f0; border-color: rgba(100,70,20,.18); }
-    html[data-theme="light"] .info-label { color: #8b6014; }
-    html[data-theme="light"] .info-value { color: #1a1208; }
-    html[data-theme="light"] .article-body p { color: #2a1e08; }
-    html[data-theme="light"] .article-body h3 { color: #8b6014; }
-    html[data-theme="light"] .theme-btn { border-color: rgba(100,70,20,.3); background: rgba(100,70,20,.07); color: #8b6014; }
-    html[data-theme="light"] .nav-sep { background: rgba(100,70,20,.18); }
-    html[data-theme="light"] .bg-blobs { opacity: .25; }
-    html[data-theme="light"] #bg-canvas { opacity: .3; }
+    html[data-theme="light"] body { background: #fdfbf7; color: #2a241d; }
+    html[data-theme="light"] .navbar { background: rgba(253,251,247,.95); border-bottom-color: rgba(139,96,20,.15); box-shadow: 0 4px 20px rgba(0,0,0,.04); backdrop-filter: blur(20px); }
+    html[data-theme="light"] .nav-link { 
+      background: transparent; border-color: transparent; color: #5a4f43; box-shadow: none; font-weight: 600;
+    }
+    html[data-theme="light"] .nav-link:hover { 
+      background: rgba(180,122,24,0.06); border-color: rgba(180,122,24,0.2); color: #2a241d; box-shadow: none;
+    }
+    html[data-theme="light"] .nav-link.active {
+      background: #ffffff; border-color: rgba(139,96,20,.2); color: #b47a18; box-shadow: 0 2px 8px rgba(139,96,20,.05);
+    }
+    html[data-theme="light"] .sidebar { background: #fdfbf7; border-right-color: rgba(139,96,20,.12); }
+    html[data-theme="light"] .sidebar-item { color: #5a4f43; }
+    html[data-theme="light"] .sidebar-item:hover, html[data-theme="light"] .sidebar-item.active { background: #ffffff; color: #b47a18; box-shadow: 0 2px 8px rgba(139,96,20,.05); border-color: rgba(139,96,20,.1); }
+    html[data-theme="light"] .sb-title { color: #8c7b68; }
+    html[data-theme="light"] .sb-count { background: #f0eadd; color: #5a4f43; }
+    html[data-theme="light"] .artifact-card { background: #ffffff; border-color: rgba(139,96,20,.1); box-shadow: 0 4px 15px rgba(139,96,20,.03); }
+    html[data-theme="light"] .artifact-card:hover { border-color: rgba(180,122,24,.4); box-shadow: 0 10px 40px rgba(180,122,24,.1); }
+    html[data-theme="light"] .card-title { color: #1c1813; }
+    html[data-theme="light"] .card-sub { color: #8c7b68; }
+    html[data-theme="light"] .card-abstract { color: #4a4136; }
+    html[data-theme="light"] .list-card { background: #ffffff; border-color: rgba(139,96,20,.1); }
+    html[data-theme="light"] .filter-bar { background: #ffffff; border-color: rgba(139,96,20,.1); box-shadow: 0 2px 10px rgba(139,96,20,.02); }
+    html[data-theme="light"] .filter-pill { color: #5a4f43; border-color: rgba(139,96,20,.15); background: #fdfbf7; }
+    html[data-theme="light"] .filter-pill.active { color: #ffffff; border-color: #b47a18; background: #b47a18; }
+    html[data-theme="light"] .search-wrap input { background: #ffffff; border: 2px solid rgba(139,96,20,.15); color: #1c1813; font-weight: 500; border-radius: 100px; box-shadow: none; }
+    html[data-theme="light"] .search-wrap input:focus { border-color: #b47a18; box-shadow: 0 0 0 4px rgba(180,122,24,.1); }
+    html[data-theme="light"] .search-wrap input::placeholder { color: #a39585; font-weight: 400; }
+    html[data-theme="light"] .sort-select { background: #ffffff; border: 2px solid rgba(139,96,20,.15); color: #1c1813; font-weight: 500; }
+    html[data-theme="light"] .page-title { background: none; -webkit-text-fill-color: #1c1813; color: #1c1813; text-shadow: none; }
+    html[data-theme="light"] .page-subtitle { color: #5a4f43; }
+    html[data-theme="light"] .result-meta { color: #8c7b68; }
+    html[data-theme="light"] .overlay-panel { background: #ffffff; border-color: rgba(139,96,20,.1); box-shadow: 0 20px 60px rgba(139,96,20,.15); }
+    html[data-theme="light"] .article-title { color: #1c1813; }
+    html[data-theme="light"] .article-subtitle { color: #8c7b68; }
+    html[data-theme="light"] .article-abstract { background: #fdfbf7; border-left-color: #b47a18; color: #4a4136; border-right: 1px solid rgba(139,96,20,.05); border-top: 1px solid rgba(139,96,20,.05); border-bottom: 1px solid rgba(139,96,20,.05); }
+    html[data-theme="light"] .article-infobox { background: #ffffff; border-color: rgba(139,96,20,.1); }
+    html[data-theme="light"] .info-label { color: #b47a18; }
+    html[data-theme="light"] .info-value { color: #1c1813; font-weight: 500; }
+    html[data-theme="light"] .article-body p { color: #4a4136; }
+    html[data-theme="light"] .article-body h3 { color: #b47a18; }
+    html[data-theme="light"] .theme-btn { border-color: rgba(139,96,20,.15); background: #ffffff; color: #5a4f43; }
+    html[data-theme="light"] .lang-btn { border-color: rgba(139,96,20,.15); background: #ffffff; color: #5a4f43; }
+    html[data-theme="light"] .nav-sep { background: rgba(139,96,20,.15); }
+    html[data-theme="light"] .bg-blobs { opacity: .08; filter: saturate(2); }
+    html[data-theme="light"] #bg-canvas { opacity: .1; filter: invert(1); }
 
     /* ── RESPONSIVE ──────────────────────────────── */
     @media (max-width: 900px) {
@@ -667,9 +695,14 @@
 ═══════════════════════════════════════════ -->
 <nav class="navbar" role="navigation" aria-label="Main navigation">
 
-  <a href="index.html" class="nav-brand" aria-label="Go to homepage">
-    <span class="nav-logo-icon">🏛️</span>
-  </a>
+
+
+  <div class="nav-left">
+    <button class="lang-btn" id="lang-toggle" aria-label="Switch language">
+      <span id="lang-icon">🌐</span>
+      <span id="lang-label">RU</span>
+    </button>
+  </div>
 
   <div class="nav-links" role="list">
     <a href="index.html"     class="nav-link"        role="listitem"><span class="nav-link-icon">🏠</span><span data-i18n="navHome"> Home</span></a>
@@ -678,11 +711,6 @@
   </div>
 
   <div class="nav-right">
-    <button class="lang-btn" id="lang-toggle" aria-label="Switch language">
-      <span id="lang-icon">🌐</span>
-      <span id="lang-label">RU</span>
-    </button>
-    <div class="nav-sep"></div>
     <button class="theme-btn" id="theme-toggle" aria-label="Toggle colour theme">
       <span id="theme-icon">☀️</span>
       <span id="theme-label">Light</span>
