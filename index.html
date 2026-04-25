@@ -480,11 +480,18 @@
       .features { grid-template-columns: 1fr; }
       .hs-item  { padding: 18px 24px; }
       .hero-title { font-size: 38px; }
+      .about-section { margin: 0 16px 40px; padding: 24px 20px; }
+      .about-title { font-size: 24px; }
+      .about-text { font-size: 14px; }
     }
     @media (max-width: 540px) {
       .hero-stats { flex-direction: column; }
       .hs-item { border-right: none; border-bottom: 1px solid var(--border); }
       .hs-item:last-child { border-bottom: none; }
+      .nav-left { left: 16px; }
+      .nav-right { right: 16px; }
+      .lang-btn, .theme-btn { padding: 6px 10px; font-size: 12px; }
+      .nav-burger { margin-left: 2px; }
     }
   </style>
 </head>
@@ -769,10 +776,3 @@
       });
     });
   }
-
-  // Show page after text and theme are fully injected
-  requestAnimationFrame(() => document.body.classList.add('ready'));
-
-</script>
-</body>
-</html>
